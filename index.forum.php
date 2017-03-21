@@ -1,39 +1,49 @@
 <?php
 ini_set('display_errors', 1);
 
-include('modele/Forum.php');
-include('modele/Sujet.php');
-include('modele/Message.php');
+/*
+*
+*	CONFIGURATION
+*
+*/
+	// Variable du site
+	include('config/configuration.php');
 
-
-echo '<h1>Test</h1>';
-
-
-// 
-$auteur = 5;
-
-/**
-*	Forum
-**/
-	$forum = new Forum($auteur, 'Nouveau Forum', 'Description du Forum');
-
-	// Affichage de l'objet
-	echo (string)$forum;
-
-
-/**
-*	Sujet
-**/
-	$sujet = new Sujet($auteur, 'Nouveau sujet', 'Description du sujet', 1);
+	// Tools
+	include('tools/Form.php');			// Permet de générer des formulaires HTML
+	include('tools/HTTPRequest.php');	// Traite les données recu en GET/POST
+	include('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 	
-	// Affichage de l'objet
-	echo (string)$sujet;
+	// Connexion
+	include('tools/CConnexion.php');
+	$db = new CConnexion($config['host'], $config['dbName'], $config['user'], $config['pass']);
+
+	// Objet	
+	include('model/Forum.php');
+	include('model/Sujet.php');
+	include('model/Message.php');
+
+	// DAO des objets
+	include('dao/ForumDao.php');
+	include('dao/SujetDao.php');
+	include('dao/MessageDao.php');
+
+	// Coeur du forum
+	include('controller/ForumController.php');
 
 
-/**
-*	Message
-**/
-	$message = new Message($auteur, 'Nouveau Message', 'Texte du <b>Message</b>', 1);
+	// DEBUG
+	set_error_handler(array('GestionErreur', 'erreurPDO'));
+
+
+
+/*
+*
+*	Corps
+*
+*/
+	// Création du controller
+	$fC = new ForumController($db);
 	
-	// Affichage de l'objet
-	echo (string)$message;
+	// Affichage de la liste du forum
+	$fC->afficherListeForums();
