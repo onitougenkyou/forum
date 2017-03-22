@@ -1,14 +1,14 @@
 <?php
 
-if(!isset($tplForum['titre']))	$tplForum['titre'] = 'Titre de page';
-if(!isset($tplForum['body']))	$tplForum['body'] = 'Corps de page';
+if(!isset($tplIndexForum['titre']))	$tplIndexForum['titre'] = 'Titre de page';
+if(!isset($tplIndexForum['body']))	$tplIndexForum['body'] = 'Corps de page';
 
 
 ?><!DOCTYPE html>
 <html>
 	<head>
 		<title>
-			<?php echo $tplForum['titre']; ?>
+			<?php echo $tplIndexForum['titre']; ?>
 		</title>
 		<meta charset="UTF-8">
 		<link rel="stylesheet" type="text/css" href="css/style.css">		
@@ -18,7 +18,7 @@ if(!isset($tplForum['body']))	$tplForum['body'] = 'Corps de page';
 		
 		<header class="block-entete">
 			<div class="inner">			
-				<h2><?php echo $tplForum['titre']; ?></h2>
+				<h2><?php echo $tplIndexForum['titre']; ?></h2>
 			</div>
 		</header>
 
@@ -44,11 +44,11 @@ if(!isset($tplForum['body']))	$tplForum['body'] = 'Corps de page';
 				
 					<div class="block-principal">
 					<section class="section">
-						
-						<?php 
-							echo $tplForum['body'];
-						?>
-						
+						<div class="forums">
+							<?php 
+								echo $tplIndexForum['body'];
+							?>
+						</div>
 					</section>
 				</div>
 			

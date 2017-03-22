@@ -29,25 +29,38 @@ class ForumController
 	**/
 	public function afficherListeForums()
 	{
-		$strRetour = 'Liste des Forums';
-		
 		// Instanciation du ForumDao
 		$fDao = new ForumDao($this->db);
 		
-		// Récupération de la liste des forums
+		// Récupération de la liste des forums en tableau d'objet
 		$forumListe = $fDao->getForums();
 		
-		
+		// Début de l'interception
 		ob_start();
 
-		echo '<pre>';
-		print_r($forumListe);
-		echo '</pre>';
+			$taille = count($forumListe);
+			
+			echo '<ul>';
+			for($i=0; $i<$taille; $i++)
+			{
+				echo '<li>';
+				$tplForum = $forumListe[$i];
+				include('template/forum.php');
+				echo '<li>';
+			}
+			echo '<ul>';
+			
+			// echo '<pre>';
+			// print_r($forumListe);
+			// echo '</pre>';
+			
 		
+		
+		// Fin de l'interception
+		$tplIndexForum['body'] 	= ob_get_clean();
 		
 		// Initialisation du template
-		$tplForum['titre'] = 'TitrePageForum';
-		$tplForum['body'] = ob_get_clean();
+		$tplIndexForum['titre'] 	= 'TitrePageForum';
 		
 		// Affichage du template
 		include('template/index.forum.php');

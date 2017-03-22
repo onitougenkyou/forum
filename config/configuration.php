@@ -1,11 +1,11 @@
 <?php
 
 /*
-*	Sélection des paramètre de la base de données
+*	SÃ©lection des paramÃ¨tre de la base de donnÃ©es
 */
 if($_SERVER['SERVER_ADDR'] == '10.2.2.37')
 {
-	// Configuration Cédric
+	// Configuration CÃ©dric
 	$config['host'] 		= '10.2.2.34';
 	$config['dbName'] 	= 'IMIEforum';
 	$config['user']		= 'IMIEforum';

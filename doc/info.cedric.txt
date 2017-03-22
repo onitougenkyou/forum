@@ -167,8 +167,20 @@ Modèle MVC
 		*
 		*/
 		
-		Code !
-		
+		Route
+			?page=forum&forum=id	&page=2
+			?page=forum&sujet=id	&page=2
+			?page=forum&message=id	&page=2
+			
+			?page=forum&sujet=NouveauForum
+			?page=forum&sujet=NouveauSujet
+			?page=forum&sujet=NouveauMessage
+			
+			?page=forum&sujet=ModificationForum
+			?page=forum&sujet=ModificationSujet
+			?page=forum&sujet=ModificationMessage
+			
+			
 		
 		
 		/*
