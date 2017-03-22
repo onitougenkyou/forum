@@ -92,12 +92,15 @@ if(isset($_POST['btn-signup']))
             }
             ?>
             <div class="form-group">
+              <label>Votre pseudo :</label>
             <input type="text" class="form-control" name="txt_uname" placeholder="Enter Username" value="<?php if(isset($error)){echo $uname;}?>" />
             </div>
             <div class="form-group">
+              <label>Votre email :</label>
             <input type="text" class="form-control" name="txt_umail" placeholder="Enter E-Mail ID" value="<?php if(isset($error)){echo $umail;}?>" />
             </div>
             <div class="form-group">
+              <label>Votre mot de passe :</label>
              <input type="password" class="form-control" name="txt_upass" placeholder="Enter Password" />
             </div>
             <div class="clearfix"></div><hr />
