@@ -58,7 +58,7 @@ if(isset($_POST['btn-login']))
           </button>
         </div>
         <br />
-        <label>Pas de compte encore <a href="sign-up.php">Connexion</a></label>
+        <label>Pas de compte encore <a href="sign-up.php">Inscription</a></label>
       </form>
     </div>
   </div>
