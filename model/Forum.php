@@ -1,4 +1,5 @@
 <?php
+//namespace Projet\Forum\Model;
 
 /**
 *
@@ -6,6 +7,9 @@
 *		Conteneur des Sujets
 *		L'arborescence est construite en fonction du parent (id du forum)
 *		Pas de parent = racine
+*
+* @user Cedric
+* @date 2017.03.18
 **/
 class Forum
 {
@@ -13,19 +17,20 @@ class Forum
 	private $dateCreation;
 	private $dateModification;
 	private $auteur;
-	private $acl;
+	private $acl;					// droits
 	private $titre;
 	private $description;
-	private $image;				// option - Image pour illuster le forum
-	private $parentId; 			// Détermine son parent, l'arborescence
-	private $nbSujet;				// option - Nombre de sujet dans le forum
-	private $dernierMessageId;		// option - Id du dernier message dans le forum
+	private $parentId; 			// Int Détermine son parent, l'arborescence
+	private $nbSujet;				// option - Int 	Nombre de sujet dans le forum
+	private $dernierMessageId;		// option - Int 	Id du dernier message dans le forum
+	private $affichage;			// option - Bool 	forum affiché ou non
+	private $imageId;				// option - Int	Image pour illuster le forum
 
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur, $titre='', $description = '')
+	public function __construct($auteur = 1, $titre='', $description = '')
 	{
 		$this->auteur 		= $auteur;
 		$this->titre 			= $titre;
@@ -39,11 +44,12 @@ class Forum
 	**/
 	public function __toString()
 	{
-		$retour = '<p>';
+		$retour = '';
+			$retour .= 'Id : '.$this->id.'<br>';
 			$retour .= 'Auteur : '.$this->auteur.'<br>';
 			$retour .= 'Titre : '.$this->titre.'<br>';
 			$retour .= 'Description : '.$this->description.'<br>';
-		$retour .= '</p>';
+		$retour .= '';
 		return $retour;
 	}
 
@@ -115,7 +121,7 @@ class Forum
 		return $this->description;
 	}
 
-	// Parent
+	// Parent Id
 	public function setParent($parentId)
 	{
 		$this->parentId = $parentId;
@@ -123,16 +129,6 @@ class Forum
 	public function getParent()
 	{
 		return $this->parentId;
-	}
-
-	// Image
-	public function setImage($image)
-	{
-		$this->image = $image;
-	}
-	public function getImage()
-	{
-		return $this->image;
 	}
 
 	// nbSujet
@@ -145,7 +141,7 @@ class Forum
 		return $this->nbSujet;
 	}
 
-	// dernierMessageId
+	// dernier Message Id
 	public function setDernierMessage($dernierMessageId)
 	{
 		$this->dernierMessageId = $dernierMessageId;
@@ -155,7 +151,24 @@ class Forum
 		return $this->dernierMessageId;
 	}
 
+	// Affichage
+	public function setAffichage($affichage)
+	{
+		$this->affichage = $affichage;
+	}
+	public function getAffichage()
+	{
+		return $this->affichage;
+	}
 
-
+	// Image Id
+	public function setImage($imageId)
+	{
+		$this->imageId = $imageId;
+	}
+	public function getImage()
+	{
+		return $this->imageId;
+	}
 
 }

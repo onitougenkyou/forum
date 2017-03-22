@@ -1,12 +1,15 @@
 <?php
+//namespace Projet\Forum\Model;
 
 /**
 *
-*	Classe Message
-*		Elle contient l'ensemble des message d'un Sujet
+*	Classe Sujet
+*		Elle contient l'ensemble des suejt d'un forum
 *
+* @user Cedric
+* @date 2017.03.18
 **/
-class Message
+class Sujet
 {
 	private $id;
 	private $dateCreation;
@@ -15,18 +18,20 @@ class Message
 	private $acl;
 	private $titre;
 	private $texte;
-	private $sujetId;
+	private $forumId;
+	private $affichage;			// option - sujet affiché ou non
 
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur, $titre = '', $texte = '', $sujetId = 0)
+	public function __construct($auteur, $titre, $texte = '', $forumId = 0)
 	{
-		$this->auteur 	= $auteur;
-		$this->titre 		= $titre;
-		$this->texte 		= $texte;
-		$this->sujetId 	= $sujetId;
+		$this->id 			= 52;
+		$this->auteur 		= $auteur;
+		$this->titre 			= $titre;
+		$this->texte 			= $texte;
+		$this->forumId 		= $forumId;
 	}
 	
 	/**
@@ -36,12 +41,13 @@ class Message
 	**/
 	public function __toString()
 	{
-		$retour = '<p>';
+		$retour = '';
+			$retour .= 'id : '.$this->id.'<br>';
 			$retour .= 'Auteur : '.$this->auteur.'<br>';
 			$retour .= 'Titre : '.$this->titre.'<br>';
-			$retour .= 'Texte du message : '.$this->texte.'<br>';
-			$retour .= 'ID du sujet : '.$this->sujetId.'<br>';
-		$retour .= '</p>';
+			$retour .= 'Description : '.$this->texte.'<br>';
+			$retour .= 'ID du Forum : '.$this->forumId.'<br>';
+		$retour .= '';
 		return $retour;
 	}
 
@@ -82,7 +88,7 @@ class Message
 	{
 		return $this->auteur;
 	}
-	
+
 	// Acl
 	public function setAcl($acl)
 	{
@@ -113,14 +119,25 @@ class Message
 		return $this->texte;
 	}
 
-	// SujetId
-	public function setSujetId($sujetId)
+	// ForumId
+	public function setForumId($forumId)
 	{
-		$this->sujetId = $sujetId;
+		$this->forumId = $forumId;
 	}
-	public function getSujetId()
+	public function getForumId()
 	{
-		return $this->sujetId;
+		return $this->forumId;
 	}
+
+	// Affichage
+	public function setAffichage($affichage)
+	{
+		$this->affichage = $affichage;
+	}
+	public function getAffichage()
+	{
+		return $this->affichage;
+	}
+
 
 }

@@ -1,0 +1,255 @@
+Modèle MVC 
+	http://old.mazenod.fr/2010/01/design-pattern-mvc-zoom-sur-la-couche-modele-dal-dao-orm-crud/
+
+	
+	DAL	= Data Acces Layer
+		PDO
+	
+	DAO = Data Access Object
+		Table <=> liste d'objet
+		Un enregistrement de table <=> à un objet
+		Un champ d'enregistrement <=> à un attribut
+		Valeur d'un champ <=> Valeur d'un attribut d'objet
+	
+	ORM = Object Relation Mapping
+		Gere les dépendances entre les objets (clé étrangère)
+		
+		
+		
+		
+		/*
+		*	Diagramme UML
+		*
+		*/
+		
+		
+		/*
+		*	Diagramme de classe
+		*
+		*/
+			Affichage de la liste des forums							// getForums
+			Affichage d'un forum										// getForum
+				Affichage de la liste des sujets						// getSujets
+				Affichage d'un sujet									// getSujet
+					Affichage de la liste des messages d'un sujet		// getMessages
+					Affichage d'un message 								// getMessage
+				
+			Création d'un forum, sujet, message			// constructeur & Setters
+			
+			Modification d'un forum, sujet, message		// Setters
+			
+			Supression d'un forum, sujet, message						// delete()
+			
+			
+
+		/*
+		*	Diagramme de classe
+		*
+		*/
+			
+			// Modele
+				Forum
+					attributs
+					__construct()
+					getters & setters
+				Sujet
+					attributs
+					__construct()
+					getters & setters
+				Message
+					attributs
+					__construct()
+					getters & setters
+				Membre
+					attributs
+				
+				
+			// Dao
+				ForumDao
+					__construct($db)
+					getForums() : array(Forum)
+					getForum() : Forum
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String		// Change la variable affichage dans les objets Forum, Sujet, Message
+
+				SujetDao
+					__construct($db)
+					getSujets() : array(Sujet)
+					getSujet() : Sujet
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String
+
+				MessageDao
+					__construct($db)
+					getMessage() : array(Message)
+					getForum() : Message
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String
+
+			// Controleur
+				ForumCtrl
+					afficherForum
+			
+			// Tools
+				CConnexion	(DAL)
+					db
+					host
+					dbname
+					user
+					pass
+					__construct()
+				Form
+					__construct()
+					addInput()
+					getForm()		// Renvoi l'HTML
+				HTTPRequest
+					__construct()
+					getGet()
+					getPost()
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		/*
+		*	Maquette
+		*
+		*/
+		
+			Menu 
+				Liste
+					Ajout d'un forum
+					Ajout d'un sujet
+					Ajout d'un message
+			
+		
+			// Création d'un forum
+			$forum = new Forum('Toto', 'Titre Forum');
+			$forumId = $forum->getId();
+			
+			// Création d'un sujet dans le forum
+			$sujet = new Sujet('Toto', 'Titre du Sujet', $forumId);
+			$sujetId = $sujet->getId();
+			
+			// Création d'un message dans le sujet
+			$message = new Message('Toto', 'Titre Message', 'Corps du message', $sujetId); 
+			$messageId = $message->getId();
+			
+			// Affichage d'un seul message dans une page
+			$message->getMessage($messageId);
+		
+
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		// Afficher un message avec forumId et sujetId 
+		public function getMessage($messageId)
+		{
+			/*
+			// Requête simple
+			SELECT `id`,
+					`dateCreation`,
+					`dateModification`,
+					`auteur`,
+					`titre`,
+					`texte`,
+					`s.titre`,
+					`f.titre`
+				FROM `message` AS m
+				WHERE `m.id` = `$messageId`
+		}
+		
+		
+		
+		
+		
+		
+		// Afficher un message avec forumId et sujetId 
+		public function getMessage($messageId)
+		{
+			/*
+			// Requête simple
+			SELECT `id`,
+					`dateCreation`,
+					`dateModification`,
+					`auteur`,
+					`titre`,
+					`texte`,
+					`s.titre`,
+					`f.titre`
+				FROM `message` AS m,
+						`sujet` AS s,
+						`forum` AS f
+				WHERE `m.sujet_id` = `s.id`		// Sélection du sujet du message
+					AND `s.forumId` = `f.id`	// Sélection du forum du message
+					AND `m.id` = 1
+					
+			
+			// Requête complexe avec jointure
+			SELECT `id`,
+					`dateCreation`,
+					`dateModification`,
+					`auteur`,
+					`titre`,
+					`texte`,
+					`s.titre`,
+					`f.titre`
+				FROM ((`message` AS m
+					LEFT JOIN `sujet` AS s ON `m.sujet_id` = `s.id`)
+					LEFT JOIN `forum` AS f ON `s.forum_id` = `f.id`)
+			*/
+		}
+		

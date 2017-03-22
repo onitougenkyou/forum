@@ -1,12 +1,15 @@
 <?php
+//namespace Projet\Forum\Model;
 
 /**
 *
-*	Classe Sujet
-*		Elle contient l'ensemble des suejt d'un forum
+*	Classe Message
+*		Elle contient l'ensemble des message d'un Sujet
 *
+* @user Cedric
+* @date 2017.03.18
 **/
-class Sujet
+class Message
 {
 	private $id;
 	private $dateCreation;
@@ -14,19 +17,21 @@ class Sujet
 	private $auteur;
 	private $acl;
 	private $titre;
-	private $description;
-	private $forumId;
+	private $texte;
+	private $sujetId;
+	private $affichage;			// option - Message affiché ou non
 
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur, $titre, $description = '', $forumId = 0)
+	public function __construct($auteur, $titre = '', $texte = '', $sujetId = 0)
 	{
-		$this->auteur 		= $auteur;
-		$this->titre 			= $titre;
-		$this->description 	= $description;
-		$this->forumId 		= $forumId;
+		$this->id 		= 26;
+		$this->auteur 	= $auteur;
+		$this->titre 		= $titre;
+		$this->texte 		= $texte;
+		$this->sujetId 	= $sujetId;
 	}
 	
 	/**
@@ -36,12 +41,13 @@ class Sujet
 	**/
 	public function __toString()
 	{
-		$retour = '<p>';
+		$retour = '';
+			$retour .= 'Id : '.$this->id.'<br>';
 			$retour .= 'Auteur : '.$this->auteur.'<br>';
 			$retour .= 'Titre : '.$this->titre.'<br>';
-			$retour .= 'Description : '.$this->description.'<br>';
-			$retour .= 'ID du Forum : '.$this->forumId.'<br>';
-		$retour .= '</p>';
+			$retour .= 'Texte du message : '.$this->texte.'<br>';
+			$retour .= 'ID du sujet : '.$this->sujetId.'<br>';
+		$retour .= '';
 		return $retour;
 	}
 
@@ -82,7 +88,7 @@ class Sujet
 	{
 		return $this->auteur;
 	}
-
+	
 	// Acl
 	public function setAcl($acl)
 	{
@@ -103,25 +109,34 @@ class Sujet
 		return $this->titre;
 	}
 
-	// Description
-	public function setDescription($description)
+	// Texte
+	public function setTexte($texte)
 	{
-		$this->description = description;
+		$this->texte = $texte;
 	}
-	public function getDescription()
+	public function getTexte()
 	{
-		return $this->description;
-	}
-
-	// ForumId
-	public function setForumId($forumId)
-	{
-		$this->forumId = $forumId;
-	}
-	public function getForumId()
-	{
-		return $this->forumId;
+		return $this->texte;
 	}
 
+	// SujetId
+	public function setSujetId($sujetId)
+	{
+		$this->sujetId = $sujetId;
+	}
+	public function getSujetId()
+	{
+		return $this->sujetId;
+	}
+
+	// affichage
+	public function setAffichage($affichage)
+	{
+		$this->affichage = $affichage;
+	}
+	public function getAffichage()
+	{
+		return $this->affichage;
+	}
 
 }
