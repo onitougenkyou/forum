@@ -15,7 +15,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"  />
 <link rel="stylesheet" href="style.css" type="text/css"  />
-<title>welcome - <?php print($userRow['user_email']); ?></title>
+<title>Bienvenue - <?php print($userRow['user_email']); ?></title>
 </head>
 
 <body>

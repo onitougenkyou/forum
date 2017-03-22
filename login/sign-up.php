@@ -86,7 +86,7 @@ if(isset($_POST['btn-signup']))
             {
                  ?>
                  <div class="alert alert-info">
-                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Successfully registered <a href='index.php'>login</a> here
+                      <i class="glyphicon glyphicon-log-in"></i> &nbsp; Inscription réussite <a href='index.php'>Connexion</a> ici
                  </div>
                  <?php
             }
@@ -107,7 +107,7 @@ if(isset($_POST['btn-signup']))
                 </button>
             </div>
             <br />
-            <label>have an account ! <a href="index.php">Sign In</a></label>
+            <label>Possède un compte ! <a href="index.php">Se connecter</a></label>
         </form>
        </div>
 </div>
