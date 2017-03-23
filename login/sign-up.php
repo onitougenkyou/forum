@@ -6,14 +6,6 @@ if($user->is_loggedin()!="")
   $user->redirect('home.php');
 }
 
-$uppercase = preg_match('@[A-Z]@', $password);
-$lowercase = preg_match('@[a-z]@', $password);
-$number    = preg_match('@[0-9]@', $password);
-
-if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-  // tell the user something went wrong
-}
-
 if(isset($_POST['btn-signup']))
 {
   $uname = trim($_POST['txt_uname']);
