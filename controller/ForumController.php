@@ -40,7 +40,6 @@ class ForumController
 		/*
 		*	Génération de la liste des forums
 		*/
-		
 		ob_start();	// Début de l'interception
 
 			$taille = count($forumListe);
@@ -50,8 +49,8 @@ class ForumController
 			{
 				echo '<li>';
 				$tplForum = $forumListe[$i];
-				include('template/forum/forum.php');
-				echo '<li>';
+				include('view/forum/forum.php');
+				echo '</li>';
 			}
 			echo '<ul>';
 	
@@ -61,7 +60,7 @@ class ForumController
 		$tplIndexForum['titre'] 	= 'TitrePageForum';
 		
 		// Affichage du template
-		include('template/index.forum.php');
+		require_once('template/index.forum.php');
 	}
 	
 	

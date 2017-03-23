@@ -38,7 +38,7 @@ class GestionErreur
 			$strReturn .= '<h1>ERREUR !!</h1>';
 			$strReturn .= 'Erreur ['.$no.'] =>> <b>'.$str.'</b><br>';
 			$strReturn .= 'Survenue dans le fichier : "<b>'.$file.'</b>" à la ligne <b>'.$line.'</b><br>';
-			$strReturn .= '<i>Ceci était un message d\'erreur personnalité de PDO via la classe "GestionErreur"</i>';
+			$strReturn .= '<i>Ceci était un message d\'erreur personnalité via la classe "GestionErreur"</i>';
 		$strReturn .= '</p>';
 		// Affichage de l'erreur
 		echo $strReturn;

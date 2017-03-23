@@ -48,7 +48,7 @@ class ForumDao
 						`dernier_message_id`,
 						`affichage`,
 						`image_id`
-				FROM `forum`';
+				FROM `forums`';
 				
 		// Envoi de la requête & récupération
 		$result = $this->db->bddSelect($sql, 0);

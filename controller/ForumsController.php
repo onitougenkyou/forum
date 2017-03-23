@@ -23,4 +23,17 @@ class ForumsController
 	
 	
 	
+	/**
+	*	Affichage de la liste des forums
+	*
+	**/
+	public function afficherForums()
+	{
+		// Controleur Forums
+		$fC = new ForumController($this->db);
+		
+		// Affichage de la liste du forum
+		$fC->afficherListeForums();
+	}
+	
 }
