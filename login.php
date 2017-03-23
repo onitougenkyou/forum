@@ -1,9 +1,9 @@
 <?php
-require_once 'verif.php';
+require_once 'login/verif.php';
 
 if($user->is_loggedin()!="")
 {
-  $user->redirect('home.php');
+  $user->redirect('login/home.php');
 }
 
 if(isset($_POST['btn-login']))
@@ -14,11 +14,11 @@ if(isset($_POST['btn-login']))
 
   if($user->login($uname,$umail,$upass))
   {
-    $user->redirect('home.php');
+    $user->redirect('login/home.php');
   }
   else
   {
-    $error = "Wrong Details !";
+    $error = "Identifiants erronnés";
   }
 }
 ?>
@@ -28,7 +28,7 @@ if(isset($_POST['btn-login']))
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Connexion : cleartuts</title>
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"  />
-  <link rel="stylesheet" href="style.css" type="text/css"  />
+  <link rel="stylesheet" href="login/style.css" type="text/css"  />
 </head>
 <body>
   <div class="container">

@@ -6,14 +6,6 @@ if($user->is_loggedin()!="")
   $user->redirect('home.php');
 }
 
-$uppercase = preg_match('@[A-Z]@', $password);
-$lowercase = preg_match('@[a-z]@', $password);
-$number    = preg_match('@[0-9]@', $password);
-
-if(!$uppercase || !$lowercase || !$number || strlen($password) < 8) {
-  // tell the user something went wrong
-}
-
 if(isset($_POST['btn-signup']))
 {
   $uname = trim($_POST['txt_uname']);
@@ -38,18 +30,15 @@ if(isset($_POST['btn-signup']))
   else if($upass=="") {
     $error[] = "Entrez un mot de passe";
   }
-  // elseif ( ! preg_match("~^[\w]$~", $upass) ){
-  //   $error[] = 'Seulement des lettres ou nombres';
-  // }
   elseif ( ! preg_match("~[A-Z]~", $upass) ){
     $error[] = 'Il faut une majuscule';
   }
   elseif ( ! preg_match("~[0-9]~", $upass) ){
    $error[] = 'Il faut un nombre';
   }
-  // else if(strlen($upass) < 6){
-  //   $error[] = "Le mot de passe doit contenir 6 caractères minimum";
-  // }
+  else if(strlen($upass) < 6){
+    $error[] = "Le mot de passe doit contenir 6 caractères minimum";
+  }
   else
   {
     try
