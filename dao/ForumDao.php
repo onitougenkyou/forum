@@ -17,22 +17,56 @@ class ForumDao
 	**/
 	public function __construct($db)
 	{
-		$this->db= $db;
+		$this->db = $db;
 	}
 	
 	
 	
 	/**
 	*	SELECT forumS
+	*		Renvoi la liste des forums
 	*
+	* @param		limitStart	index de démarrage des résultats
+	* @param 	limitNb		Nombre de résultat a afficher
+	* @return	retourne un tableau de résultat
 	**/
-	public function getForums()
+	public function getForums($parent = null, $limitStart = 0, $limitNb = 0)
 	{
-		$forum = new Forum('1', 'Titre du forum', 'Description du forum');
+		// Init
+		$forums = array();
 		
-		$tabRetour =  array($forum, $forum);
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`description`,
+						`parent_id`,
+						`nb_sujet`,
+						`dernier_message_id`,
+						`affichage`,
+						`image_id`
+				FROM `forum`';
 				
-		return $tabRetour;
+		// Envoi de la requête & récupération
+		$result = $this->db->bddSelect($sql, 0);
+		
+		// Création des objets
+		$taille = count($result);
+		for($i=0; $i<$taille; $i++) {
+			
+			// Construction d'un objet Forum
+			$forum = new Forum($result[$i]);
+			
+			// Enregistrement du Forum en tableau d'objet
+			$forums[$i] = $forum;
+		}
+		
+		// Renvoi
+		return $forums;
+		// return $result;
 	}
 	
 	

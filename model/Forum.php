@@ -25,17 +25,19 @@ class Forum
 	private $dernierMessageId;		// option - Int 	Id du dernier message dans le forum
 	private $affichage;			// option - Bool 	forum affiché ou non
 	private $imageId;				// option - Int	Image pour illuster le forum
-
+	
+	
+	
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur = 1, $titre='', $description = '')
+	// public function __construct($auteur = 1, $titre='', $description = '')
+	public function __construct($data = array())
 	{
-		$this->auteur 		= $auteur;
-		$this->titre 			= $titre;
-		$this->description 	= $description;
 	}
+	
+	
 	
 	/**
 	*	To String
@@ -52,9 +54,9 @@ class Forum
 		$retour .= '';
 		return $retour;
 	}
-
-
-
+	
+	
+	
 	// Id
 	public function getId()
 	{
@@ -122,11 +124,11 @@ class Forum
 	}
 
 	// Parent Id
-	public function setParent($parentId)
+	public function setParentID($parentId)
 	{
 		$this->parentId = $parentId;
 	}
-	public function getParent()
+	public function getParentId()
 	{
 		return $this->parentId;
 	}
@@ -142,11 +144,11 @@ class Forum
 	}
 
 	// dernier Message Id
-	public function setDernierMessage($dernierMessageId)
+	public function setDernierMessageId($dernierMessageId)
 	{
 		$this->dernierMessageId = $dernierMessageId;
 	}
-	public function getDernierMessage()
+	public function getDernierMessageId()
 	{
 		return $this->dernierMessageId;
 	}
@@ -162,11 +164,11 @@ class Forum
 	}
 
 	// Image Id
-	public function setImage($imageId)
+	public function setImageId($imageId)
 	{
 		$this->imageId = $imageId;
 	}
-	public function getImage()
+	public function getImageId()
 	{
 		return $this->imageId;
 	}

@@ -1,4 +1,4 @@
-Modèle MVC 
+ModÃ¨le MVC 
 	http://old.mazenod.fr/2010/01/design-pattern-mvc-zoom-sur-la-couche-modele-dal-dao-orm-crud/
 
 	
@@ -7,12 +7,12 @@ Modèle MVC
 	
 	DAO = Data Access Object
 		Table <=> liste d'objet
-		Un enregistrement de table <=> à un objet
-		Un champ d'enregistrement <=> à un attribut
+		Un enregistrement de table <=> Ã  un objet
+		Un champ d'enregistrement <=> Ã  un attribut
 		Valeur d'un champ <=> Valeur d'un attribut d'objet
 	
 	ORM = Object Relation Mapping
-		Gere les dépendances entre les objets (clé étrangère)
+		Gere les dÃ©pendances entre les objets (clÃ© Ã©trangÃ¨re)
 		
 		
 		
@@ -34,7 +34,7 @@ Modèle MVC
 					Affichage de la liste des messages d'un sujet		// getMessages
 					Affichage d'un message 								// getMessage
 				
-			Création d'un forum, sujet, message			// constructeur & Setters
+			CrÃ©ation d'un forum, sujet, message			// constructeur & Setters
 			
 			Modification d'un forum, sujet, message		// Setters
 			
@@ -101,6 +101,7 @@ Modèle MVC
 					user
 					pass
 					__construct()
+					bddSelect()
 				Form
 					__construct()
 					addInput()
@@ -143,21 +144,76 @@ Modèle MVC
 					Ajout d'un message
 			
 		
-			// Création d'un forum
+			// CrÃ©ation d'un forum
 			$forum = new Forum('Toto', 'Titre Forum');
 			$forumId = $forum->getId();
 			
-			// Création d'un sujet dans le forum
+			// CrÃ©ation d'un sujet dans le forum
 			$sujet = new Sujet('Toto', 'Titre du Sujet', $forumId);
 			$sujetId = $sujet->getId();
 			
-			// Création d'un message dans le sujet
+			// CrÃ©ation d'un message dans le sujet
 			$message = new Message('Toto', 'Titre Message', 'Corps du message', $sujetId); 
 			$messageId = $message->getId();
 			
 			// Affichage d'un seul message dans une page
 			$message->getMessage($messageId);
 		
+
+		
+		
+		/*
+		*	RÃ©alisation
+		*
+		*/
+		
+		Route
+			?page=forum&forum=id	&page=2
+			?page=forum&sujet=id	&page=2
+			?page=forum&message=id	&page=2
+			
+			?page=forum&sujet=NouveauForum
+			?page=forum&sujet=NouveauSujet
+			?page=forum&sujet=NouveauMessage
+			
+			?page=forum&sujet=ModificationForum
+			?page=forum&sujet=ModificationSujet
+			?page=forum&sujet=ModificationMessage
+			
+			
+		
+		
+		/*
+		*	Test unitaire
+		*
+		*/
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			null
+			parent			aucun
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			null
+			parent			1
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		non
+			image			null
+			parent			1
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			1
+			parent			aucun
 
 		
 		
@@ -182,74 +238,4 @@ Modèle MVC
 		
 		
 		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		// Afficher un message avec forumId et sujetId 
-		public function getMessage($messageId)
-		{
-			/*
-			// Requête simple
-			SELECT `id`,
-					`dateCreation`,
-					`dateModification`,
-					`auteur`,
-					`titre`,
-					`texte`,
-					`s.titre`,
-					`f.titre`
-				FROM `message` AS m
-				WHERE `m.id` = `$messageId`
-		}
-		
-		
-		
-		
-		
-		
-		// Afficher un message avec forumId et sujetId 
-		public function getMessage($messageId)
-		{
-			/*
-			// Requête simple
-			SELECT `id`,
-					`dateCreation`,
-					`dateModification`,
-					`auteur`,
-					`titre`,
-					`texte`,
-					`s.titre`,
-					`f.titre`
-				FROM `message` AS m,
-						`sujet` AS s,
-						`forum` AS f
-				WHERE `m.sujet_id` = `s.id`		// Sélection du sujet du message
-					AND `s.forumId` = `f.id`	// Sélection du forum du message
-					AND `m.id` = 1
-					
-			
-			// Requête complexe avec jointure
-			SELECT `id`,
-					`dateCreation`,
-					`dateModification`,
-					`auteur`,
-					`titre`,
-					`texte`,
-					`s.titre`,
-					`f.titre`
-				FROM ((`message` AS m
-					LEFT JOIN `sujet` AS s ON `m.sujet_id` = `s.id`)
-					LEFT JOIN `forum` AS f ON `s.forum_id` = `f.id`)
-			*/
-		}
 		

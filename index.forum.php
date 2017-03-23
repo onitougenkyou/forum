@@ -7,29 +7,29 @@ ini_set('display_errors', 1);
 *
 */
 	// Variable du site
-	include('config/configuration.php');
+	require_once('config/configuration.php');
 
 	// Tools
-	include('tools/Form.php');			// Permet de générer des formulaires HTML
-	include('tools/HTTPRequest.php');	// Traite les données recu en GET/POST
-	include('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
+	require_once('tools/Form.php');			// Permet de générer des formulaires HTML
+	require_once('tools/HTTPRequest.php');		// Traite les données recu en GET/POST
+	require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 	
-	// Connexion
-	include('tools/CConnexion.php');
+	// Connexion à la BDD
+	require_once('tools/CConnexion.php');
 	$db = new CConnexion($config['host'], $config['dbName'], $config['user'], $config['pass']);
 
 	// Objet	
-	include('model/Forum.php');
-	include('model/Sujet.php');
-	include('model/Message.php');
+	require_once('model/Forum.php');
+	require_once('model/Sujet.php');
+	require_once('model/Message.php');
 
 	// DAO des objets
-	include('dao/ForumDao.php');
-	include('dao/SujetDao.php');
-	include('dao/MessageDao.php');
+	require_once('dao/ForumDao.php');
+	require_once('dao/SujetDao.php');
+	require_once('dao/MessageDao.php');
 
 	// Coeur du forum
-	include('controller/ForumController.php');
+	require_once('controller/ForumController.php');
 
 
 	// DEBUG
