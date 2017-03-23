@@ -2,7 +2,7 @@
 include_once 'verif.php';
 if(!$user->is_loggedin())
 {
- $user->redirect('index.php');
+ $user->redirect('../login.php');
 }
 $user_id = $_SESSION['user_session'];
 $stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
@@ -27,6 +27,8 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 </div>
 <div class="content">
 Bienvenue : <?php print($userRow['user_name']); ?>
+</div>
+
 </div>
 </body>
 </html>
