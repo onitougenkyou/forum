@@ -37,13 +37,21 @@
 
 
 /*
-*	Routes / Pages
+*	Routes
+*		Pages=XXXX & action=YYYY & var=ZZZZ
 *	
 */
 	$route = array (
 		
-		'accueil' 	=> 'Accueil',
-		'forums' 	=> 'forums'
+		// page
+		'accueil' 		=> 'Accueil',
+		'forum' 			=> 'Forum',
+		 
+		// action
+			'ajoutForum' 			=> 'ajoutforum',
+			'sujet' 				=> 'sujet', 			// & var = id Forum
+			'ajoutSujet' 			=> 'ajoutSujet', 		// & var = id Forum
+			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id SUjet
 	);
 	
 	

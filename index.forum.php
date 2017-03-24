@@ -13,13 +13,15 @@ ini_set('display_errors', 1);
 	require_once('tools/Form.php');			// Permet de générer des formulaires HTML
 	require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 	
-	
-	
-		
 	// Connexion à la BDD
 	require_once('tools/CConnexion.php');
-	// $db = new CConnexion($config['host'], $config['dbName'], $config['user'], $config['pass']);
-	$db = new CConnexion();
+	$db = new CConnexion(
+		Config::getInstance()->get('host'),
+		Config::getInstance()->get('dbName'), 
+		Config::getInstance()->get('user'),
+		Config::getInstance()->get('pass')
+	);
+	// $db = new CConnexion();
 
 	// Objet	
 	require_once('model/Forum.php');
@@ -47,7 +49,7 @@ ini_set('display_errors', 1);
 *
 */
 	if( isset($_GET['page']) && !empty($_GET['page']) )	$page = $_GET['page'];
-	else												$page = 'vide';
+	else												$page = '';
 
 
 /*
@@ -56,12 +58,19 @@ ini_set('display_errors', 1);
 *
 */
 
-	require_once('page/menu.php');
+		
+	// Affichage du menu 
+	// 	Pourquoi pas via le template ? 
+	require_once('view/site/menu.php');
 	
+	/*
+	*	Appel des controller en fonction de ?page=
+	*/
 	switch($page)
 	{
-		case 'forums'		:	require_once('page/forums.php');	break;
-		default			:	require_once('page/accueil.php');	break;
+		case Config::getInstance()->get('accueil')		:	require_once('page/accueil.php');	break;
+		case Config::getInstance()->get('forums')		:	require_once('page/forums.php');	break;
+		default										:	require_once('page/accueil.php');	break;
 	}
 	
 

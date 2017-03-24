@@ -41,13 +41,13 @@ class CConnexion extends PDO
 	* @param 	pass
 	* @return 	un objet PDO
 	**/
-	// public function __construct($host='', $dbName='', $user='', $pass='', $defautFetchMode = 'assoc')
-	public function __construct($defautFetchMode = 'assoc')
+	public function __construct($host='', $dbName='', $user='', $pass='', $defautFetchMode = 'assoc')
+	// public function __construct($defautFetchMode = 'assoc')
 	{
-		$this->host 	= Config::getInstance()->get('host');
-		$this->dbName = Config::getInstance()->get('dbName');
-		$this->user 	= Config::getInstance()->get('user');
-		$this->pass 	= Config::getInstance()->get('pass');
+		$this->host 	= $host;
+		$this->dbName = $dbName;
+		$this->user 	= $user;
+		$this->pass 	= $pass;
 		
 		$this->defautFetchMode = $defautFetchMode;
 		
