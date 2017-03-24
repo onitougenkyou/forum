@@ -28,7 +28,9 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 <div class="content">
 Bienvenue : <?php print($userRow['user_name']); ?>
 </div>
-
+<div class="profil-button">
+  <a href="../template/profil_vu.php">Accéder à votre profil</a>
+</div>
 </div>
 </body>
 </html>

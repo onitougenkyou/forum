@@ -75,5 +75,11 @@ class USER
         unset($_SESSION['user_session']);
         return true;
    }
+
+   public function modiication($fname,$lname,$uname,$umail,$upass,$unameFamily, $udate, $udescription){
+     $stmt = $this->db->prepare("UPDATE * FROM users WHERE user_name=:uname OR user_email=:umail LIMIT 1 OR user_name_family=:unameFamily OR user_date=:udate OR user_description=:udescription");
+     $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail, ':unameFamily'=>$unameFamily, ':udate'=>$udate, ':udescription'=>$udescription));
+     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+   }
 }
 ?>
