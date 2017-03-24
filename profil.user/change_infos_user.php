@@ -1,5 +1,10 @@
 <?php include_once '../login/verif.php';
 
+$user_id = $_SESSION['user_session'];
+$stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
+$stmt->execute(array(":user_id"=>$user_id));
+$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
 if(isset($_POST['btn-submit']))
 {
   $uname = trim($_POST['txt_uname']);
@@ -110,16 +115,16 @@ else if(isset($_GET['joined']))
 
 <form class="form-info" action="" method="post">
   <label for ="txt_uname">Votre pseudo</label>
-  <input type="text" name="txt_uname" value="<?php if (!empty($_POST["txt_uname"])) { echo stripcslashes(htmlspecialchars($_POST["txt_uname"],ENT_QUOTES)); } else{($uname); } ?>"> <br>
+  <input type="text" name="txt_uname" value="<?php print($userRow['user_name']); ?>"> <br>
   <label for="txt_pass">Changer de mot de passe</label>
-  <input type="password" name="txt_pass" value="<?php if (!empty($_POST["txt_pass"])) { echo stripcslashes(htmlspecialchars($_POST["txt_pass"],ENT_QUOTES)); } else{($upass); } ?>"><br>
+  <input type="password" name="txt_pass" placeholder="Nouveau mot de passe"><br>
   <label for="">Votre nom de famille</label>
-  <input type="text" name="txt_name_family" > <br>
+  <input type="text" name="txt_name_family" value="<?php print($userRow['user_name_family']); ?>" placeholder="Nom de famille"> <br>
   <label for="txt_mail">Votre email</label>
-  <input type="text" name="txt_mail"><br>
+  <input type="text" name="txt_mail" value="<?php print($userRow['user_email']); ?>"><br>
   <label for="txt_date">Votre date de naissance</label>
-  <input type="date" name="txt_date" > <br>
+  <input type="date" name="txt_date" value="<?php print($userRow['user_date']); ?>" > <br>
   <label for="txt_description">Votre description (250 charactères MAX)</label>
-  <textarea name="txt_description" rows="8" cols="80"></textarea> <br>
+  <textarea name="txt_description" rows="8" cols="80" value="<?php print($userRow['user_description']); ?>"></textarea> <br>
   <input type="submit" name="btn-submit" value="Envoyez">
 </form>
