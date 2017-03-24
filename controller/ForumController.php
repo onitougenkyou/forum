@@ -2,8 +2,8 @@
 
 /**
 *
-*	Classe Sujet
-*		Elle contient l'ensemble des suejt d'un forum
+*	Forum Controleur
+*
 *
 * @user Cedric
 * @date 2017.03.18
@@ -35,8 +35,12 @@ class ForumController
 		// Récupération de la liste des forums en tableau d'objet
 		$forumListe = $fDao->getForums();
 		
-		// Début de l'interception
-		ob_start();
+		
+		
+		/*
+		*	Génération de la liste des forums
+		*/
+		ob_start();	// Début de l'interception
 
 			$taille = count($forumListe);
 			
@@ -45,25 +49,18 @@ class ForumController
 			{
 				echo '<li>';
 				$tplForum = $forumListe[$i];
-				include('template/forum.php');
-				echo '<li>';
+				include('view/forum/forum.php');
+				echo '</li>';
 			}
 			echo '<ul>';
-			
-			// echo '<pre>';
-			// print_r($forumListe);
-			// echo '</pre>';
-			
-		
-		
-		// Fin de l'interception
-		$tplIndexForum['body'] 	= ob_get_clean();
-		
+	
+		$tplIndexForum['body'] 	= ob_get_clean();		// Fin de l'interception
+
 		// Initialisation du template
 		$tplIndexForum['titre'] 	= 'TitrePageForum';
 		
 		// Affichage du template
-		include('template/index.forum.php');
+		require_once('template/index.forum.php');
 	}
 	
 	

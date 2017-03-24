@@ -35,6 +35,19 @@ class Forum
 	// public function __construct($auteur = 1, $titre='', $description = '')
 	public function __construct($data = array())
 	{
+		if(isset($data['id']))				$this->id 				= $data['id'];
+		if(isset($data['dateCreation']))		$this->dateCreation 		= $data['dateCreation'];
+		if(isset($data['dateModification']))	$this->dateModification 	= $data['dateModification'];
+		if(isset($data['auteur']))				$this->auteur 			= $data['auteur'];
+		if(isset($data['acl']))				$this->acl 				= $data['acl'];
+		if(isset($data['titre']))				$this->titre 				= $data['titre'];
+		if(isset($data['parentId']))			$this->parentId 			= $data['parentId'];
+		if(isset($data['description']))		$this->description 		= $data['description'];
+		if(isset($data['parentId']))			$this->parentId 			= $data['parentId'];
+		if(isset($data['nbSujet']))			$this->nbSujet 			= $data['nbSujet'];
+		if(isset($data['dernierMessageId']))	$this->dernierMessageId 	= $data['dernierMessageId'];
+		if(isset($data['affichage']))			$this->affichage 			= $data['affichage'];
+		if(isset($data['imageId']))			$this->imageId 			= $data['imageId'];
 	}
 	
 	
