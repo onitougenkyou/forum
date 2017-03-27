@@ -27,6 +27,8 @@ class CConnexion extends PDO
 	private $user;
 	private $pass;
 	
+	private $db;
+	
 	// Valeur possible : assoc, both, bound, class, into, lazy, named, num, obj
 	private $customFetchMode;		// Valeur actuelle
 	private $defautFetchMode;		// Défini dans le constructeur, et ne change plus

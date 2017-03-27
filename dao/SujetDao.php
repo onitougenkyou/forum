@@ -31,7 +31,7 @@ class SujetDao
 	public function getSujets()
 	{
 		$sujet = new Sujet('Utilisateur', 'Titre du Sujet', 'Description du sujet');
-		
+
 		return array($sujet, $sujet);
 	}
 	

@@ -24,8 +24,8 @@ class Form
 		if(isset($array['label']) && $array['label'] != '')		$strReturn .= '<label>'.$array['label'].'</label> : ';
 		$strReturn .= '<input ';
 			if(isset($array['type']) && $array['type'] != '')		$strReturn .= 'type="'.$array['type'].'" ';
-			if(isset($array['nomVar']) && $array['nomVar'] != '')	$strReturn .= 'name="'.$array['nomVar'].'" ';
-			if(isset($array['value']) && $array['value'] != '')	$strReturn .= 'value="'.$array['value'].'" ';
+			if(isset($array['nomVar']) && $array['nomVar'] != '')		$strReturn .= 'name="'.$array['nomVar'].'" ';
+			if(isset($array['value']) && $array['value'] != '')		$strReturn .= 'value="'.$array['value'].'" ';
 			if(isset($array['size']) && $array['size'] != '')		$strReturn .= 'size="'.$array['size'].'" ';
 		$strReturn .= '>';
 		if(isset($array['br']))		if($array['br'])			$strReturn .= '<br> ';

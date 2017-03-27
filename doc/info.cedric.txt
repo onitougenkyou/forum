@@ -167,21 +167,60 @@ Modèle MVC
 		*
 		*/
 		
-		Route
+		    Une URL.
+			Un module.
+			Une action.
+			Un tableau comportant les noms des variables.
+			Un tableau clé/valeur comportant les noms/valeurs des variables.
+	
+	
+		Route possible
+			?module=X&action=Y			&var=Z
+			?page=MODULE&action=ACTION	&var=Z
+			
+			?page=forum&action=forumId	&var=Z
+			?page=forum&action=forumId	&var=Z
+			
+		
 			?page=forum&forum=id	&page=2
 			?page=forum&sujet=id	&page=2
 			?page=forum&message=id	&page=2
 			
-			?page=forum&sujet=NouveauForum
-			?page=forum&sujet=NouveauSujet
-			?page=forum&sujet=NouveauMessage
+			?page=forum&action=NouveauForum
+			?page=forum&action=NouveauSujet				&var=z
+			?page=forum&action=NouveauMessage			&var=z
 			
-			?page=forum&sujet=ModificationForum
-			?page=forum&sujet=ModificationSujet
-			?page=forum&sujet=ModificationMessage
+			?page=forum&action=ModificationForum		&var=z
+			?page=forum&action=ModificationSujet		&var=z		
+			?page=forum&action=ModificationMessage		&var=z
+
+
+		Route sélectionnées
+			?page=forum&action=ajoutForum		&var=z
+				Si var != '', ajoute un nouveau forum
+				Si var == X, modifie un forum
 			
+			?page=forum&action=sujet			&var=z
+				Affiche l'ensemble des sujets d'un forum, var correspond a un forum
+				
+			?page=forum&action=ajoutSujet		&var=z
+				
+			?page=forum&action=ajoutMessage		&var=z
+				Modifie un message, var == l'Id du sujet
 			
-		
+			?page=forum&action=modifieMessage		&var=z
+				Si var != '', ajoute un nouveau message
+				Si var == X, modifie un message
+
+
+		Route sélectionnées - Résumé
+			action = ajoutForum 	& var = z
+			action = sujet 			& var = z
+			action = ajoutSujet		& var = z
+			action = ajoutMessage 	& var = z	
+			action = modifieMessage	& var = z	
+			
+				
 		
 		/*
 		*	Test unitaire
@@ -217,7 +256,14 @@ Modèle MVC
 
 		
 		
+		/*
+		*	Evolution
+		*
+		*/
 		
+		Générer TOUT les liens (y compris le nom des variables en GET) via un objet + xml
+			Les liens sont semi dynamique, page & forum sont en dur dans les liens, pas leur valeur
+		Gérer l'appel des Pages & Controller via un Objet (au lieu d'un switch)
 		
 		
 		

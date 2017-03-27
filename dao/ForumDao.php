@@ -15,8 +15,9 @@ class ForumDao
 	*	Constructeur
 	*
 	**/
-	public function __construct($db)
+	public function __construct(CConnexion $db)
 	{
+		
 		$this->db = $db;
 	}
 	

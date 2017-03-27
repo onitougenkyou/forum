@@ -11,16 +11,18 @@
 class ForumController
 {
 	private $db;
+	private $var;
 	
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($db)
+	public function __construct(CConnexion $db, $var)
 	{
 		$this->db = $db;
+		$this->var = $var;
+		
 	}
-	
 	
 	
 	/**
@@ -29,6 +31,8 @@ class ForumController
 	**/
 	public function afficherListeForums()
 	{
+
+		
 		// Instanciation du ForumDao
 		$fDao = new ForumDao($this->db);
 		
@@ -62,34 +66,6 @@ class ForumController
 		// Affichage du template
 		require_once('template/index.forum.php');
 	}
-	
-	
-	
-	/**
-	*	Afficher la liste des sujets d'un forum
-	*
-	**/
-	public function afficherListeSujets($forumId)
-	{
-		$strRetour = 'Liste des Sujets du forum : '.$forumId;
-		
-		return $strRetour;
-	}
-	
-	
-	
-	/**
-	*	Afficher la liste des messages d'un sujet
-	*
-	**/
-	public function afficherListeMessages($sujetId)
-	{
-		$strRetour = 'Liste des Messages du Sujet : '.$sujetId;
-		
-		return $strRetour;
-	}
-	
-	
 	
 }
 
