@@ -123,7 +123,7 @@ if(isset($_POST['btn-signup']))
           </button>
         </div>
         <br />
-        <label>Possède un compte ! <a href="index.php">Se connecter</a></label>
+        <label>Possède un compte ! <a href="home.php">Se connecter</a></label>
       </form>
     </div>
   </div>
