@@ -31,8 +31,8 @@ class SujetViewController
 			for($i=0; $i<$taille; $i++)
 			{
 				echo '<li>';
-				$tplForum = $data;
-				include('view/sujet/sujet.php');
+				$sujet = $data[$i];
+				include('view/forum/sujet.php');
 				echo '</li>';
 			}
 			echo '<ul>';
