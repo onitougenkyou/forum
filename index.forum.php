@@ -1,6 +1,11 @@
 <?php
 ini_set('display_errors', 1);
 
+function checkDroit()
+{
+	return true;
+}
+
 /*
 *
 *	CONFIGURATION
@@ -38,6 +43,11 @@ ini_set('display_errors', 1);
 	require_once('controller/ForumController.php');
 	require_once('controller/SujetController.php');
 	require_once('controller/MessageController.php');
+
+	// Vues du forum
+	require_once('controller/ForumViewController.php');
+	require_once('controller/SujetViewController.php');
+	require_once('controller/MessageViewController.php');
 
 
 	// DEBUG

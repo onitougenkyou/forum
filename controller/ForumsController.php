@@ -15,46 +15,52 @@ class ForumsController
 {
 	private $db;
 	private $action;
+	private $var;
 	 
 	/**
 	*	Constructeur
 	*		Appel les autres constructeurs en fonction des paramètres recu
-	*		Il aurait été possible de récuéprer la valeur du get et d'appeler le bon constructeur sans passer par un if(x=Y)
-	*			Mais ca aurait signifié utiliser une variable UTILISATEUR pour appeler un constructeur ...
 	**/
 	public function __construct(CConnexion $db, $action = '', $var = '')
 	{
-		// Debug
-			var_dump($db);
 
-		$this->db = $db;
-		$this->db = $action;
+		$this->db 		= $db;
+		$this->action 	= $action;
+		$this->var 		= $var;
 
-		// Debug
-			var_dump($this->db);
-		
 		// Debug
 			echo 'Debug ForumsController : action='.$action.' & var='.$var.'<br>';
+	}
+	
+	
+	
+	/**
+	*	getForumController
+	*		Appel le controlleur du forum
+	**/
+	public function getPageController()
+	{
 		
-		if( $action == Config::getInstance()->get('forum') || $action == Config::getInstance()->get('ajoutForum') )
+		if( $this->action == Config::getInstance()->get('forum') || $this->action == Config::getInstance()->get('ajoutForum') )
 		{	// Affichage ou modification d'un forum
 			
-			$fC = new ForumController($this->db, $var);
+			$fC = new ForumController($this->db, $this->var);
 			
-			if($var == ''){
+			if($this->var == ''){
+				
 				// On affiche la liste des Forums
-				$fC->afficherListeForums();
+				return $fC->afficherListeForums();
 			}
 			
-		} else if ( $action == Config::getInstance()->get('sujet') || $action == Config::getInstance()->get('ajoutSujet') )
-		{	// Affichage ou modification d'un sujet
-			
+		} else if ( $this->action == Config::getInstance()->get('sujet') || $this->action == Config::getInstance()->get('ajoutSujet') )
+		{	
+			// Affichage ou modification d'un sujet
 			$sC = new SujetController($this->db);
 		
-		} else if ( $action == Config::getInstance()->get('ajoutMessage') )
-		{	// Modification d'un message
-	
-			$mC = new MessageController($this->db, $var);
+		} else if ( $this->action == Config::getInstance()->get('ajoutMessage') ) {
+
+			// Modification d'un message
+			$mC = new MessageController($this->db, $this->var);
 			
 		}
 		

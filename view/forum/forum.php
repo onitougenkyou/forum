@@ -1,13 +1,13 @@
 <div class="forum">
 	<?php
-		if($tplForum->getImageId() != '')	echo '<img src="'.$tplForum->getImageId().'">';
+		if($forum->getImageId() != '')	echo '<img src="'.$forum->getImageId().'">';
 	?>
 	<h2>
-		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&forum=<?php echo $tplForum->getId(); ?>">
-			<?php echo $tplForum->getTitre(); ?>
+		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&forum=<?php echo $forum->getId(); ?>">
+			<?php echo $forum->getTitre(); ?>
 		</a>
 	</h2>
 	<p>
-		<?php echo $tplForum->getDescription(); ?>
+		<?php echo $forum->getDescription(); ?>
 	</p>
 </div>

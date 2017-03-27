@@ -45,7 +45,7 @@
 		
 		// page
 		'accueil' 		=> 'Accueil',
-		'forum' 			=> 'Forum',
+		'forums' 		=> 'Forums',
 		 
 		// action
 			'ajoutForum' 			=> 'ajoutforum',

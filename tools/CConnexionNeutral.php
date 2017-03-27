@@ -11,15 +11,17 @@
 *			$db = new CConnexion($host, $dnName, $user, $pass);
 *
 *		A l'ouverture de la connexion, on met un FetchMode par défaut
-*		Il est utilisé a la connexion
+*		Il est utilisé a connexion
 *		A chaque connexion, on vérifie si le fetchmode n'a pas changé
 *
-*		Avoir un defautFetchMode et un customFetchMode permet de ne pas faire un setFetchMode a chaque requête
+*		Avoir un defautFetchMode et un customFetchMode permet de ne pas faire un setFetchMode
+*			a chaque requête
 *
 * @user Cedric
 * @date 2017.03.20
 **/
-class CConnexion extends PDO
+// class CConnexion extends PDO						// ERROR01 - $db n'est pas stocké en attribut
+class CConnexion
 {
 	private $host;
 	private $dbName;
@@ -43,6 +45,7 @@ class CConnexion extends PDO
 	* @return 	un objet PDO
 	**/
 	public function __construct($host='', $dbName='', $user='', $pass='', $defautFetchMode = 'assoc')
+	// public function __construct($defautFetchMode = 'assoc')
 	{
 		$this->host 	= $host;
 		$this->dbName = $dbName;
@@ -53,21 +56,26 @@ class CConnexion extends PDO
 		$this->defautFetchMode = $defautFetchMode;		
 		
 		// Appel du constructeur de PDO
-		parent::__construct(
+		// parent::__construct(
+		$db = new PDO(												// ERROR01 - $db n'est pas stocké en attribut
 			'mysql:host='.$this->host.';dbname='.$this->dbName,
 			$this->user,
 			$this->pass,
 			array(PDO::MYSQL_ATTR_INIT_COMMAND => "SET NAMES 'utf8'"));	// UTF-8 proof
 		
 		// Niveau des rapports d'erreur
-		$this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);					
+		$db->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);						// ERROR01 - $db n'est pas stocké en attribut			
+		// $this->setAttribute( PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);					
 		
 		// Initialise le fetchmode avec la valeur par défaut $this->defautFetchMode
-		$this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, $this->getObjetFetchMode($this->defautFetchMode));
+		$db->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, $this->getObjetFetchMode($this->defautFetchMode));
+		// $this->setAttribute(PDO::ATTR_DEFAULT_FETCH_MODE, $this->getObjetFetchMode($this->defautFetchMode));
 		
 		// Enables emulation of prepared statements
-		$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		$db->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		// $this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
 		
+		$this->db = $db;
 	}
 	
 	
@@ -111,14 +119,18 @@ class CConnexion extends PDO
 		// echo 'sql: '.$sql.'<br>offset : '.$offset.'<br>nombre : '.$nombre.'<br>';
 		
 		// PDO
-		$query = $this->prepare($sql);
+		// $query = $this->prepare($sql);
+		$query = $this->db->prepare($sql);						// ERROR01 - $db n'est pas stocké en attribut
 		
 		if($nombre != 0) 	$query->bindValue(':offset', 	(int) $offset, PDO::PARAM_INT);		// demande par l'offset X
 		if($limitNb)		$query->bindValue(':nombre', 	(int) $nombre, PDO::PARAM_INT);		// Avec une limite 
 		
 		// Vérification si le mode de résultat à changé
-		if($this->customFetchMode != $this->defautFetchMode)
-			$query = $this->changerFetchMode($query);
+		// if($this->customFetchMode != $this->defautFetchMode)
+			// $query = $this->changerFetchMode($query);
+		
+		if($this->customFetchMode != $this->defautFetchMode)			// ERROR01 - $db n'est pas stocké en attribut
+			$query = $this->changerFetchMode($query);					// ERROR01 - $db n'est pas stocké en attribut
 		
 		// Execution
 		$query->execute();
@@ -141,6 +153,7 @@ class CConnexion extends PDO
 	*/
 	public function changerFetchMode($query)
 	{
+		// $query->setFetchMode($this->getObjetFetchMode($this->customFetchMode));			// ERROR01 - $db n'est pas stocké en attribut
 		$query->setFetchMode($this->getObjetFetchMode($this->customFetchMode));
 		return $query;
 	}
@@ -163,8 +176,8 @@ class CConnexion extends PDO
 			case 'into'	:	return PDO::FETCH_INTO;	break;
 			case 'lazy'	:	return PDO::FETCH_LAZY;	break;
 			case 'named'	:	return PDO::FETCH_NAMED;	break;
-			case 'num'	:	return PDO::FETCH_NUM;		break;
-			case 'obj'	:	return PDO::FETCH_OBJ;		break;
+			case 'num'	:	return PDO::FETCH_NUM;	break;
+			case 'obj'	:	return PDO::FETCH_OBJ;	break;
 			default		:	return PDO::FETCH_ASSOC;	break;
 		}
 	}
@@ -177,7 +190,8 @@ class CConnexion extends PDO
 	*/
 	public function setCustomFetchMode($mode)
 	{
-		$this->customFetchMode = $mode;
+		// $this->customFetchMode = $mode;				// ERROR01 - $db n'est pas stocké en attribut
+		$this->db->customFetchMode = $mode;
 	}
 }
 

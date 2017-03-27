@@ -13,6 +13,11 @@ class ForumController
 	private $db;
 	private $var;
 	
+	private $fDao;	// Forum Dao
+	private $fViewC;	// Forum View Controller
+	
+	
+	
 	/**
 	*	Constructeur
 	*
@@ -22,7 +27,14 @@ class ForumController
 		$this->db = $db;
 		$this->var = $var;
 		
+		// Instanciation du DAO
+		$this->fDao = new ForumDao($this->db);
+
+		// Instanciation de la Vue
+		$this->fViewC = new ForumViewController();
+		
 	}
+	
 	
 	
 	/**
@@ -32,39 +44,12 @@ class ForumController
 	public function afficherListeForums()
 	{
 
-		
-		// Instanciation du ForumDao
-		$fDao = new ForumDao($this->db);
-		
 		// Récupération de la liste des forums en tableau d'objet
-		$forumListe = $fDao->getForums();
+		$forumListe = $this->fDao->getForums();
 		
-		
-		
-		/*
-		*	Génération de la liste des forums
-		*/
-		ob_start();	// Début de l'interception
+		// Appel le controller de la vue du Forum qui renvoi le code HTML de la liste des forums
+		return $this->fViewC->getViewForumListe($forumListe);
 
-			$taille = count($forumListe);
-			
-			echo '<ul>';
-			for($i=0; $i<$taille; $i++)
-			{
-				echo '<li>';
-				$tplForum = $forumListe[$i];
-				include('view/forum/forum.php');
-				echo '</li>';
-			}
-			echo '<ul>';
-	
-		$tplIndexForum['body'] 	= ob_get_clean();		// Fin de l'interception
-
-		// Initialisation du template
-		$tplIndexForum['titre'] 	= 'TitrePageForum';
-		
-		// Affichage du template
-		require_once('template/index.forum.php');
 	}
 	
 }
