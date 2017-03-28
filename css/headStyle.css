@@ -1,31 +1,73 @@
+/*---------------------BODY-------------------*/
+body {
+  font-family: 'Macondo', cursive;
+  background-color: #2C1706;
+}
+
 /*----------------- BLOCK HEADER ------------*/
 
-.block-header
+/*-----------------------NAVBAR------------------*/
+.navbar-default
 {
- text-align:center;
- font-size:25px;
- color:#fff;
- background:#641E16;
- height:60px;
- width:100%;
+  background-color:#1D0F04;
+  background-image: none;
+  background-repeat: no-repeat;
+  border-color: #1D0F04;
+  margin-left: 5%;
+  margin-right: 5%;
 }
-.block-header a
-{
- color:#f9f9f9;
- font-size:25px;
- text-decoration:none;
- position:relative;
- top:15px;
+
+#crane {
+  position: absolute;
+  margin-left: 41%;
+  margin-top: -10%;
 }
-.block-header .left
-{
- float:left;
- position:relative;
- left:120%;
+
+#corneGauche {
+  position: absolute;
+  margin-top: -6%;
+  margin-left: 2%;
+  -webkit-transform: rotate(45deg);
+  -moz-transform: rotate(45deg);
+  -o-transform: rotate(45deg);
+  transform: rotate(45deg);
 }
-.block-header .right
+
+#corneDroite {
+  position: absolute;
+  margin-left: 93%;
+  margin-top: -6%;
+  -webkit-transform: rotate(-45deg);
+  -moz-transform: rotate(-45deg);
+  -o-transform: rotate(-45deg);
+  transform: rotate(-45deg);
+}
+
+.navbar .collapse #btn-Menu, #btn-logout, #home, #profil
 {
- float:right;
- position:relative;
- right:150px;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-image: -webkit-linear-gradient(top,#efd100 0,#e2a233 38%,#f0c328 60%,#fff1a3 86%,#ffe13e 100%);
+  background-size: 1em 1em;
+  color: #f8b700;
+  display: inline-block;
+  line-height: 1em;
+  position: relative;
+  z-index: auto;
+  font-size:25px;
+  text-transform: uppercase;
+}
+
+.dropdown .dropdown-menu > li {
+  background-color:#291201;
+  background-image: none;
+  background-repeat: no-repeat;
+}
+.navbar-nav > li > .dropdown-menu a {
+  color : #f8b700;
+}
+
+.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  background-color: #3C1E06;
+  user-select: none;
 }
