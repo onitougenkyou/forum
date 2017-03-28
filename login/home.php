@@ -31,16 +31,13 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         <div class="row">
           <div class="col-xs-5">
             <img src="../imagesForum/cavalier.jpg" class="img-responsive" alt="cavalier">
-
           </div>
           <div class="col-xs-5">
             Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod ligula neque, nec laoreet sapien sagittis sit amet. Donec lobortis dolor sit amet lacus consequat, quis pellentesque ex volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sapien ipsum, luctus sed convallis quis, condimentum quis orci. Pellentesque ac porta est. Etiam ut ultricies odio. Aenean eleifend ante in felis hendrerit ultrices. Donec nec est velit. Maecenas dapibus nulla eget leo dapibus, at porttitor elit consectetur. Aenean et nunc dapibus velit vulputate auctor. Phasellus justo justo, congue eget leo in, tincidunt feugiat purus.
           </div>
         </div>
       </div>
-
-
-
     </div>
-  </body>
-  </html>
+  </div>
+</body>
+</html>
