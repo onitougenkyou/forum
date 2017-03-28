@@ -48,8 +48,9 @@
 		'forums' 		=> 'Forums',
 		 
 		// action
+			'forum' 				=> 'forum',			// Affichage d'un forum	& var = id Forum
 			'ajoutForum' 			=> 'ajoutforum',
-			'sujet' 				=> 'sujet', 			// & var = id Forum
+			'sujet' 				=> 'sujet', 			// Affichage d'un sujet	& var = id Sujet
 			'ajoutSujet' 			=> 'ajoutSujet', 		// & var = id Forum
 			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id Sujet
 			'modifieMessage' 		=> 'modifieMessage', 	// & var = id Message

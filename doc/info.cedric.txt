@@ -1,4 +1,4 @@
-Modèle MVC 
+ Modèle MVC 
 	http://old.mazenod.fr/2010/01/design-pattern-mvc-zoom-sur-la-couche-modele-dal-dao-orm-crud/
 
 	
@@ -167,60 +167,30 @@ Modèle MVC
 		*
 		*/
 		
-		    Une URL.
-			Un module.
-			Une action.
-			Un tableau comportant les noms des variables.
-			Un tableau clé/valeur comportant les noms/valeurs des variables.
-	
-	
 		Route possible
-			?module=X&action=Y			&var=Z
-			?page=MODULE&action=ACTION	&var=Z
+			/*
+				Affichage de la liste des forums
+					action = forum							
+					vue : forums
+			*/
 			
-			?page=forum&action=forumId	&var=Z
-			?page=forum&action=forumId	&var=Z
+			/*
+				Affichage d'un forum (liste sujet)
+					action = forum 			& var = z
+					vue : sujets
+			*/
 			
-		
-			?page=forum&forum=id	&page=2
-			?page=forum&sujet=id	&page=2
-			?page=forum&message=id	&page=2
+			/* 
+				Affichage d'un sujet (liste message)
+					action = sujet 			& var = z		
+					vue messages		
+			*/
+			action = ajoutForum 	& var = z		// Formulaire Forum
+			action = ajoutSujet		& var = z		// Formulaire Sujet
+			action = message 		& var = z		// Affichage d'un message
+			action = ajoutMessage 	& var = z		// Formulaire Ajout Message	via l'Id du sujet
+			action = modifieMessage	& var = z		// Formulaire Modifie Message via l'Id du message a modifier		
 			
-			?page=forum&action=NouveauForum
-			?page=forum&action=NouveauSujet				&var=z
-			?page=forum&action=NouveauMessage			&var=z
-			
-			?page=forum&action=ModificationForum		&var=z
-			?page=forum&action=ModificationSujet		&var=z		
-			?page=forum&action=ModificationMessage		&var=z
-
-
-		Route sélectionnées
-			?page=forum&action=ajoutForum		&var=z
-				Si var != '', ajoute un nouveau forum
-				Si var == X, modifie un forum
-			
-			?page=forum&action=sujet			&var=z
-				Affiche l'ensemble des sujets d'un forum, var correspond a un forum
-				
-			?page=forum&action=ajoutSujet		&var=z
-				
-			?page=forum&action=ajoutMessage		&var=z
-				Modifie un message, var == l'Id du sujet
-			
-			?page=forum&action=modifieMessage		&var=z
-				Si var != '', ajoute un nouveau message
-				Si var == X, modifie un message
-
-
-		Route sélectionnées - Résumé
-			action = ajoutForum 	& var = z
-			action = sujet 			& var = z
-			action = ajoutSujet		& var = z
-			action = ajoutMessage 	& var = z	
-			action = modifieMessage	& var = z	
-			
-				
 		
 		/*
 		*	Test unitaire

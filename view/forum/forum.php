@@ -3,7 +3,7 @@
 		if($forum->getImageId() != '')	echo '<img src="'.$forum->getImageId().'">';
 	?>
 	<h2>
-		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&forum=<?php echo $forum->getId(); ?>">
+		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&action=<?php echo Config::getInstance()->get('forum'); ?>&var=<?php echo $forum->getId(); ?>">
 			<?php echo $forum->getTitre(); ?>
 		</a>
 	</h2>

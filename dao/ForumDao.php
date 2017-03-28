@@ -17,7 +17,6 @@ class ForumDao
 	**/
 	public function __construct(CConnexion $db)
 	{
-		
 		$this->db = $db;
 	}
 	
@@ -67,7 +66,6 @@ class ForumDao
 		
 		// Renvoi
 		return $forums;
-		// return $result;
 	}
 	
 	

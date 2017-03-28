@@ -31,19 +31,18 @@ class MessageViewController
 			for($i=0; $i<$taille; $i++)
 			{
 				echo '<li>';
-				$tplForum = $data;
-				include('view/message/mesage.php');
+					// Sélection d'un message
+					$message = $data[$i];
+
+					// On inclus le template
+					include('view/forum/message.php');
 				echo '</li>';
 			}
 			echo '<ul>';
 	
-		$tplIndexForum['body'] 	= ob_get_clean();		// Fin de l'interception
-
-		// Initialisation du template
-		$tplIndexForum['titre'] 	= 'TitrePageForum';
+		$dataHTML = ob_get_clean();		// Fin de l'interception
 		
-		// Affichage du template
-		require_once('view/forum/index.forum.php');
+		return $dataHTML;
 
 	}
 

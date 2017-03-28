@@ -22,7 +22,7 @@ class ForumController
 	*	Constructeur
 	*
 	**/
-	public function __construct(CConnexion $db, $var)
+	public function __construct(CConnexion $db, $var = '')
 	{
 		$this->db = $db;
 		$this->var = $var;

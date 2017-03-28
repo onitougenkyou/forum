@@ -6,15 +6,15 @@
 *
 *
 * @user Cedric
-* @date 2017.03.23
+* @date 2017.03.27
 **/
 class SujetController
 {
 	private $db;
 	private $var;
 	
-	private $sDao;	// Forum Dao
-	private $sViewC;	// Forum View Controller
+	private $sDao;	// Sujet Dao
+	private $sViewC;	// Sujet View Controller
 	
 	
 	

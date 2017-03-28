@@ -19,7 +19,6 @@ class SujetViewController
 	*/
 	public function getViewSujetListe($data)
 	{
-		
 		/*
 		*	Génération de la liste des forums
 		*/

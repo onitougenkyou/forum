@@ -40,29 +40,47 @@ class ForumsController
 	**/
 	public function getPageController()
 	{
-		
-		if( $this->action == Config::getInstance()->get('forum') || $this->action == Config::getInstance()->get('ajoutForum') )
-		{	// Affichage ou modification d'un forum
-			
-			$fC = new ForumController($this->db, $this->var);
-			
-			if($this->var == ''){
-				
-				// On affiche la liste des Forums
-				return $fC->afficherListeForums();
-			}
-			
-		} else if ( $this->action == Config::getInstance()->get('sujet') || $this->action == Config::getInstance()->get('ajoutSujet') )
-		{	
-			// Affichage ou modification d'un sujet
-			$sC = new SujetController($this->db);
-		
-		} else if ( $this->action == Config::getInstance()->get('ajoutMessage') ) {
-
-			// Modification d'un message
-			$mC = new MessageController($this->db, $this->var);
-			
+		/*
+			Affichage de la liste des forums
+				action = forum							
+				vue : forums
+		*/
+		if( $this->action == '' 
+			|| ( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) 
+			) {
+			// On affiche la liste des forums
+			echo '<h2>ForumController</h2>';
+			$fC = new ForumController($this->db);
+			return $fC->afficherListeForums();
 		}
+		
+		
+		/*
+			Affichage d'un forum (liste sujet)
+				action = forum 			& var = z
+				vue : sujets
+		*/
+		if( $this->action == Config::getInstance()->get('forum') && is_numeric($this->var) ) {
+			// On affiche la liste des sujets pour un forum donné
+			echo '<h2>SujetController</h2>';
+			$fS = new SujetController($this->db, $this->var);
+			return $fS->afficherListeSujets();
+		}
+		
+		
+		
+		/* 
+			Affichage d'un sujet (liste message)
+				action = sujet 			& var = z		
+				vue messages		
+		*/
+		if( $this->action == Config::getInstance()->get('sujet') && is_numeric($this->var) ) {
+			// On affiche la liste des message pour un forum donné
+			echo '<h2>MessageController</h2>';
+			$fM = new MessageController($this->db, $this->var);
+			return $fM->afficherListeMessages();
+		}
+		
 		
 		
 	}
