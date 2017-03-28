@@ -1,11 +1,12 @@
 /*home.php style
 author : Laurent
 */
-
+/*
 body {
   font-family: 'Macondo', cursive;
     background-color: #2C1706;
-}
+
+}*/
 
 /*-----------------BLOCK-BODY-----------------*/
 
@@ -31,7 +32,7 @@ body {
   -o-text-fill-color: transparent;
 }
 
-.block-body .row .blank {
-  display: block;
-  background: white;
+.block-body {
+  color : white;
+  font-size : 1.2em;
 }
