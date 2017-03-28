@@ -25,13 +25,17 @@ class Message
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur, $titre = '', $texte = '', $sujetId = 0)
+	public function __construct($data)
 	{
-		$this->id 		= 26;
-		$this->auteur 	= $auteur;
-		$this->titre 		= $titre;
-		$this->texte 		= $texte;
-		$this->sujetId 	= $sujetId;
+		if(isset($data['id']))				$this->id 				= $data['id'];
+		if(isset($data['dateCreation']))		$this->dateCreation 		= $data['date_creation'];
+		if(isset($data['dateModification']))	$this->dateModification 	= $data['date_modification'];
+		if(isset($data['auteur']))				$this->auteur 			= $data['auteur'];
+		if(isset($data['acl']))				$this->acl 				= $data['acl'];
+		if(isset($data['titre']))				$this->titre 				= $data['titre'];
+		if(isset($data['texte']))				$this->texte 				= $data['texte'];
+		if(isset($data['sujetId']))			$this->forumId 			= $data['sujet_id'];
+		if(isset($data['affichage']))			$this->affichage 			= $data['affichage'];
 	}
 	
 	/**
