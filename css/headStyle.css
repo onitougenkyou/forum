@@ -3,6 +3,7 @@ body {
   font-family: 'Macondo', cursive;
   background-color: #2C1706;
 }
+  @import url("profilvuStyle.css");
 
 /*----------------- BLOCK HEADER ------------*/
 
@@ -10,7 +11,7 @@ body {
 .navbar-default
 {
   background-color:#1D0F04;
-  background-image: none;
+  background-image:none;
   background-repeat: no-repeat;
   border-color: #1D0F04;
   margin-left: 5%;
@@ -21,6 +22,12 @@ body {
   position: absolute;
   margin-left: 41%;
   margin-top: -10%;
+}
+
+@media (max-width: 1500px) {
+  #crane, #corneDroite, #corneGauche {
+    display: none;
+  }
 }
 
 #corneGauche {
@@ -42,32 +49,34 @@ body {
   -o-transform: rotate(-45deg);
   transform: rotate(-45deg);
 }
+/*------------MODIF POUR MOZZILA*/
+html:not([lang*=“”]) #corneDroite, #corneGauche{ margin-top : -5%;}
 
-.navbar .collapse #btn-Menu, #btn-logout, #home, #profil
-{
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-image: -webkit-linear-gradient(top,#efd100 0,#e2a233 38%,#f0c328 60%,#fff1a3 86%,#ffe13e 100%);
-  background-size: 1em 1em;
-  color: #f8b700;
-  display: inline-block;
-  line-height: 1em;
-  position: relative;
-  z-index: auto;
-  font-size:25px;
-  text-transform: uppercase;
-}
+  .navbar .collapse #btn-Menu, #btn-logout, #home, #profil
+  {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-linear-gradient(top,#efd100 0,#e2a233 38%,#f0c328 60%,#fff1a3 86%,#ffe13e 100%);
+    background-size: 1em 1em;
+    color: #f8b700;
+    display: inline-block;
+    line-height: 1em;
+    position: relative;
+    z-index: auto;
+    font-size:25px;
+    text-transform: uppercase;
+  }
 
-.dropdown .dropdown-menu > li {
-  background-color:#291201;
-  background-image: none;
-  background-repeat: no-repeat;
-}
-.navbar-nav > li > .dropdown-menu a {
-  color : #f8b700;
-}
+  .dropdown .dropdown-menu > li {
+    background-color:#291201;
+    background-image: none;
+    background-repeat: no-repeat;
+  }
+  .navbar-nav > li > .dropdown-menu a {
+    color : #f8b700;
+  }
 
-.navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
-  background-color: #3C1E06;
-  user-select: none;
-}
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+    background-color: #3C1E06;
+    user-select: none;
+  }
