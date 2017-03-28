@@ -1,0 +1,37 @@
+/*home.php style
+author : Laurent
+*/
+
+body {
+  font-family: 'Macondo', cursive;
+    background-color: #2C1706;
+}
+
+/*-----------------BLOCK-BODY-----------------*/
+
+.block-body {
+  text-align: center;
+    /*background-color: #2C1706;*/
+}
+.block-body .content {
+  margin: 0 auto;
+  margin-top : 2.5%;
+  margin-bottom: 50px;
+  text-align: center;
+  font-size : 55px;
+  background-image: -webkit-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+
+  background-size: 1em 1em;
+  color: #8a0707;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+
+  background-image: -o-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+  -o-background-clip: text;
+  -o-text-fill-color: transparent;
+}
+
+.block-body .row .blank {
+  display: block;
+  background: white;
+}
