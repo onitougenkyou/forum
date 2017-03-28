@@ -3,25 +3,26 @@
 /**
 *
 *	Forums View Controleur
-*		GËre la transition entre les variables et les vues
+*		G√®re la transition entre les variables et les vues
 *
 * @user Cedric
 * @date 2017.03.27
 **/
 class ForumViewController
 {
-	
 	/*
 	*	Get View Forum Liste
+	*		Renvoi le code HTML de la liste des forums
 	*
 	*/
 	public function getViewForumListe($data)
 	{
+		$dataHTML = '';
 		
 		/*
-		*	GÈnÈration de la liste des forums
+		*	G√©n√©ration de la liste des forums
 		*/
-		ob_start();	// DÈbut de l'interception
+		ob_start();	// D√©but de l'interception
 
 			$taille = count($data);
 			
@@ -42,5 +43,24 @@ class ForumViewController
 
 	}
 
+	/*
+	*	Get View Forum
+	*		Renvoi le code HTML d'un forum
+	*		Utilis√© pour afficher les infos d'un forum quand on affiche la liste des sujets ou Messages
+	*
+	*/
+	public function getViewForum(Forum $forum)
+	{
+		$dataHTML = '';
+		
+		// D√©but de l'interception
+		ob_start();
+		
+			include('view/forum/forum_bandeau.php');
+		
+		// Fin de l'interception
+		$dataHTML = ob_get_clean();
+		return $dataHTML;
+	}
 
 }	
