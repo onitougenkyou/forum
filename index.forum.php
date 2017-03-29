@@ -1,9 +1,10 @@
 <?php
 ini_set('display_errors', 1);
 
-function checkDroit()
+function checkDroit($int = 1)
 {
-	return true;
+	if($int = 1)	return true;
+	else			return false;
 }
 
 /*
@@ -12,7 +13,8 @@ function checkDroit()
 *
 */
 	// Variable du site
-	require_once('config/Config.php');
+	require_once('tools/Config.php');
+	require_once('tools/Request.php');			// Traitement des Get/Post
 
 	// Tools
 	require_once('tools/Form.php');			// Permet de générer des formulaires HTML
@@ -26,22 +28,11 @@ function checkDroit()
 		Config::getInstance()->get('user'),
 		Config::getInstance()->get('pass')
 	);
-	// $db = new CConnexion();
-
-
 
 	// DEBUG
 	set_error_handler(array('GestionErreur', 'erreurPDO'));
 
 	
-/*
-*	Traitement des GET
-*
-*/
-	if( isset($_GET['page']) && !empty($_GET['page']) )	$page = $_GET['page'];
-	else												$page = '';
-
-
 /*
 *
 *	Corps
@@ -52,21 +43,31 @@ function checkDroit()
 	// Affichage du menu 
 	// 	Pourquoi pas via le template ? 
 	require_once('view/site/menu.php');
-	
+
 	/*
 	*	Appel des controller en fonction de ?page=
 	*/
-	switch($page)
+	switch(Request::getInstance()->get('page'))
 	{
 		case Config::getInstance()->get('accueil')		:	require_once('page/accueil.php');	break;
 		case Config::getInstance()->get('forums')		:	require_once('page/forums.php');	break;
 		default										:	require_once('page/accueil.php');	break;
 	}
-	
 
-	echo '<h2>Debug</h2>';
-	if(isset($page))		echo 'page : '.$page.'<br>';
-	if(isset($action))	echo 'action : '.$action.'<br>';
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 

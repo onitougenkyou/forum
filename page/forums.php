@@ -1,11 +1,5 @@
 <?php
 
-	if(isset($_GET['action']) && !empty($_GET['action']))	$action = $_GET['action'];
-	else												$action = '';
-	if(isset($_GET['var']) && !empty($_GET['var']))		$var = $_GET['var'];
-	else												$var = '';
-
-	
 	// Objet	
 	require_once('model/Forum.php');
 	require_once('model/Sujet.php');
@@ -29,10 +23,10 @@
 	require_once('controller/MessageViewController.php');
 
 
-	// Création du controller & envoi de l'action
-	$fsC = new ForumsController($db, $action, $var);
+	// Création du controller & envoi de $action et $var 
+	$fsC = new ForumsController($db, Request::getInstance()->get('action'), Request::getInstance()->get('var'));
 	
-	// Gère l'appel des pages du controller
+	// Génère la page forum a partir du code généré par les différentes vues
 	$fsC->getPageController();
 	
 	// Affichage
