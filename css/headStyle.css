@@ -24,6 +24,16 @@ body {
   margin-top: -10%;
 }
 
+#coloneD {
+  position: absolute;
+  margin-left: -15%;
+}
+
+#coloneG {
+    position: absolute;
+    margin-left: 67%;
+}
+
 @media (max-width: 1500px) {
   #crane, #corneDroite, #corneGauche {
     display: none;
