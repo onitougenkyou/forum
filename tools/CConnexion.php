@@ -112,9 +112,7 @@ class CConnexion extends PDO
 		
 		// PDO
 		$query = $this->prepare($sql);
-		if(isset($sql))		echo 'sql : '.$sql.'<br>';
-
-			
+		
 		if($nombre != 0) 	$query->bindValue(':offset', 	(int) $offset, PDO::PARAM_INT);		// demande par l'offset X
 		if($limitNb)		$query->bindValue(':nombre', 	(int) $nombre, PDO::PARAM_INT);		// Avec une limite 
 		
