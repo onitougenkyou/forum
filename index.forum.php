@@ -28,26 +28,6 @@ function checkDroit()
 	);
 	// $db = new CConnexion();
 
-	// Objet	
-	require_once('model/Forum.php');
-	require_once('model/Sujet.php');
-	require_once('model/Message.php');
-
-	// DAO des objets
-	require_once('dao/ForumDao.php');
-	require_once('dao/SujetDao.php');
-	require_once('dao/MessageDao.php');
-
-	// Coeur du forum
-	require_once('controller/ForumsController.php');
-	require_once('controller/ForumController.php');
-	require_once('controller/SujetController.php');
-	require_once('controller/MessageController.php');
-
-	// Vues du forum
-	require_once('controller/ForumViewController.php');
-	require_once('controller/SujetViewController.php');
-	require_once('controller/MessageViewController.php');
 
 
 	// DEBUG
