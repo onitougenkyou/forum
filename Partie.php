@@ -5,6 +5,8 @@
     <title> Partie </title>
   </head>
   <body>
+    <?php include ('../header.html'); ?>
+
     <div class="block-text">
        DESCRIPTION</br>   <!-- en maj et assez gros -->
       <p>Le <strong> jeu de rôle </strong> est une technique ou activité, par laquelle une personne interprète le rôle d’un personnage
@@ -23,7 +25,7 @@
       <img src="http://c7.alamy.com/comp/D21CHT/die-miami-cops-miami-super-cops-bud-spencer-terence-hill-fbi-agenten-D21CHT.jpg" class="Super cops">
       <a href="page/SuperCops.php">Super cops</br>
       <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTsmJphe11H_HNduyBOCLK4Qhbf7hH2c2HIqddnOqJbEVYi7FP9" class="Zcorps">
-      <a href="page/zCorps.php">Zcorps</br>
+      <a href="zCorps.php">Zcorps</br>
     </div>
   </body>
 </html>
