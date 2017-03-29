@@ -6,6 +6,7 @@
   </head>
   <body>
     <?php include 'controller/pagesController.php'; ?>
+      <?php include ('../header.html'); ?>
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
       <img src="http://www.ajdr.org/wp-content/uploads/2012/01/flickr-3297910747-original-1024x747.jpg" class="image Z-corps"></br>
