@@ -1,4 +1,5 @@
 <?php include_once '../login/verif.php';
+include('../header.html');
 
 $user_id = $_SESSION['user_session'];
 $stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
@@ -113,18 +114,50 @@ else if(isset($_GET['joined']))
 }
 ?>
 
-<form class="form-info" action="" method="post">
-  <label for ="txt_uname">Votre pseudo</label>
-  <input type="text" name="txt_uname" value="<?php print($userRow['user_name']); ?>"> <br>
-  <label for="txt_pass">Changer de mot de passe</label>
-  <input type="password" name="txt_pass" placeholder="Nouveau mot de passe"><br>
-  <label for="">Votre nom de famille</label>
-  <input type="text" name="txt_name_family" value="<?php print($userRow['user_name_family']); ?>" placeholder="Nom de famille"> <br>
-  <label for="txt_mail">Votre email</label>
-  <input type="text" name="txt_mail" value="<?php print($userRow['user_email']); ?>"><br>
-  <label for="txt_date">Votre date de naissance</label>
-  <input type="date" name="txt_date" value="<?php print($userRow['user_date']); ?>" > <br>
-  <label for="txt_description">Votre description (250 charactères MAX)</label>
-  <textarea name="txt_description" rows="8" cols="80" value="<?php print($userRow['user_description']); ?>"></textarea> <br>
-  <input type="submit" name="btn-submit" value="Envoyez">
-</form>
+<link rel="stylesheet" href="../css/profilvuStyle.css" type="text/css"  />
+
+<div class="container change-infos">
+  <form>
+    <div class="form-group row">
+      <label for="txt_uname" class="col-sm-2 col-form-label">Votre pseudo</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="txt_uname" value="<?php print($userRow['user_name']); ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txt_upass" class="col-sm-2 col-form-label">Changer de mot de passe</label>
+      <div class="col-sm-10">
+        <input type="password" class="form-control" name="txt_upass" placeholder="Mot pas de passe">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txt_name_family" class="col-sm-2 col-form-label">Votre nom de famille</label>
+      <div class="col-sm-10">
+        <input type="text" class="form-control" name="txt_name_family" value="<?php print($userRow['user_name_family']); ?>" placeholder="Votre nom de famille">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txt_mail" class="col-sm-2 col-form-label">Votre Email</label>
+      <div class="col-sm-10">
+        <input type="mail" class="form-control" name="txt_mail" value="<?php print($userRow['user_email']); ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txt_date" class="col-sm-2 col-form-label">Votre date de naissance</label>
+      <div class="col-sm-10">
+        <input type="date" class="form-control" name="txt_date" value="<?php print($userRow['user_date']); ?>">
+      </div>
+    </div>
+    <div class="form-group row">
+      <label for="txt_description" class="col-sm-2 col-form-label">Votre description (250 charactères MAX)</label>
+      <div class="col-sm-10">
+        <textarea name="txt_description" rows="8" cols="80" value="<?php print($userRow['user_description']); ?>"></textarea>
+      </div>
+    </div>
+    <div class="form-group row">
+      <div class="offset-sm-2 col-sm-10">
+        <button type="submit" id="btn-envoi" name="btn-submit">Modifier</button>
+      </div>
+    </div>
+  </form>
+</div>
