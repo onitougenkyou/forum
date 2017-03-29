@@ -119,29 +119,6 @@ else if(isset($_GET['joined']))
 }
 ?>
 
-<<<<<<< HEAD
-<form class="form-info" action="" method="post">
-  <label for ="txt_uname">Votre pseudo</label>
-  <input type="text" name="txt_uname" value="<?php print($user->data['user_name']); ?>"> <br>
-
-  <label for="txt_pass">Changer de mot de passe</label>
-  <input type="password" name="txt_pass" placeholder="Nouveau mot de passe"><br>
-
-  <label for="txt_name_family">Votre nom de famille</label>
-  <input type="text" name="txt_name_family" value="<?php print($user->data['user_name_family']); ?>" placeholder="Nom de famille"> <br>
-
-  <label for="txt_mail">Votre email</label>
-  <input type="text" name="txt_mail" value="<?php print($user->data['user_email']); ?>"><br>
-
-  <label for="txt_date">Votre date de naissance</label>
-  <input type="date" name="txt_date" value="<?php print($user->data['user_date']); ?>" > <br>
-
-  <label for="txt_description">Votre description (250 charactères MAX)</label>
-  <textarea name="txt_description" rows="8" cols="80" value="<?php print($user->data['user_description']); ?>"></textarea> <br>
-
-  <input type="submit" name="btn-submit" value="Envoyez">
-</form>
-=======
 <link rel="stylesheet" href="../css/profilvuStyle.css" type="text/css"  />
 
 <div class="container change-infos">
@@ -149,7 +126,7 @@ else if(isset($_GET['joined']))
     <div class="form-group row">
       <label for="txt_uname" class="col-sm-2 col-form-label">Votre pseudo</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="txt_uname" value="<?php print($userRow['user_name']); ?>">
+        <input type="text" class="form-control" name="txt_uname" value="<?php print($user->data['user_name']); ?>">
       </div>
     </div>
     <div class="form-group row">
@@ -161,25 +138,25 @@ else if(isset($_GET['joined']))
     <div class="form-group row">
       <label for="txt_name_family" class="col-sm-2 col-form-label">Votre nom de famille</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="txt_name_family" value="<?php print($userRow['user_name_family']); ?>" placeholder="Votre nom de famille">
+        <input type="text" class="form-control" name="txt_name_family" value="<?php print($user->data['user_name_family']); ?>" placeholder="Votre nom de famille">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_mail" class="col-sm-2 col-form-label">Votre Email</label>
       <div class="col-sm-10">
-        <input type="mail" class="form-control" name="txt_mail" value="<?php print($userRow['user_email']); ?>">
+        <input type="mail" class="form-control" name="txt_mail" value="<?php print($user->data['user_email']); ?>">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_date" class="col-sm-2 col-form-label">Votre date de naissance</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" name="txt_date" value="<?php print($userRow['user_date']); ?>">
+        <input type="date" class="form-control" name="txt_date" value="<?php print($user->data['user_date']); ?>">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_description" class="col-sm-2 col-form-label">Votre description (250 charactères MAX)</label>
       <div class="col-sm-10">
-        <textarea name="txt_description" rows="8" cols="80" value="<?php print($userRow['user_description']); ?>"></textarea>
+        <textarea name="txt_description" rows="8" cols="80" value="<?php print($user->data['user_description']); ?>"></textarea>
       </div>
     </div>
     <div class="form-group row">
@@ -189,4 +166,3 @@ else if(isset($_GET['joined']))
     </div>
   </form>
 </div>
->>>>>>> 4cc600a8ceb1cbe69b54b3805ab911079f87decd
