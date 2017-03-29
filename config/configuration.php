@@ -44,16 +44,16 @@
 	$route = array (
 		
 		// page
-		'accueil' 		=> 'Accueil',
-		'forums' 		=> 'Forums',
-		 
-		// action
+		'accueil' 		=> 'Accueil',				// Accueil
+		'forums' 		=> 'Forums',				// Forums
 			'forum' 				=> 'forum',			// Affichage d'un forum	& var = id Forum
-			'ajoutForum' 			=> 'ajoutforum',
 			'sujet' 				=> 'sujet', 			// Affichage d'un sujet	& var = id Sujet
+			'ajoutForum' 			=> 'ajoutforum',
 			'ajoutSujet' 			=> 'ajoutSujet', 		// & var = id Forum
 			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id Sujet
 			'modifieMessage' 		=> 'modifieMessage', 	// & var = id Message
+		'admin' 			=> 'admin',				// ??
+		 
 	);
 	
 	
