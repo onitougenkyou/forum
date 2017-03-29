@@ -30,27 +30,6 @@ body {
   }
 }
 
-#corneGauche {
-  position: absolute;
-  margin-top: -6%;
-  margin-left: 2%;
-  -webkit-transform: rotate(45deg);
-  -moz-transform: rotate(45deg);
-  -o-transform: rotate(45deg);
-  transform: rotate(45deg);
-}
-
-#corneDroite {
-  position: absolute;
-  margin-left: 93%;
-  margin-top: -6%;
-  -webkit-transform: rotate(-45deg);
-  -moz-transform: rotate(-45deg);
-  -o-transform: rotate(-45deg);
-  transform: rotate(-45deg);
-}
-/*------------MODIF POUR MOZZILA*/
-html:not([lang*=“”]) #corneDroite, #corneGauche{ margin-top : -5%;}
 
   .navbar .collapse #btn-Menu, #btn-logout, #home, #profil
   {
@@ -68,15 +47,16 @@ html:not([lang*=“”]) #corneDroite, #corneGauche{ margin-top : -5%;}
   }
 
   .dropdown .dropdown-menu > li {
-    background-color:#291201;
+    background-color:#1D0F04;
     background-image: none;
     background-repeat: no-repeat;
   }
   .navbar-nav > li > .dropdown-menu a {
     color : #f8b700;
+    background-color:#1D0F04;
   }
 
-  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus {
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > .dropdown-menu a:hover {
     background-color: #3C1E06;
     user-select: none;
   }
