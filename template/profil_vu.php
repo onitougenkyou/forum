@@ -12,7 +12,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
 ?>
 <link rel="stylesheet" href="../css/profilvuStyle.css" type="text/css"  />
 
-<div class="container">
+<div class="container profil">
   <div class="row">
     <div class="col-xs-12">
       <div class="infos-profil">
@@ -25,7 +25,7 @@ $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
         Description : <?php print($userRow['user_description']); ?><br>
       </div>
       <div class="infos-button">
-        <button type="button" name="button-infos"><a href="../profil.user/change_infos_user.php">Modification</a></button>
+        <button id="btn-modif" type="button" name="button-infos"><a href="../profil.user/change_infos_user.php">Modification</a></button>
       </div>
     </div>
   </div>
