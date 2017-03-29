@@ -1,43 +1,38 @@
 <?php include_once '../login/verif.php';
 include('../header.html');
 
-$user_id = $_SESSION['user_session'];
-$stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
-$stmt->execute(array(":user_id"=>$user_id));
-$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
 if(isset($_POST['btn-submit']))
 {
   $uname = trim($_POST['txt_uname']);
-  $umail = trim($_POST['txt_mail']);
   $upass = trim($_POST['txt_pass']);
   $unameFamily = trim($_POST['txt_name_family']);
-  $udate = trim($_POST['txt_date']);
   $umail = trim($_POST['txt_mail']);
-  $upass = trim($_POST['txt_pass']);
+  $udate = trim($_POST['txt_date']);
   $udescription = trim($_POST['txt_description']);
 
 // vérif pseudo
   if($uname=="") {
     $error[] = "Entrez un pseudo";
   }
-  elseif (strlen($uname) < 2) {
+  else if (strlen($uname) < 2) {
     $error[] = "Pseudo trop court";
   }
-  elseif (preg_match("#[^\w\s]+#", $uname)) {
+  else if (preg_match("#[^\w\s]+#", $uname)) {
     $error[] = "Pseudo non valide";
   }
 
-  // vérif nom
-  elseif ($unameFamily == ""){
-    $error[] = "Entrez un nom";
+  elseif ($udate == "")
+  {
+    $udate = $user->data['user_date'];
   }
-  elseif (preg_match("#[^\w\s]+#", $unameFamily)){
+
+  // vérif nom
+  else if ($unameFamily != "" && preg_match("#[^\w\s]+#", $unameFamily)){
     $error[] = "Nom de famille invalide";
   }
 
   // vérif description
-  elseif(strlen($udescription) > 250 || strlen($udescription) < 2){
+  else if(strlen($udescription) > 250 || (strlen($udescription) < 2 && strlen($udescription) > 0)){
     $error[] = "Longueur de la description non respecté";
   }
 
@@ -48,46 +43,56 @@ if(isset($_POST['btn-submit']))
   else if(!filter_var($umail, FILTER_VALIDATE_EMAIL)) {
     $error[] = 'Entrez une adresse mail valide';
   }
-  else if($upass=="") {
-    $error[] = "Entrez un mot de passe";
-  }
-  elseif ( ! preg_match("~[A-Z]~", $upass) ){
-    $error[] = 'Il faut une majuscule';
-  }
-  elseif ( ! preg_match("~[0-9]~", $upass) ){
-    $error[] = 'Il faut un nombre';
-  }
-  else if(strlen($upass) < 6){
-    $error[] = "Le mot de passe doit contenir 6 caractères minimum";
+  // vérif pass
+   if($upass!="")
+   {
+    $user->passChange = true;
+    if ( ! preg_match("~[A-Z]~", $upass) )
+    {
+      $error[] = 'Il faut une majuscule';
+    }
+    else if ( ! preg_match("~[0-9]~", $upass) )
+    {
+      $error[] = 'Il faut un nombre';
+    }
+    else if(strlen($upass) < 6)
+    {
+      $error[] = "Le mot de passe doit contenir 6 caractères minimum";
+    }
   }
   else
   {
-    try
-    {
-      $stmt = $DB_con->prepare("SELECT user_name,user_email FROM users WHERE user_name=:uname OR user_email=:umail");
-      $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
-      $row=$stmt->fetch(PDO::FETCH_ASSOC);
-
-      if($row['user_name']==$uname) {
-        $error[] = "Ce pseudo est déjà utilisé";
-      }
-      else if($row['user_email']==$umail) {
-        $error[] = "Cette email est déja utilisé";
-      }
-      else
-      {
-        if($user->register($fname,$lname,$uname,$umail,$upass))
-        {
-          $user->redirect('sign-up.php?joined');
-        }
-      }
-    }
-    catch(PDOException $e)
-    {
-      echo $e->getMessage();
-    }
+    $upass = $user->data['user_pass'];
+    $user->passChange = false;
   }
+  // else
+  // {
+  //   try
+  //   {
+  //     $stmt = $DB_con->prepare("SELECT user_name,user_email FROM users WHERE user_name=:uname OR user_email=:umail");
+  //     $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
+  //     $row=$stmt->fetch(PDO::FETCH_ASSOC);
 
+      // if($row['user_name']==$uname) {
+      //   $error[] = "Ce pseudo est déjà utilisé";
+      // }
+      // else if($row['user_email']==$umail) {
+      //   $error[] = "Cette email est déja utilisé";
+      // }
+      // else
+      // {
+      //   if($user->register($fname,$lname,$uname,$umail,$upass))
+      //   {
+      //     $user->redirect('sign-up.php?joined');
+      //   }
+      // }
+  //   }
+  //   catch(PDOException $e)
+  //   {
+  //     echo $e->getMessage();
+  //   }
+  // }
+  $user->modification($uname,$upass,$unameFamily,$umail,$udate,$udescription );
 }
 
 ?>
@@ -121,7 +126,7 @@ else if(isset($_GET['joined']))
     <div class="form-group row">
       <label for="txt_uname" class="col-sm-2 col-form-label">Votre pseudo</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="txt_uname" value="<?php print($userRow['user_name']); ?>">
+        <input type="text" class="form-control" name="txt_uname" value="<?php print($user->data['user_name']); ?>">
       </div>
     </div>
     <div class="form-group row">
@@ -133,25 +138,25 @@ else if(isset($_GET['joined']))
     <div class="form-group row">
       <label for="txt_name_family" class="col-sm-2 col-form-label">Votre nom de famille</label>
       <div class="col-sm-10">
-        <input type="text" class="form-control" name="txt_name_family" value="<?php print($userRow['user_name_family']); ?>" placeholder="Votre nom de famille">
+        <input type="text" class="form-control" name="txt_name_family" value="<?php print($user->data['user_name_family']); ?>" placeholder="Votre nom de famille">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_mail" class="col-sm-2 col-form-label">Votre Email</label>
       <div class="col-sm-10">
-        <input type="mail" class="form-control" name="txt_mail" value="<?php print($userRow['user_email']); ?>">
+        <input type="mail" class="form-control" name="txt_mail" value="<?php print($user->data['user_email']); ?>">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_date" class="col-sm-2 col-form-label">Votre date de naissance</label>
       <div class="col-sm-10">
-        <input type="date" class="form-control" name="txt_date" value="<?php print($userRow['user_date']); ?>">
+        <input type="date" class="form-control" name="txt_date" value="<?php print($user->data['user_date']); ?>">
       </div>
     </div>
     <div class="form-group row">
       <label for="txt_description" class="col-sm-2 col-form-label">Votre description (250 charactères MAX)</label>
       <div class="col-sm-10">
-        <textarea name="txt_description" rows="8" cols="80" value="<?php print($userRow['user_description']); ?>"></textarea>
+        <textarea name="txt_description" rows="8" cols="80" value="<?php print($user->data['user_description']); ?>"></textarea>
       </div>
     </div>
     <div class="form-group row">

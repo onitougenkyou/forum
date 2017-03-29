@@ -2,12 +2,27 @@
 class USER
 {
     private $db;
+    public $passChange;
 
     function __construct($DB_con)
     {
       $this->db = $DB_con;
-    }
 
+      if( isset($_SESSION['user_session']))
+      {
+        $user_id = $_SESSION['user_session'];
+        $stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
+        $stmt->execute(array(":user_id"=>$user_id));
+        $this->data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+        var_dump($this);
+
+      } else {
+        $this->data = [];
+        $this->data['user_role'] = 0;
+      }
+
+    }
     public function register($fname,$lname,$uname,$umail,$upass)
     {
        try
@@ -36,12 +51,12 @@ class USER
        {
           $stmt = $this->db->prepare("SELECT * FROM users WHERE user_name=:uname OR user_email=:umail LIMIT 1");
           $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
-          $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+          $this->data = $stmt->fetch(PDO::FETCH_ASSOC);
           if($stmt->rowCount() > 0)
           {
-             if(password_verify($upass, $userRow['user_pass']))
+             if(password_verify($upass, $this->data['user_pass']))
              {
-                $_SESSION['user_session'] = $userRow['user_id'];
+                $_SESSION['user_session'] = $this->data['user_id'];
                 return true;
              }
              else
@@ -73,13 +88,67 @@ class USER
    {
         session_destroy();
         unset($_SESSION['user_session']);
+        unset($_SESSION['user_role']);
         return true;
    }
+   public function checkDroit ($levelAsk)
+   {
+        if($levelAsk <= $this->data['user_role'])
+        {
+          return true;
+        }
+        else
+        {
+          return false;
+        }
+   }
+   public function changeRole($userId,$rank)
+   {
+     $asRank = $this->checkDroit(4);
+     if($asRank == true && $rank < $this->data['user_role'])
+     {
+       $stmt = $this->db->prepare("UPDATE users SET user_role=:urank WHERE user_id=:uid ");
+       $stmt->bindparam(":urank", $rank);
+       $stmt->bindparam(":uid", $userId);
+       $stmt->execute();
+     }
+   }
+   //à vérifier
+   public function modification($uname,$upass,$unameFamily,$umail,$udate,$udescription)
+   {
+     try {
 
-   public function modiication($fname,$lname,$uname,$umail,$upass,$unameFamily, $udate, $udescription){
-     $stmt = $this->db->prepare("UPDATE * FROM users WHERE user_name=:uname OR user_email=:umail LIMIT 1 OR user_name_family=:unameFamily OR user_date=:udate OR user_description=:udescription");
-     $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail, ':unameFamily'=>$unameFamily, ':udate'=>$udate, ':udescription'=>$udescription));
-     $userRow=$stmt->fetch(PDO::FETCH_ASSOC);
+
+       if($this->passChange == true)
+       {
+         $new_password = password_hash($upass, PASSWORD_DEFAULT);
+         $this->passChange = false;
+       }
+       else {
+         $new_password= $upass;
+       }
+
+       $stmt = $this->db->prepare("UPDATE users SET user_name=:uname , user_pass=:upass , user_name_family=:unameFamily , user_email=:umail , user_date=:udate , user_description=:udescription
+         WHERE user_id=:uid ");
+         $stmt->bindparam(":uname", $uname);
+         $stmt->bindparam(":upass", $new_password);
+         $stmt->bindparam(":unameFamily", $unameFamily);
+         $stmt->bindparam(":umail", $umail);
+         $stmt->bindparam(":udate", $udate);
+         $stmt->bindparam(":udescription", $udescription);
+         $stmt->bindparam(":uid", $this->data['user_id']);
+         $stmt->execute();
+         //$this->data = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+     } catch (PDOException $e) {
+      // echo  "date: ".$udate;
+       echo $e->getMessage();
+
+     }
+
+
+
    }
 }
 ?>
