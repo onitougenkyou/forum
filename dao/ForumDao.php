@@ -72,34 +72,47 @@ class ForumDao
 	
 	/**
 	*	SELECT
-	*		retourne un forum en fonction de l'Id
+	*		retourne un Forum en fonction de l'Id
 	*
 	**/
 	public function getForum($forumId)
 	{
-		// SQL
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`description`,
+						`parent_id`,
+						`nb_sujet`,
+						`dernier_message_id`,
+						`affichage`,
+						`image_id`
+				FROM `forums`
+				WHERE `id` = :forumId';
+				
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
 		
-		// Variable
-		$id = '';
-		$auteur = '';
-		$titre = '';
-		$description = '';
+		// Bind de l'ID
+		$query->bindParam(':forumId', $forumId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
 		
-		// Création de l'objet
-		$forum = new Forum();
-			$forum->setId('');
-			$forum->setDateCreation('');
-			$forum->setDateModification('');
-			$forum->setAuteur('');
-			$forum->setAcl('');
-			$forum->setTitre('');
-			$forum->setImage('');
-			$forum->setParentId('');
-			$forum->setNbSujet('');
-			$forum->setDernierForumId('');
-			
-		
-		// return 
+		if( isset($result[0]) ) {
+			// Création de l'objet Forum
+			$forum = new Forum($result[0]);
+		} else {
+			$forum = new Forum();
+		}
+
+		// Renvoi
 		return $forum;
 	}
 	

@@ -28,13 +28,10 @@ class MessageDao
 	*	SELECT messageS
 	*
 	**/
-	public function getMessages()
+	public function getMessages($sujetId)
 	{
-		// Init
-		$messages = array();
-		
 		// Création de la requête SQL
-		$sql = '	SELECT `id`, 
+		$sql = 'SELECT `id`, 
 						`date_creation`,
 						`date_modification`,
 						`auteur`,
@@ -43,11 +40,21 @@ class MessageDao
 						`texte`,
 						`sujet_id`,
 						`affichage`
-				FROM `messages`';
+				FROM `messages`
+				WHERE `sujet_id` = :sujetId';
 				
-		// Envoi de la requête & récupération
-		$result = $this->db->bddSelect($sql, 0);
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
 		
+		// Bind de l'ID
+		$query->bindParam(':sujetId', $sujetId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
+
 		// Création des objets
 		$taille = count($result);
 		for($i=0; $i<$taille; $i++) {
@@ -58,11 +65,10 @@ class MessageDao
 			// Enregistrement du Forum en tableau d'objet
 			$messages[$i] = $message;
 		}
-		
+
 		// Renvoi
 		return $messages;
 	}
-	
 	
 	
 	/**
