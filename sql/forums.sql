@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Jeu 23 Mars 2017 à 11:41
+-- Généré le :  Mer 29 Mars 2017 à 09:10
 -- Version du serveur :  5.5.54-0+deb8u1
 -- Version de PHP :  5.6.30-0+deb8u1
 
@@ -47,12 +47,11 @@ CREATE TABLE IF NOT EXISTS `forums` (
 --
 
 INSERT INTO `forums` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `description`, `affichage`, `image_id`, `parent_id`, `nb_sujet`, `dernier_message_id`) VALUES
-(1, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'North Korea missile launch ''fails''', 'A North Korean missile launch has failed, South Korean defence officials say, but it is unclear how many were fired or what exactly was being tested.\r\n\r\nThe US military said it detected a missile which appeared to explode within seconds of being launched.\r\n\r\nNorth Korea is banned from any missile or nuclear tests by the United Nations.\r\n\r\nHowever, it has conducted such tests with increasing frequency and experts say this could lead to advances in its missile technology.\r\n\r\nEarlier this month, the North fired four missiles that flew about 1,000km (620 miles), landing in Japanese waters.', 1, NULL, NULL, 0, NULL),
-(2, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Scientists Sound the Alarm: CO2 Levels Race Past Point of No Return', 'The National Oceanic and Atmospheric Administration (NOAA) reported that carbon dioxide levels in 2016 broke records for the second year in a row with an increase of 3 parts per million (ppm).', 1, 1, NULL, 0, NULL),
-(4, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'No African citizens granted visas for African trade summit in California ', 'An annual African trade summit in California had no African attendees this year after at least 60 people were denied visas, according to event leaders.', 1, NULL, NULL, 0, NULL),
-(5, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Pearson Posts a $3.3 Billion Loss as It Faces Down a Collapse in Its Biggest Market', 'Pearson, the global education company battling a collapse in its biggest market, said it would take further costs out of the business and look to sell some assets after posting a $3.3 billion pretax loss and a sharp rise in debt.', 0, NULL, NULL, 0, NULL),
-(6, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Saudi Arabia ‘expects Donald Trump to scrap 9/11 victims law’ as first cases brought against kingdom', 'Saudi Arabia is expecting President Donald Trump to reverse a US law allowing families of the victims of the 9/11 attacks to sue the kingdom, as the first law suit related to the attacks is filed in New York, it has been reported. ', 0, NULL, 2, 0, NULL),
-(7, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Goldman Sachs confirms London jobs will move to Europe in first stage of Brexit reshuffle', 'Goldman Sachs will shift jobs away from London while bulking up its European presence by "hundreds of people" as it executes on Brexit contingency plans, the chief executive officer of Goldman Sachs International told CNBC on Tuesday.Test ÅÄÖ Tåän', 1, NULL, 1, 0, NULL);
+(1, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum01', 'Description01', 1, NULL, NULL, 5, 1),
+(2, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum02', 'Description02', 1, NULL, NULL, 5, 2),
+(3, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum03', 'Description03', 1, 1, NULL, 5, 3),
+(4, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum04', 'Description04', 1, NULL, 1, 5, 4),
+(5, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum05', 'Description05', 0, NULL, NULL, 5, 5);
 
 --
 -- Index pour les tables exportées

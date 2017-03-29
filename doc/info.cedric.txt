@@ -1,4 +1,4 @@
-Modèle MVC 
+ Modèle MVC 
 	http://old.mazenod.fr/2010/01/design-pattern-mvc-zoom-sur-la-couche-modele-dal-dao-orm-crud/
 
 	
@@ -167,21 +167,30 @@ Modèle MVC
 		*
 		*/
 		
-		Route
-			?page=forum&forum=id	&page=2
-			?page=forum&sujet=id	&page=2
-			?page=forum&message=id	&page=2
+		Route possible
+			/*
+				Affichage de la liste des forums
+					action = forum							
+					vue : forums
+			*/
 			
-			?page=forum&sujet=NouveauForum
-			?page=forum&sujet=NouveauSujet
-			?page=forum&sujet=NouveauMessage
+			/*
+				Affichage d'un forum (liste sujet)
+					action = forum 			& var = z
+					vue : sujets
+			*/
 			
-			?page=forum&sujet=ModificationForum
-			?page=forum&sujet=ModificationSujet
-			?page=forum&sujet=ModificationMessage
+			/* 
+				Affichage d'un sujet (liste message)
+					action = sujet 			& var = z		
+					vue messages		
+			*/
+			action = ajoutForum 	& var = z		// Formulaire Forum
+			action = ajoutSujet		& var = z		// Formulaire Sujet
+			action = message 		& var = z		// Affichage d'un message
+			action = ajoutMessage 	& var = z		// Formulaire Ajout Message	via l'Id du sujet
+			action = modifieMessage	& var = z		// Formulaire Modifie Message via l'Id du message a modifier		
 			
-			
-		
 		
 		/*
 		*	Test unitaire
@@ -217,7 +226,14 @@ Modèle MVC
 
 		
 		
+		/*
+		*	Evolution
+		*
+		*/
 		
+		Générer TOUT les liens (y compris le nom des variables en GET) via un objet + xml
+			Les liens sont semi dynamique, page & forum sont en dur dans les liens, pas leur valeur
+		Gérer l'appel des Pages & Controller via un Objet (au lieu d'un switch)
 		
 		
 		

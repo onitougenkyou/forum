@@ -4,25 +4,47 @@
 include_once 'verif.php';
 if(!$user->is_loggedin())
 {
- $user->redirect('../login.php');
+  $user->redirect('../login.php');
 }
 
 ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
+<<<<<<< HEAD
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"  />
 <link rel="stylesheet" href="style.css" type="text/css"  />
 <title>Bienvenue - <?php print($user->data['user_email']); ?></title>
+=======
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+  <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css"  /> -->
+  <link rel="stylesheet" href="../css/homeStyle.css" type="text/css"  />
+  <title>Bienvenue - <?php print($userRow['user_email']); ?></title>
+>>>>>>> 4cc600a8ceb1cbe69b54b3805ab911079f87decd
 </head>
 
 <body>
-
-<div class="header">
-    <div class="right">
-     <label><a href="logout.php?logout=true"><i class="glyphicon glyphicon-log-out"></i> logout</a></label>
+  <?php include ('../header.html'); ?>
+  <div class="block-body">
+    <div class="container">
+      <div class="row">
+        <div class="col-xs-12">
+          <div class="content">
+            Bienvenue : <?php print($userRow['user_name']); ?>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-xs-12 col-lg-6">
+            <img src="../imagesForum/cavalier.jpg" class="img-responsive" alt="cavalier">
+          </div>
+          <div class="col-xs-12 col-lg-6">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit. Phasellus euismod ligula neque, nec laoreet sapien sagittis sit amet. Donec lobortis dolor sit amet lacus consequat, quis pellentesque ex volutpat. Orci varius natoque penatibus et magnis dis parturient montes, nascetur ridiculus mus. Suspendisse sapien ipsum, luctus sed convallis quis, condimentum quis orci. Pellentesque ac porta est. Etiam ut ultricies odio. Aenean eleifend ante in felis hendrerit ultrices. Donec nec est velit. Maecenas dapibus nulla eget leo dapibus, at porttitor elit consectetur. Aenean et nunc dapibus velit vulputate auctor. Phasellus justo justo, congue eget leo in, tincidunt feugiat purus.
+          </div>
+        </div>
+      </div>
     </div>
+<<<<<<< HEAD
 </div>
 <div class="content">
 Bienvenue : <?php print($user->data['user_name']); ?>
@@ -31,5 +53,8 @@ Bienvenue : <?php print($user->data['user_name']); ?>
   <a href="../template/profil_vu.php">Accéder à votre profil</a>
 </div>
 </div>
+=======
+  </div>
+>>>>>>> 4cc600a8ceb1cbe69b54b3805ab911079f87decd
 </body>
 </html>

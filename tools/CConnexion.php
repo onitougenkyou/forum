@@ -11,11 +11,10 @@
 *			$db = new CConnexion($host, $dnName, $user, $pass);
 *
 *		A l'ouverture de la connexion, on met un FetchMode par défaut
-*		Il est utilisé a connexion
+*		Il est utilisé a la connexion
 *		A chaque connexion, on vérifie si le fetchmode n'a pas changé
 *
-*		Avoir un defautFetchMode et un customFetchMode permet de ne pas faire un setFetchMode
-*			a chaque requête
+*		Avoir un defautFetchMode et un customFetchMode permet de ne pas faire un setFetchMode a chaque requête
 *
 * @user Cedric
 * @date 2017.03.20
@@ -26,6 +25,8 @@ class CConnexion extends PDO
 	private $dbName;
 	private $user;
 	private $pass;
+	
+	private $db;
 	
 	// Valeur possible : assoc, both, bound, class, into, lazy, named, num, obj
 	private $customFetchMode;		// Valeur actuelle
@@ -42,14 +43,14 @@ class CConnexion extends PDO
 	* @return 	un objet PDO
 	**/
 	public function __construct($host='', $dbName='', $user='', $pass='', $defautFetchMode = 'assoc')
-	// public function __construct($defautFetchMode = 'assoc')
 	{
 		$this->host 	= $host;
 		$this->dbName = $dbName;
 		$this->user 	= $user;
 		$this->pass 	= $pass;
 		
-		$this->defautFetchMode = $defautFetchMode;
+		// Enregistrement du type de fetch en attribut
+		$this->defautFetchMode = $defautFetchMode;		
 		
 		// Appel du constructeur de PDO
 		parent::__construct(
@@ -66,6 +67,7 @@ class CConnexion extends PDO
 		
 		// Enables emulation of prepared statements
 		$this->setAttribute(PDO::ATTR_EMULATE_PREPARES, false);
+		
 	}
 	
 	

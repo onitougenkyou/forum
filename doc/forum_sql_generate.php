@@ -1,368 +1,110 @@
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'2',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4521',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+<?php
 
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'3',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 45210',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'4',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4621',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'5',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 43201',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'6',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 92501',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'7',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 82501',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'8',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 85420',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'9',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 87451',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'10',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 965420',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'11',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 05461',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'12',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 9541',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'13',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4512',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'14',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4512',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'15',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 97854',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'16',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 924',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'17',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 74136',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'18',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4521',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'19',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 746',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'20',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 98254',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'21',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 7141',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'22',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 6955',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
-
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'23',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 46412',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+ini_set('display_errors', 1);
 
 
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'24',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 754',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+/*INSERT INTO `forums` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `description`, `affichage`, `image_id`, `parent_id`, `nb_sujet`, `dernier_message_id`) VALUES
+(1, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum01', 'Description01', 1, NULL, NULL, 5, 1),
+(2, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum02', 'Description02', 1, NULL, NULL, 5, 2),
+(3, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum03', 'Description03', 1, 1, NULL, 5, 3),
+(4, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum04', 'Description04', 1, NULL, 1, 5, 4),
+(5, '2017-03-22 00:00:00', '2017-03-22 00:00:00', 1, NULL, 'Forum05', 'Description05', 0, NULL, NULL, 5, 5);
 
 
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'25',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 4252',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+INSERT INTO `sujets` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `affichage`, `forum_id`) VALUES
+(1, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet01', 'Description01', 1, 1),
+(2, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet02', 'Description02', 1, 1),
+(3, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet03', 'Description03', 1, 1),
+(4, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet04', 'Description04', 0, 1),
+(5, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet05', 'Description05', 1, 1),
+
+(11, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet11', 'Description06', 1, 2),
+(12, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet12', 'Description07', 1, 2),
+(13, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet13', 'Description08', 1, 2),
+(14, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet14', 'Description09', 0, 2),
+(15, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet15', 'Description10', 1, 2),
+
+(21, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet16', 'Description11', 1, 3),
+(22, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet17', 'Description12', 1, 3),
+(23, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet18', 'Description13', 1, 3),
+(24, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet19', 'Description14', 0, 3),
+(25, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet20', 'Description15', 1, 3),
+
+(31, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet21', 'Description16', 1, 4),
+(32, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet22', 'Description17', 1, 4),
+(33, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet23', 'Description18', 1, 4),
+(34, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet24', 'Description19', 0, 4),
+(35, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet25', 'Description20', 1, 4),
+
+(36, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet26', 'Description21', 1, 5),
+(37, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet27', 'Description22', 1, 5),
+(38, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet28', 'Description23', 1, 5),
+(39, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet29', 'Description24', 0, 5),
+(40, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Sujet30', 'Description25', 1, 5);
+/**/
+
+$data = '';
+$data .= "DROP TABLE IF EXISTS `messages`;<br>";
+
+$data .= "CREATE TABLE IF NOT EXISTS `messages` (
+  `id` int(11) NOT NULL,
+  `date_creation` datetime DEFAULT NULL,
+  `date_modification` datetime DEFAULT NULL,
+  `auteur` int(11) DEFAULT NULL,
+  `acl` varchar(45) COLLATE utf8_bin DEFAULT NULL,
+  `titre` varchar(512) COLLATE utf8_bin DEFAULT NULL,
+  `texte` text COLLATE utf8_bin,
+  `sujet_id` int(11) DEFAULT NULL,
+  `affichage` tinyint(4) DEFAULT '1'
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;<br>";
+
+$data .= "INSERT INTO `messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`) VALUES<br>";
 
 
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'26',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 456',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+$id = 0;
+// Pour 30 sujets
+
+for($i=1; $i<41; $i++){
+	
+	// On fait 50 sujets
+	for($j=0; $j<50; $j++) {
+		
+		$id++;
+		
+		// id
+		$data .= "(".$id.", ";
+		
+		// Date Creation
+		$data .= "'2017-03-23 00:00:00', ";
+		
+		// Date Modification
+		$data .= "'2017-03-23 00:00:00', ";
+		
+		// Auteur
+		$data .= "1, ";
+		
+		// acl 
+		$data .= "NULL, ";
+		
+		// Titre
+		$data .= "'Message".$id."', ";
+		
+		// Texte
+		$data .= "'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.',";
+		
+		// sujet_id
+		$data .= $i.", ";
+		
+		// affichage
+		if($id % 3 == 0) 	$data .= "0";
+		else				$data .= "1";
+		
+		$data .= "),<br>";
+	}
+}
 
 
-INSERT INTO `IMIEforum`.`messages` (`id`, `date_creation`, `date_modification`, `auteur`, `acl`, `titre`, `texte`, `sujet_id`, `affichage`)
-VALUES (
-	'27',
-	CURRENT_DATE(),
-	CURRENT_DATE(),
-	'1',
-	NULL,
-	'Message 546',
-	'
-		Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.
-	',
-	'1',
-	'1');
+$data = substr($data,0,-1).';';
 
+
+echo $data;

@@ -17,7 +17,7 @@ class MessageDao
 	*	Constructeur
 	*
 	**/
-	public function __construct($db)
+	public function __construct(CConnexion $db)
 	{
 		$this->db= $db;
 	}
@@ -28,13 +28,47 @@ class MessageDao
 	*	SELECT messageS
 	*
 	**/
-	public function getMessages()
+	public function getMessages($sujetId)
 	{
-		$message = new Message('Utilisateur', 'Titre du message', 'Description du message');
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`texte`,
+						`sujet_id`,
+						`affichage`
+				FROM `messages`
+				WHERE `sujet_id` = :sujetId';
+				
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
 		
-		return array($message, $message);
+		// Bind de l'ID
+		$query->bindParam(':sujetId', $sujetId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
+
+		// Création des objets
+		$taille = count($result);
+		for($i=0; $i<$taille; $i++) {
+			
+			// Construction d'un objet Forum
+			$message = new Message($result[$i]);
+			
+			// Enregistrement du Forum en tableau d'objet
+			$messages[$i] = $message;
+		}
+
+		// Renvoi
+		return $messages;
 	}
-	
 	
 	
 	/**

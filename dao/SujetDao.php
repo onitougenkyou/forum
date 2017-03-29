@@ -17,22 +17,109 @@ class SujetDao
 	*	Constructeur
 	*
 	**/
-	public function __construct($db)
+	public function __construct(CConnexion $db)
 	{
-		$this->db= $db;
+		$this->db = $db;
 	}
 	
 	
 	
 	/**
 	*	SELECT sujetS
+	*		Renvoi une liste des sujets
 	*
+	* @param		limitStart	index de démarrage des résultats
+	* @param 	limitNb		Nombre de résultat a afficher
+	* @return	retourne un tableau de résultat
 	**/
-	public function getSujets()
+	public function getSujets($forumId)
 	{
-		$sujet = new Sujet('Utilisateur', 'Titre du Sujet', 'Description du sujet');
+		// Init
+		$messages = array();
 		
-		return array($sujet, $sujet);
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`texte`,
+						`forum_id`,
+						`affichage`
+				FROM `sujets`
+				WHERE `forum_id` = :forumId';
+		
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
+		
+		// Bind de l'ID
+		$query->bindParam(':forumId', $forumId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
+
+		// Création des objets
+		$taille = count($result);
+		for($i=0; $i<$taille; $i++) {
+			
+			// Construction d'un objet Forum
+			$sujet = new Sujet($result[$i]);
+			
+			// Enregistrement du Forum en tableau d'objet
+			$sujets[$i] = $sujet;
+		}
+
+		// Renvoi
+		return $sujets;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+		
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`texte`,
+						`affichage`,
+						`forum_id`
+				FROM `sujets`';
+				
+		// Envoi de la requête & récupération
+		$result = $this->db->bddSelect($sql, 0);
+		
+		// Création des objets
+		$taille = count($result);
+		for($i=0; $i<$taille; $i++) {
+			
+			// Construction d'un objet Forum
+			$sujet = new Sujet($result[$i]);
+			
+			// Enregistrement du Forum en tableau d'objet
+			$sujets[$i] = $sujet;
+		}
+		
+		// Renvoi
+		return $sujets;
 	}
 	
 	
@@ -44,30 +131,36 @@ class SujetDao
 	**/
 	public function getSujet($sujetId)
 	{
-		// SQL
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`texte`,
+						`affichage`,
+						`forum_id`
+				FROM `sujets`
+				WHERE `id` = :sujetId';
+				
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
 		
-		// Variable
-		$id = '';
-		$auteur = '';
-		$titre = '';
-		$description = '';
+		// Bind de l'ID
+		$query->bindParam(':sujetId', $sujetId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
 		
-		// Création de l'objet
-		$forum = new Sujet();
-			$forum->setId('');
-			$forum->setDateCreation('');
-			$forum->setDateModification('');
-			$forum->setAuteur('');
-			$forum->setAcl('');
-			$forum->setTitre('');
-			$forum->setImage('');
-			$forum->setParentId('');
-			$forum->setNbSujet('');
-			$forum->setDernierSujetId('');
-			
-		
-		// return 
-		return $forum;
+		// Création de l'objet Sujet
+		$sujet = new Sujet($result[0]);
+
+		// Renvoi
+		return $sujet;
 	}
 	
 	

@@ -11,14 +11,27 @@
 class ForumController
 {
 	private $db;
+	private $var;
+	
+	private $fDao;	// Forum Dao
+	private $fViewC;	// Forum View Controller
+	
 	
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($db)
+	public function __construct(CConnexion $db, $var = '')
 	{
 		$this->db = $db;
+		$this->var = $var;
+		
+		// Instanciation du DAO
+		$this->fDao = new ForumDao($this->db);
+
+		// Instanciation de la Vue
+		$this->fViewC = new ForumViewController();
+		
 	}
 	
 	
@@ -29,67 +42,47 @@ class ForumController
 	**/
 	public function afficherListeForums()
 	{
-		// Instanciation du ForumDao
-		$fDao = new ForumDao($this->db);
-		
+
 		// Récupération de la liste des forums en tableau d'objet
-		$forumListe = $fDao->getForums();
+		$forumListe = $this->fDao->getForums();
 		
-		
-		
-		/*
-		*	Génération de la liste des forums
-		*/
-		ob_start();	// Début de l'interception
-
-			$taille = count($forumListe);
-			
-			echo '<ul>';
-			for($i=0; $i<$taille; $i++)
-			{
-				echo '<li>';
-				$tplForum = $forumListe[$i];
-				include('view/forum/forum.php');
-				echo '</li>';
-			}
-			echo '<ul>';
-	
-		$tplIndexForum['body'] 	= ob_get_clean();		// Fin de l'interception
-
-		// Initialisation du template
-		$tplIndexForum['titre'] 	= 'TitrePageForum';
-		
-		// Affichage du template
-		require_once('template/index.forum.php');
+		// Appel le controller de la vue du Forum qui renvoi le code HTML de la liste des forums
+		return $this->fViewC->getViewForumListe($forumListe);
 	}
-	
-	
 	
 	/**
-	*	Afficher la liste des sujets d'un forum
+	*	Get Forum
+	*		Récupère le Forum du Sujet
 	*
 	**/
-	public function afficherListeSujets($forumId)
+	public function getForumbyId($forumId)
 	{
-		$strRetour = 'Liste des Sujets du forum : '.$forumId;
+		// Récupération du forumId
+		$forumId = $this->fDao->getForum($forumId);
 		
-		return $strRetour;
+		// Retourne l'Id du Forum du Sujet
+		return $forumId;
+
 	}
-	
-	
+
 	
 	/**
-	*	Afficher la liste des messages d'un sujet
+	*	Afficher les informations du Header quand un forum est affiché
 	*
 	**/
-	public function afficherListeMessages($sujetId)
+	public function getInfoHeader($forumId = 0)
 	{
-		$strRetour = 'Liste des Messages du Sujet : '.$sujetId;
+		if($forumId != 0 ){
+			// Récupération du Forum
+			$forum = $this->fDao->getForum($forumId);
+		} else {
+			$forum = 0;
+		}
+
+		// Récupère le chemin du Forum
+		return $this->fViewC->getViewForumHeader($forum);	
 		
-		return $strRetour;
 	}
-	
-	
 	
 }
 

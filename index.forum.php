@@ -1,6 +1,11 @@
 <?php
 ini_set('display_errors', 1);
 
+function checkDroit()
+{
+	return true;
+}
+
 /*
 *
 *	CONFIGURATION
@@ -23,21 +28,6 @@ ini_set('display_errors', 1);
 	);
 	// $db = new CConnexion();
 
-	// Objet	
-	require_once('model/Forum.php');
-	require_once('model/Sujet.php');
-	require_once('model/Message.php');
-
-	// DAO des objets
-	require_once('dao/ForumDao.php');
-	require_once('dao/SujetDao.php');
-	require_once('dao/MessageDao.php');
-
-	// Coeur du forum
-	require_once('controller/ForumsController.php');
-	require_once('controller/ForumController.php');
-	require_once('controller/SujetController.php');
-	require_once('controller/MessageController.php');
 
 
 	// DEBUG

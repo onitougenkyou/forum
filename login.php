@@ -27,7 +27,7 @@ if(isset($_POST['btn-login']))
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <title>Connexion : cleartuts</title>
-  <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"  />
+  <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css"  />
   <link rel="stylesheet" href="login/style.css" type="text/css"  />
 </head>
 <body>

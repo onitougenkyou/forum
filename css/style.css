@@ -25,8 +25,8 @@ html, body
 a{
 	color:#333333;
 }
-.block-entete, 
-.block-nav, 
+.block-entete,
+.block-nav,
 .block-centre,
 .block-pied
 {
@@ -64,7 +64,7 @@ a{
 }
 
 .block-nav .menu a
-{	
+{
 	padding:0.5em 1em 0.5em 1em;
 	display:inline-block;
 	color:#cbcbcb;
