@@ -16,7 +16,16 @@ class ForumsController
 	private $db;
 	private $action;
 	private $var;
-	 
+	
+	private $fC;		// Forum Controlleur
+	private $sC;		// Sujet Controlleur
+	private $mC;		// Message Controlleur
+	private $fvC;		// Forum View Controlleur
+	
+	private $html;	// Code HTML du forum
+	
+	
+	
 	/**
 	*	Constructeur
 	*		Appel les autres constructeurs en fonction des paramètres recu
@@ -24,12 +33,15 @@ class ForumsController
 	public function __construct(CConnexion $db, $action = '', $var = '')
 	{
 
-		$this->db 		= $db;
-		$this->action 	= $action;
-		$this->var 		= $var;
+		$this->db 			= $db;
+		$this->action 		= $action;
+		$this->var 			= $var;
+		$this->html['body'] 	= '';
 
-		// Debug
-			echo 'Debug ForumsController : action='.$action.' & var='.$var.'<br>';
+		$this->fC = new ForumController($this->db);
+		$this->sC = new SujetController($this->db);
+		$this->mC = new MessageController($this->db);
+		$this->fvC = new ForumsViewController();
 	}
 	
 	
@@ -48,11 +60,11 @@ class ForumsController
 		if( $this->action == '' 
 			|| ( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) 
 			) {
-			// On affiche la liste des forums
-			echo '<h2>ForumController</h2>';
-			$fC = new ForumController($this->db);
-			return $fC->afficherListeForums();
+			
+			// Récupération de l'HTML
+			$this->html['body'] .= $this->fC->afficherListeForums();
 		}
+		
 		
 		
 		/*
@@ -61,10 +73,9 @@ class ForumsController
 				vue : sujets
 		*/
 		if( $this->action == Config::getInstance()->get('forum') && is_numeric($this->var) ) {
-			// On affiche la liste des sujets pour un forum donné
-			echo '<h2>SujetController</h2>';
-			$fS = new SujetController($this->db, $this->var);
-			return $fS->afficherListeSujets();
+			
+			// Récupération de l'HTML
+			$this->html['body'] .=  $this->sC->afficherListeSujets($this->var);
 		}
 		
 		
@@ -75,15 +86,81 @@ class ForumsController
 				vue messages		
 		*/
 		if( $this->action == Config::getInstance()->get('sujet') && is_numeric($this->var) ) {
-			// On affiche la liste des message pour un forum donné
-			echo '<h2>MessageController</h2>';
-			$fM = new MessageController($this->db, $this->var);
-			return $fM->afficherListeMessages();
+			
+			// Récupération de l'HTML
+			$this->html['body'] .= $this->mC->afficherListeMessages($this->var);
+		}
+
+	}
+	
+	
+	
+	/**
+	*	get Info Header
+	*		Génére le code HTML du forum_bandeau en fonction de la page appelée
+	*		Il contient l'emplacement de l'utilisateur
+	*		Par exemple
+	*			Forum
+	*			Forum / TitreForum
+	*			Forum / TitreForum / TitreSujet
+	*
+	**/
+	private function getInfoHeader()
+	{
+		$bandeauForumHTML = '';
+		
+		// Demande du header au Forum, doit normalement renvoyer 'Forum'
+		$bandeauForumHTML .= $this->fC->getInfoHeader();
+		
+		
+		if( is_numeric($this->var) ) {
+
+			// Si action = forum
+			if( $this->action == Config::getInstance()->get('forum') ) {
+				$bandeauForumHTML .= $this->fC->getInfoHeader($this->var);
+			}
+			
+			// Si action = sujet
+			if( $this->action == Config::getInstance()->get('sujet') ) {
+			
+				// Récupère le forum_id du sujet a partir de l'Id du Sujet
+				$sujet = $this->sC->getSujet($this->var);
+
+				// On doit trouver l'Id du forum dans lequel le sujet est contenu
+				$bandeauForumHTML .= $this->fC->getInfoHeader($sujet->getForumId());
+				
+				// Puis on affiche le sujet
+				$bandeauForumHTML .= $this->sC->getInfoHeader($this->var);
+			}
 		}
 		
 		
-		
+		// Enregistrement de l'HTML
+		return $bandeauForumHTML;
 	}
 	
+	
+	
+	/**
+	*	get HTML
+	*		Renvoi l'ensemble du code HTML avec le template général du Forum
+	*
+	**/
+	public function getHTML()
+	{
+		// Génération du bandeau et enregistrement
+		$this->html['forums_bandeau'] = $this->getInfoHeader();
+		
+		// Renvoi le code HTML généré a partir d'HTML réceptionné par ForumsController
+		$dataHTML = $this->fvC->CreatePage($this->html);
+		
+		// Page complete du site
+		return $dataHTML;
+		 
+	}
+	
+	
+	
+
 	
 }

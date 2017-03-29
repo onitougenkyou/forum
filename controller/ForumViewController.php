@@ -2,7 +2,7 @@
 
 /**
 *
-*	Forums View Controleur
+*	Forum View Controleur
 *		Gère la transition entre les variables et les vues
 *
 * @user Cedric
@@ -42,7 +42,9 @@ class ForumViewController
 		return $dataHTML;
 
 	}
-
+	
+	
+	
 	/*
 	*	Get View Forum
 	*		Renvoi le code HTML d'un forum
@@ -60,6 +62,29 @@ class ForumViewController
 		
 		// Fin de l'interception
 		$dataHTML = ob_get_clean();
+		return $dataHTML;
+	}
+
+	
+	/*
+	*	Get View Forum Header
+	*		Renvoi le lien d'un forum (utile surtout en cas de sous forum)
+	*
+	*/
+	public function getViewForumHeader($forum)
+	{
+		$dataHTML = '';
+		
+		// Si $forum est un objet, on renvoi le titre
+		if(is_object($forum)){
+			// On affiche le lien du forum
+			$dataHTML .= ' / <a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('forum').'&var='.$forum->getId().'">'.$forum->getTitre().'</a>';
+		
+		} else {
+			// Sinon, on affiche Forum car sans paramètre, on est forcement a la racine
+			$dataHTML .= '<a href="?page='.Config::getInstance()->get('forums').'">Forum</a>';
+		}
+		
 		return $dataHTML;
 	}
 

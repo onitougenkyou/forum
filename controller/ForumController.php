@@ -17,7 +17,6 @@ class ForumController
 	private $fViewC;	// Forum View Controller
 	
 	
-	
 	/**
 	*	Constructeur
 	*
@@ -49,7 +48,40 @@ class ForumController
 		
 		// Appel le controller de la vue du Forum qui renvoi le code HTML de la liste des forums
 		return $this->fViewC->getViewForumListe($forumListe);
+	}
+	
+	/**
+	*	Get Forum
+	*		Récupère le Forum du Sujet
+	*
+	**/
+	public function getForumbyId($forumId)
+	{
+		// Récupération du forumId
+		$forumId = $this->fDao->getForum($forumId);
+		
+		// Retourne l'Id du Forum du Sujet
+		return $forumId;
 
+	}
+
+	
+	/**
+	*	Afficher les informations du Header quand un forum est affiché
+	*
+	**/
+	public function getInfoHeader($forumId = 0)
+	{
+		if($forumId != 0 ){
+			// Récupération du Forum
+			$forum = $this->fDao->getForum($forumId);
+		} else {
+			$forum = 0;
+		}
+
+		// Récupère le chemin du Forum
+		return $this->fViewC->getViewForumHeader($forum);	
+		
 	}
 	
 }

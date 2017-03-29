@@ -10,11 +10,12 @@
 **/
 class SujetViewController
 {
-		
+	
+	
 	
 	/*
 	*	Get View Forum Liste
-	*		
+	*		Renvoi le code HTML de la liste des sujets
 	*
 	*/
 	public function getViewSujetListe($data)
@@ -42,6 +43,27 @@ class SujetViewController
 
 
 	}
+	
+	
+	
+	/*
+	*	Get View Forum Header
+	*		Renvoi le lien d'un forum (utile surtout en cas de sous forum)
+	*
+	*/
+	public function getViewSujetHeader($sujet)
+	{
+	
+		$dataHTML = ' / ';
+		
+		// Si $forum est un objet, on renvoi le titre
+		if(is_object($sujet)){
+			$dataHTML .= '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('sujet').'&var='.$sujet->getId().'">'.$sujet->getTitre().'</a>';
+		}
+		
+		return $dataHTML;
+	}
+
 
 
 }	

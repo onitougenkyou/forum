@@ -41,16 +41,56 @@ class SujetController
 	*	Afficher la liste des sujets
 	*
 	**/
-	public function afficherListeSujets()
+	public function afficherListeSujets($forumId)
 	{
 
 		// Récupération de la liste des forums en tableau d'objet
-		$sujetListe = $this->sDao->getSujets();
+		$sujetListe = $this->sDao->getSujets($forumId);
 		
 		// Appel le controller de la vue des Sujets qui renvoi le code HTML de la liste des sujets
 		return $this->sViewC->getViewSujetListe($sujetListe);
 
 	}
+	
+	
+	
+	/**
+	*	Afficher les informations du forum_bandeau quand un sujet est affiché
+	*
+	**/
+	public function getInfoHeader($sujetId = 0)
+	{
+		if($sujetId != 0 ){
+			// Récupération du Forum
+			$sujet = $this->sDao->getSujet($sujetId);
+			
+		} else {
+			$sujet = 0;
+		}
+
+		// Récupère le chemin du Forum
+		return $this->sViewC->getViewSujetHeader($sujet);	
+		
+	}
+	
+	
+	
+	/**
+	*	Get Sujet
+	*		Passe plat pour le ForumsController
+	*
+	**/
+	public function getSujet($sujetId)
+	{
+		// Récupération du forumId
+		$sujet = $this->sDao->getSujet($sujetId);
+		
+		// Retourne l'Id du Forum du Sujet
+		return $sujet;
+
+	}
+	
+	
 	
 }
 
