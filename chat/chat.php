@@ -22,41 +22,28 @@ file_put_contents('chat.txt', $leFichier); //On écrit le contenu du tableau $le
   <meta charset="UTF-8">
   <title>Chat jQuery</title>
   <script type="text/javascript" src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
-  <style type="text/css">
-  #conversation {
-    width: 300px;
-    height: 400px;
-    border: black 1px solid;
-    background-color: #efecca;
-    overflow-x: hidden;
-    overflow-y: scroll;
-    padding: 5px;
-    margin-left: 10px;
-  }
-  fieldset {
-    width: 330px;
-    background-color: #e6e2af;
-    border: black 1px solid;
-  }
-  </style>
+    <link rel="stylesheet" href="../css/tchatStyle.css" type="text/css"  />
 </head>
 
 <body>
   <?php include ('../header.html'); ?>
-  <fieldset>
-    <legend>Chat</legend>
+
+  <h1><?php print($user->data['user_name']); ?></h1>
+  <fieldset id="cadre">
     <div id="conversation"></div><br />
     <form action="#" method="post">
       <input type="text" id="message" size="27">
       <button type="button" id="envoyer" title="Envoyer">Send</button>
     </form>
   </fieldset>
+
   <script>
   $(function() {
     afficheConversation();
 
+
     $('#envoyer').click(function() {
-      var nom = $('#nom').val();
+      var nom = $('#nom').val() ;
       var message = $('#message').val();
       var date = new Date();
       heure = date.getHours();

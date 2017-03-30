@@ -1,12 +1,7 @@
 <?php
 include_once('../login/verif.php');
 
-$user_id = $_SESSION['user_session'];
-$stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
-$stmt->execute(array(":user_id"=>$user_id));
-$userRow=$stmt->fetch(PDO::FETCH_ASSOC);
-
-$nom = $userRow['user_name'];
+$nom = print($user->data['user_name']);
 $date = $_POST['date'];
 $min = $_POST['min'];
 $sec = $_POST['seconde'];       //On récupère le pseudo et on le stocke dans une variable

@@ -15,7 +15,7 @@ class USER
         $stmt->execute(array(":user_id"=>$user_id));
         $this->data = $stmt->fetch(PDO::FETCH_ASSOC);
 
-        var_dump($this);
+        // var_dump($this);
 
       } else {
         $this->data = [];
