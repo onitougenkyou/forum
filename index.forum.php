@@ -1,6 +1,14 @@
 <?php
 ini_set('display_errors', 1);
 
+/*
+	0	Visiteur
+	1	Membre
+	2	Modérateur
+	3	Admin
+	4	SuperAdmin
+
+*/
 function checkDroit($int = 1)
 {
 	if($int = 1)	return true;
@@ -13,6 +21,7 @@ function checkDroit($int = 1)
 *
 */
 	// Variable du site
+	require_once('tools/Debug.php');
 	require_once('tools/Config.php');
 	require_once('tools/Request.php');			// Traitement des Get/Post
 
@@ -29,8 +38,6 @@ function checkDroit($int = 1)
 		Config::getInstance()->get('pass')
 	);
 
-	// DEBUG
-	set_error_handler(array('GestionErreur', 'erreurPDO'));
 
 	
 /*
