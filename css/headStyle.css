@@ -2,8 +2,11 @@
 body {
   font-family: 'Macondo', cursive;
   background-color: #2C1706;
+  color : white;
+  text-align: center;
 }
   @import url("profilvuStyle.css");
+  @import url("forums.css");
 
 /*----------------- BLOCK HEADER ------------*/
 
@@ -22,6 +25,7 @@ body {
   position: absolute;
   margin-left: 41%;
   margin-top: -10%;
+  text-align: center;
 }
 
 #coloneD {
