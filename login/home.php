@@ -14,6 +14,8 @@ if(!$user->is_loggedin())
   <link rel="stylesheet" href="bootstrap/css/bootstrap.min.css" type="text/css"  />
   <link rel="stylesheet" href="style.css" type="text/css"  />
 
+
+
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
   <!-- <link rel="stylesheet" href="../bootstrap/css/bootstrap.min.css" type="text/css"  /> -->
   <link rel="stylesheet" href="../css/homeStyle.css" type="text/css"  />
@@ -22,7 +24,7 @@ if(!$user->is_loggedin())
 </head>
 
 <body>
-  <?php include ('../header.html'); ?>
+  <?php include ('../header.php'); ?>
   <div class="block-body">
     <div class="container">
       <div class="row">
@@ -42,4 +44,6 @@ if(!$user->is_loggedin())
       </div>
     </div>
   </body>
+
+
   </html>
