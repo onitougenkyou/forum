@@ -72,10 +72,17 @@ class Request
 	**/
 	public function get($var)
 	{
-		if( isset($this->request[$var]) && !empty($this->request[$var]) ){
+		if( isset($this->request[$var]) && !empty($this->request[$var]) ) {
+			// Si la variable a déjà été récupéré (page, action ou var)
 			return $this->request[$var];
 		} else {
-			return null;
+			// Sinon, on récupére a la volé
+			// TODO : A sécuriser, htmlspecialchars & Config::getInstance()->get('cleFormulaire') ?
+			if( isset($_POST[$var]) && !empty($_POST[$var]) ) {
+				return $_POST[$var];
+			} else {
+				return null;
+			}
 		}
 	}
 }
