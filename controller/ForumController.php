@@ -40,7 +40,7 @@ class ForumController
 	*	Afficher la liste de forums
 	*
 	**/
-	public function afficherListeForums()
+	public function afficherListe()
 	{
 
 		// Récupération de la liste des forums en tableau d'objet

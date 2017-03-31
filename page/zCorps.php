@@ -6,10 +6,14 @@
   </head>
   <body>
     <?php include '../controller/pagesController.php'; ?>
+<<<<<<< HEAD
       <?php include ('../header.php'); ?>
+=======
+    <?php include ('../header.php'); ?>
+>>>>>>> 9a50d218a764eea551990e723ca6eaf1184127d9
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
-      <img src="http://www.ajdr.org/wp-content/uploads/2012/01/flickr-3297910747-original-1024x747.jpg" class="image Z-corps"></br>
+      <img src="../imagesForum/pagesJdr/pageZcorps.jpg" class="image Z-corps"></br>
       <p><strong> Z-Corps </strong> est un jeu d'horreur proposant aux joueurs de faire face à une apocalypse zombie
          aux Etats-Unis en 2012. Les auteurs ont souhaité retranscrire l'ambiance des films de zombies
          tels que Dawn of the dead, Diary of the dead, Rec, Bienvenue à Zombieland, ou encore 28 jours
@@ -33,11 +37,19 @@
 
       <?php
       $joueur1 = new Joueur();
+<<<<<<< HEAD
       $joueur1->getPseudo("jean");
       $joueur2 = new Joueur();
       $joueur2->getPseudo("michel");
       $joueur3 = new Joueur();
       $joueur3->getPseudo("audrey");
+=======
+      $joueur1->setPseudo("jean");
+      $joueur2 = new Joueur();
+      $joueur2->setPseudo("michel");
+      $joueur3 = new Joueur();
+      $joueur3->setPseudo("audrey");
+>>>>>>> 9a50d218a764eea551990e723ca6eaf1184127d9
       $tableauJoueursZcorps[] = $joueur1;
       $tableauJoueursZcorps[] = $joueur2;
       $tableauJoueursZcorps[] = $joueur3;

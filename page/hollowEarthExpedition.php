@@ -5,10 +5,11 @@
     <title> Hollow Earth Expedition </title>
   </head>
   <body>
-    <?php include 'controller/pagesController.php'; ?>
+    <?php include '../controller/pagesController.php'; ?>
+    <?php include ('../header.php'); ?>
     <div class="block-text">
       Hollow Earth Expedition </br><!-- EN ENORME MAGGLE -->
-      <img src="https://lh3.googleusercontent.com/proxy/54t3MvwlrK1jBH6qp-cx2ZY4pbRTv6U8ftl8EtNtob6NcSm7uHb3hcsalUx46Y9jXDy-mQeKr2PjgDf36i6mI6t6ENOPH9ovAPSEqod-SkceM0CaNsZxlBRfrCmTxJar457qBrEvQdi7HlgTvJIVzmCagf2k=w512-h254-p" class="image Super Cops"></br>
+      <img src="../imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
       <p><strong> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
       l'époque troublée de la grande dépression, à la découverte de terres mystérieuses fourmillant
       de secrets, de monstres... et de nazis !</p>
@@ -24,7 +25,7 @@
       propose ce jeu car il est maléable et s'adapte parfaitement au jeux de rôle médiéval fantastique
       dont nous avons l'habitude de jouer.</p>
       <p> Nos parties actuelle basé sur ce support sont "Celtic" un univers qui porte nos personnages
-      dans un univers bercé par de nombreuse légendes celte.
+      dans un univers bercé par de nombreuses légendes celte.
       et une autre partie qui nous ammène au monde d'aujourd'hui où ange et démon sont enfermé ... sur terre
       et où il ne fais pas bon vivre quand on est humain !</p>
       Celtic est masterisé par <?php //joueur Jimmy ?> </br>
@@ -39,11 +40,11 @@
 
       <?php
       $joueur1 = new Joueur();
-      $joueur1->Pseudo("jean");
+      $joueur1->setPseudo("jean");
       $joueur2 = new Joueur();
-      $joueur2->Pseudo("michel");
+      $joueur2->setPseudo("michel");
       $joueur3 = new Joueur();
-      $joueur3->Pseudo("audrey");
+      $joueur3->setPseudo("audrey");
       $tableauJoueursZcorps[] = $joueur1;
       $tableauJoueursZcorps[] = $joueur2;
       $tableauJoueursZcorps[] = $joueur3;
@@ -70,7 +71,7 @@
         }
         ?>
         <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueur_pseudo?><br>
+            <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
     <a href="Partie.php">Retour</br>

@@ -5,6 +5,8 @@
 *		Singleton
 *		Pour la récupération de la configuration du site
 *
+* @user Cedric
+* @date 2017.03.18
 */
 
 class Config
@@ -18,7 +20,7 @@ class Config
 	*	Constructeur
 	*
 	**/
-	public function __construct()
+	private function __construct()
 	{
 		$this->settings = require_once(dirname(__DIR__).'/config/configuration.php');
 		
@@ -52,6 +54,20 @@ class Config
 			return $this->settings[$var];
 		} else {
 			return null;
+		}
+	}
+	
+	
+	
+	/**
+	*	Set valeur
+	*		Stocke des valeurs 
+	**/
+	public function set($var = '', $valeur = '')
+	{
+		if($var != ''){
+			if( empty($this->settings[$var]) )	$this->settings[$var] = $valeur;
+			else								$this->settings[$var] .= $valeur;
 		}
 	}
 }

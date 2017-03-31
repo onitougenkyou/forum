@@ -1,13 +1,23 @@
 <div class="message">
-	<div class="auteur">
-		<?php echo $message->getAuteur(); ?>
+	<div class="utilisateur">
+		<p class="pseudo">
+			<?php echo $message->getAuteur(); ?>
+		</p>
+		
+		<div class="avatar">
+			<img src="">
+		</div>
 	</div>
-	<div class="message">
-		<h2>
+	<div class="contenu">
+		<p class="titre">
 			<?php echo $message->getTitre(); ?>
-		</h2>
-		<p>
+		</p>
+		<p class="texte">
 			<?php echo $message->getTexte(); ?>
 		</p>
+		<div class="lien">
+			<a href="">Modifier</a>
+			<a href="">Supprimer</a>
+		</div>
 	</div>
 </div>

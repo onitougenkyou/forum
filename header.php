@@ -35,7 +35,7 @@
           <li class="dropdown">
             <a href="#" id="btn-Menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="#"><label id="jdr">JDR</label></a></li>
+              <li><a href="../page/partie.php"><label id="jdr">JDR</label></a></li>
               <li><a href="#"><label id="forum">Forum</label></a></li>
               <li><a href="facebook.com"><label id="facebook">Facebook</label></a></li>
               <li><a href="#"><label id="contact">contactez</label></a></li>
