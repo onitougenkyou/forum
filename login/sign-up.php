@@ -127,7 +127,7 @@ if(isset($_POST['btn-signup']))
           </button>
         </div>
         <br />
-        <label>Possède un compte ! <a href="home.php">Se connecter</a></label>
+        <label id='end'>Possède un compte ! <a href="home.php">Se connecter</a></label>
       </form>
     </div>
   </div>
