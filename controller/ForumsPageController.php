@@ -52,7 +52,7 @@ class ForumsPageController
 	*	Forum Liste
 	*		Page qui affiche la liste des Forums
 	**/
-	public function ForumListe()
+	public function forumListe()
 	{
 		$this->html['body'] = $this->fC->afficherListe();
 	}
@@ -63,7 +63,7 @@ class ForumsPageController
 	*	Forum Ajout
 	*		Page qui gère l'ajout des forums
 	**/
-	public function ForumAjout()
+	public function forumAjout()
 	{
 		
 	}
@@ -74,9 +74,9 @@ class ForumsPageController
 	*	Sujet Liste
 	*		Page qui affiche la liste des Sujets
 	**/
-	public function SujetListe()
+	public function sujetListe($forumId)
 	{
-		$this->html['body'] =  $this->sC->afficherListe($this->var);
+		$this->html['body'] =  $this->sC->afficherListe($forumId);
 	}
 	
 	
@@ -85,7 +85,7 @@ class ForumsPageController
 	*	Sujet ajout
 	*		Page qui gère l'ajout des sujets
 	**/
-	public function SujetAjout()
+	public function sujetAjout()
 	{
 		
 	}
@@ -93,12 +93,23 @@ class ForumsPageController
 	
 	
 	/**
-	*	Forum Liste
+	*	Message Liste
 	*		Page qui affiche la liste des Message
 	**/
-	public function MessageListe()
+	public function messageListe($sujetId)
 	{
-		$this->html['body'] .=  $this->mC->afficherListe($this->var);
+		$this->html['body'] .=  $this->mC->afficherListe($sujetId);
+	}
+	
+
+	
+	/**
+	*	Message supprimer
+	*		Page qui affiche la liste des Message
+	**/
+	public function messageSupprimer()
+	{
+		$this->html['body'] .=  $this->mC->supprimer($this->var);
 	}
 	
 
@@ -107,7 +118,7 @@ class ForumsPageController
 	*	Message Ajout
 	*		Affiche le formulaire pour ajouter un Message
 	**/
-	public function MessageAfficherFormulaire($sujetId, $messageId)
+	public function messageAfficherFormulaire($sujetId, $messageId)
 	{
 		$this->html['body'] = $this->mC->afficherFormulaire($sujetId, $messageId);
 	}
@@ -115,11 +126,13 @@ class ForumsPageController
 	
 	/**
 	*	Message Traitement
-	*		Page qui gère le traitement des messages (enregistrement)
+	*		Page qui gère le traitement des messages
+	*		Si on trouve un ID dans le POST, c'est une modification
+	*		Si non, un enregistrement
 	**/
-	public function MessageRecuTraitement()
+	public function messageRecuTraitement()
 	{
-		$this->html['body'] = $this->mC->traiterFormulaire($this->var);
+		$this->html['body'] = $this->mC->traiterFormulaire();
 	}
 	
 	
@@ -146,13 +159,12 @@ class ForumsPageController
 
 			// Si action = forum
 			if( $this->action == Config::getInstance()->get('forum') ) {
+				// On affiche le bandeau du forum 
 				$bandeauForumHTML .= $this->fC->getInfoHeader($this->var);
-			}
-			
-			// Si action = sujet
-			if( $this->action == Config::getInstance()->get('sujet') ||
-				$this->action == Config::getInstance()->get('ajoutMessage') ) {
-			
+				
+			} else {
+				// Sinon partout
+				
 				// Récupère le forum_id du sujet a partir de l'Id du Sujet
 				$sujet = $this->sC->getSujet($this->var);
 
