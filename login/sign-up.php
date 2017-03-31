@@ -34,7 +34,7 @@ if(isset($_POST['btn-signup']))
     $error[] = 'Il faut une majuscule';
   }
   elseif ( ! preg_match("~[0-9]~", $upass) ){
-   $error[] = 'Il faut un nombre';
+    $error[] = 'Il faut un nombre';
   }
   else if(strlen($upass) < 6){
     $error[] = "Le mot de passe doit contenir 6 caractères minimum";
@@ -79,10 +79,14 @@ if(isset($_POST['btn-signup']))
   <link rel="stylesheet" href="style.css" type="text/css"  />
 </head>
 <body>
-  <div class="container">
+
+  <div id="image-background">
+    <img src="../imagesForum/spectre.jpeg" class="img-responsive" alt="Spectre">
+  </div>
+  <div id="formInscription" class="container">
     <div class="form-container">
       <form method="post">
-        <h2>Sign up.</h2><hr />
+        <h2>Inscription.</h2><hr />
         <?php
         if(isset($error))
         {
