@@ -7,6 +7,11 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="../css/headStyle.css" type="text/css"  />
+  <script src="../Plugin-chat/dist/tools.js"></script>
+  <script src="../Plugin-chat/dist/plugin.js"></script>
+    <link rel="stylesheet" href="../css/tchat.css" type="text/css"  />
+    <link rel="stylesheet" href="../css/profilVuStyle.css" type="text/css"  />
+
 </head>
 <body>
 
@@ -50,5 +55,18 @@
     <img src="../imagesForum/navbar/tete.png" class="img-responsive" alt="crane">
   </div>
 
+  <!-- <div id= "coloneD">
+    <img src="../imagesForum/colone.png" class="img-responsive" alt="Colonne">
+  </div>
+  <div id="coloneG">
+    <img src="../imagesForum/colone.png" class="img-responsive" alt="Colonne">
+  </div> -->
+
+  <script type="text/javascript">
+$(document).ready(function(){
+  $.chat().appendTo(document.body);
+})
+
+</script>
 </body>
 </html>
