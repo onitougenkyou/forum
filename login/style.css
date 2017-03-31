@@ -25,6 +25,7 @@ h2
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-image: -webkit-linear-gradient(top,#000 0,#e2a233 38%,#351202 60%,#000 86%,#000 100%);
+
   background-size: 1em 1em;
   color:#C03000;
   text-align: center;
@@ -34,7 +35,8 @@ h2
   width:500px;
   margin:0 auto;
   /*background:rgb(97,117,91);*/
-  background-image: -webkit-linear-gradient(top,rgb(194,226,179) 0,rgb(97,117,91) 38%,rgb(194,226,179) 60%,rgb(141,162,136) 86%,rgb(67,81,64) 100%);
+  /*background-image: -webkit-linear-gradient(top,rgb(194,226,179) 0,rgb(97,117,91) 38%,rgb(194,226,179) 60%,rgb(141,162,136) 86%,rgb(67,81,64) 100%);*/
+    background: transparent;
   padding: 25px;
   box-shadow: 0px 7px 5px rgba(0,0,0,0.4);
   border-radius:3px;
@@ -50,10 +52,13 @@ label
   font-family:'Macondo', cursive;
   color:#000;
 }
+#end {
+  color : #fff;
+}
 a
 {
   text-decoration:underline;
-  color: black;
+  color: #fff;
 }
 
 .form-container input {
@@ -86,4 +91,5 @@ a
     position: absolute;
     margin-left: -595px;
     top: 6%;
+      background: transparent;
 }
