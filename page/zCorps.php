@@ -5,7 +5,7 @@
     <title> ZCorps </title>
   </head>
   <body>
-    <?php include 'controller/pagesController.php'; ?>
+    <?php include '../controller/pagesController.php'; ?>
       <?php include ('../header.php'); ?>
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
@@ -33,11 +33,11 @@
 
       <?php
       $joueur1 = new Joueur();
-      $joueur1->Pseudo("jean");
+      $joueur1->getPseudo("jean");
       $joueur2 = new Joueur();
-      $joueur2->Pseudo("michel");
+      $joueur2->getPseudo("michel");
       $joueur3 = new Joueur();
-      $joueur3->Pseudo("audrey");
+      $joueur3->getPseudo("audrey");
       $tableauJoueursZcorps[] = $joueur1;
       $tableauJoueursZcorps[] = $joueur2;
       $tableauJoueursZcorps[] = $joueur3;
@@ -64,7 +64,7 @@
         }
         ?>
         <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueur_pseudo?><br>
+            <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
     <a href="Partie.php">Retour</br>
