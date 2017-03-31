@@ -35,8 +35,8 @@ if(isset($_POST['btn-login']))
     <img src="imagesForum/spectre.jpeg" class="img-responsive" alt="Spectre">
   </div>
 
-  <div class="container">
-    <div class="form-container">
+  <div id="connexion" class="container">
+    <div id="infoConnexion" class="form-container">
       <form method="post">
         <h2>Connexion.</h2><hr />
         <?php
