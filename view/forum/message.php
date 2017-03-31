@@ -16,8 +16,8 @@
 			<?php echo $message->getTexte(); ?>
 		</p>
 		<div class="lien">
-			<a href="">Modifier</a>
-			<a href="">Supprimer</a>
+			<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&action=<?php echo Config::getInstance()->get('modifMessage'); ?>&var=<?php echo $message->getId(); ?>">Modifier</a>
+			<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&action=<?php echo Config::getInstance()->get('supprMessage'); ?>&var=<?php echo $message->getId(); ?>">Supprimer</a>
 		</div>
 	</div>
 </div>
