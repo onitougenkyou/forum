@@ -12,9 +12,10 @@
 
 	// Coeur du forum
 	require_once('controller/ForumsController.php');
-	require_once('controller/ForumController.php');
-	require_once('controller/SujetController.php');
-	require_once('controller/MessageController.php');
+	require_once('controller/ForumsPageController.php');
+		require_once('controller/ForumController.php');
+		require_once('controller/SujetController.php');
+		require_once('controller/MessageController.php');
 
 	// Vues du forum
 	require_once('controller/ForumsViewController.php');
@@ -22,12 +23,14 @@
 	require_once('controller/SujetViewController.php');
 	require_once('controller/MessageViewController.php');
 
+	// DEBUG
+	set_error_handler(array('GestionErreur', 'erreurPDO'));
 
 	// Création du controller & envoi de $action et $var 
-	$fsC = new ForumsController($db, Request::getInstance()->get('action'), Request::getInstance()->get('var'));
+	$fsC = new ForumsController($db);
 	
 	// Génère la page forum a partir du code généré par les différentes vues
-	$fsC->getPageController();
+	$fsC->createPage();
 	
 	// Affichage
 	echo $fsC->getHTML();
