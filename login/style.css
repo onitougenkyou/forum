@@ -8,7 +8,12 @@ body {
   background: #000;
   text-align: center;
 }
-.container
+#image-background{
+  background: black;
+  margin-left: 12.5%;
+  margin-top: -12%;
+}
+#connexion
 {
   position: absolute;
   margin-top:-45%;
@@ -16,14 +21,15 @@ body {
 }
 h2
 {
+  margin: 5%;
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  background-image: -webkit-linear-gradient(top,#000 0,#e2a233 38%,#351202 60%,#000 86%,#fff 100%);
+  background-image: -webkit-linear-gradient(top,#000 0,#e2a233 38%,#351202 60%,#000 86%,#000 100%);
   background-size: 1em 1em;
   color:#C03000;
   text-align: center;
 }
-.form-container
+#infoConnexion,  .form-container
 {
   width:500px;
   margin:0 auto;
@@ -73,4 +79,11 @@ a
   color:#004567;
   width:800px;
   margin:0 auto;
+}
+
+#formInscription {
+    left: 50%;
+    position: absolute;
+    margin-left: -595px;
+    top: 6%;
 }
