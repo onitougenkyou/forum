@@ -11,8 +11,12 @@ body {
 /*-----------------BLOCK-BODY-----------------*/
 
 .block-body {
+  margin-top: 57%;
+  margin-left: 15%;
+  margin-bottom: -25%;
   text-align: center;
-    /*background-color: #2C1706;*/
+  color : white;
+  font-size : 1.2em;
 }
 .block-body .content {
   margin: 0 auto;
@@ -30,9 +34,4 @@ body {
   background-image: -o-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
   -o-background-clip: text;
   -o-text-fill-color: transparent;
-}
-
-.block-body {
-  color : white;
-  font-size : 1.2em;
 }

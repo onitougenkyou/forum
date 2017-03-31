@@ -7,7 +7,7 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])){
 
 ?>
 
-<div class="container profil">
+<div id="vuProfil"class="container profil">
   <div class="row">
     <div class="col-xs-12">
       <div class="infos-profil">

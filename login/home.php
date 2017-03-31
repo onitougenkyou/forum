@@ -33,7 +33,7 @@ if(!$user->is_loggedin())
             Bienvenue : <?php print($user->data['user_name']); ?>
           </div>
         </div>
-        <div class="row">
+        <div id="artice" class="row">
           <div class="col-xs-12 col-lg-6">
             <img src="../imagesForum/cavalier.jpg" class="img-responsive" alt="cavalier">
           </div>

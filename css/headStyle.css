@@ -23,14 +23,14 @@ body {
 
 #crane {
   position: absolute;
-  margin-left: 41%;
+  margin-left: 40.5%;
   margin-top: -10%;
   text-align: center;
 }
 
 #coloneD {
   position: absolute;
-  margin-left: -15%;
+  margin-left: 15%;
 }
 
 #coloneG {
@@ -65,7 +65,7 @@ body {
     background-image: none;
     background-repeat: no-repeat;
   }
-  .navbar-nav > li > .dropdown-menu a {
+  .navbar-nav > li > .dropdown-menu a label{
     color : #f8b700;
     background-color:#1D0F04;
   }

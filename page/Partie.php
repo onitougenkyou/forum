@@ -5,7 +5,7 @@
     <title> Partie </title>
   </head>
   <body>
-    <?php include ('../header.html'); ?>
+    <?php include ('../header.php'); ?>
 
     <div class="block-text">
        DESCRIPTION</br>   <!-- en maj et assez gros -->
