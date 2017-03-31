@@ -76,6 +76,7 @@
 			'ajoutSujet' 			=> 'ajoutSujet', 		// & var = id Forum
 			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id Sujet
 			'modifMessage' 		=> 'modifMessage', 	// & var = id Message
+			'supprMessage' 		=> 'supprMessage', 	// & var = id Message
 		'admin' 			=> 'admin'				// ??
 	);
 	
