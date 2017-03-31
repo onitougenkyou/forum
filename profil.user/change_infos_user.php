@@ -1,5 +1,5 @@
 <?php include_once '../login/verif.php';
-include('../header.html');
+include('../header.php');
 
 if(isset($_POST['btn-submit']))
 {
