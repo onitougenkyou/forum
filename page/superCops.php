@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php include '../controller/pagesController.php'; ?>
-    <?php include ('../header.html'); ?>
+    <?php include ('../header.php'); ?>
     <div class="block-text">
       Super Cops </br><!-- EN ENORME MAGGLE -->
       <img src="../imagesForum/pagesJdr/pageSuperCops.jpg" class="image Super Cops"></br>

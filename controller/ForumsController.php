@@ -14,153 +14,103 @@
 class ForumsController
 {
 	private $db;
+
 	private $action;
 	private $var;
-	
-	private $fC;		// Forum Controlleur
-	private $sC;		// Sujet Controlleur
-	private $mC;		// Message Controlleur
-	private $fvC;		// Forum View Controlleur
-	
-	private $html;	// Code HTML du forum
-	
+
+	private $fPageC;	// Forums Page Controlleur
 	
 	
 	/**
 	*	Constructeur
 	*		Appel les autres constructeurs en fonction des paramètres recu
 	**/
-	public function __construct(CConnexion $db, $action = '', $var = '')
+	public function __construct(CConnexion $db)
 	{
+		$this->db 		= $db;
+		$this->action		= Request::getInstance()->get('action');
+		$this->var		= Request::getInstance()->get('var');
+		
 
-		$this->db 			= $db;
-		$this->action 		= $action;
-		$this->var 			= $var;
-		$this->html['body'] 	= '';
-
-		$this->fC = new ForumController($this->db);
-		$this->sC = new SujetController($this->db);
-		$this->mC = new MessageController($this->db);
-		$this->fvC = new ForumsViewController();
 	}
 	
 	
 	
 	/**
 	*	getForumController
-	*		Appel le controlleur du forum
+	*		Appel Forums Page Controller
 	**/
-	public function getPageController()
+	public function createPage()
 	{
+		$this->fPageC 	= new ForumsPageController($this->db, $this->action, $this->var);
+		
 		/*
-			Affichage de la liste des forums
-				action = forum							
-				vue : forums
+		*	Affichage de la liste des forums			action = forum							
 		*/
-		if( $this->action == '' 
-			|| ( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) 
-			) {
-			
-			// Récupération de l'HTML
-			$this->html['body'] .= $this->fC->afficherListeForums();
+		if( $this->action == '' || 
+			( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) ) {
+			$this->fPageC->ForumListe();
 		}
 		
-		
-		
 		/*
-			Affichage d'un forum (liste sujet)
-				action = forum 			& var = z
-				vue : sujets
+		*	Affichage des sujets d'un forum 			action = forum 			& var = z
 		*/
 		if( $this->action == Config::getInstance()->get('forum') && is_numeric($this->var) ) {
-			
-			// Récupération de l'HTML
-			$this->html['body'] .=  $this->sC->afficherListeSujets($this->var);
+			$this->fPageC->SujetListe();
 		}
-		
-		
 		
 		/* 
-			Affichage d'un sujet (liste message)
-				action = sujet 			& var = z		
-				vue messages		
+		*	Affichage d'un sujet 			action = sujet 			& var = z		
 		*/
 		if( $this->action == Config::getInstance()->get('sujet') && is_numeric($this->var) ) {
-			
-			// Récupération de l'HTML
-			$this->html['body'] .= $this->mC->afficherListeMessages($this->var);
+			$this->fPageC->MessageListe();
 		}
-
+		
+		/* 
+		*	Ajouter/Modifier un Message			action = ajoutMessage || action = modifMessage ||  			& var = z
+		*		Vérification des droits
+		*/
+		if( ( $this->action == Config::getInstance()->get('ajoutMessage') || $this->action == Config::getInstance()->get('modifMessage') )
+			&& is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
+			
+			$messageId = 0;
+			$sujetId = 0;
+			
+			if( Request::getInstance()->get('formEnvoyer') == Config::getInstance()->get('cleFormulaire') ) {
+				// Traitement d'un formulaire
+				$this->fPageC->MessageRecuTraitement($this->var);
+				Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Traitement d\'un message');
+			
+			} else {
+				// Affichage du Formulaire
+				if( $this->action == Config::getInstance()->get('ajoutMessage') ) {
+					// Nouveau Message
+					$sujetId = $this->var;
+					Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Nouveau message');
+					
+				} else {
+					// Modification
+					$messageId = $this->var;
+					Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Modification d\'un message');
+					
+				}
+				$this->fPageC->MessageAfficherFormulaire($sujetId, $messageId);
+			}
+		}
+		
 	}
 	
 	
 	
-	/**
-	*	get Info Header
-	*		Génére le code HTML du forum_bandeau en fonction de la page appelée
-	*		Il contient l'emplacement de l'utilisateur
-	*		Par exemple
-	*			Forum
-	*			Forum / TitreForum
-	*			Forum / TitreForum / TitreSujet
-	*
-	**/
-	private function getInfoHeader()
-	{
-		$bandeauForumHTML = '';
-		
-		// Demande du header au Forum, doit normalement renvoyer 'Forum'
-		$bandeauForumHTML .= $this->fC->getInfoHeader();
-		
-		
-		if( is_numeric($this->var) ) {
-
-			// Si action = forum
-			if( $this->action == Config::getInstance()->get('forum') ) {
-				$bandeauForumHTML .= $this->fC->getInfoHeader($this->var);
-			}
-			
-			// Si action = sujet
-			if( $this->action == Config::getInstance()->get('sujet') ) {
-			
-				// Récupère le forum_id du sujet a partir de l'Id du Sujet
-				$sujet = $this->sC->getSujet($this->var);
-
-				// On doit trouver l'Id du forum dans lequel le sujet est contenu
-				$bandeauForumHTML .= $this->fC->getInfoHeader($sujet->getForumId());
-				
-				// Puis on affiche le sujet
-				$bandeauForumHTML .= $this->sC->getInfoHeader($this->var);
-			}
-		}
-		
-		
-		// Enregistrement de l'HTML
-		return $bandeauForumHTML;
-	}
-	
-	
-	
-	/**
+	/*
 	*	get HTML
 	*		Renvoi l'ensemble du code HTML avec le template général du Forum
 	*
-	**/
+	*/
 	public function getHTML()
 	{
 		// Génération du bandeau et enregistrement
-		$this->html['forums_bandeau'] = $this->getInfoHeader();
-		
-		// Renvoi le code HTML généré a partir d'HTML réceptionné par ForumsController
-		$dataHTML = $this->fvC->CreatePage($this->html);
-		
-		// Page complete du site
-		return $dataHTML;
-		 
+		return $this->fPageC->getHTML();
 	}
-	
-	
-	
-
 	
 }

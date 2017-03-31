@@ -41,7 +41,7 @@ class SujetController
 	*	Afficher la liste des sujets
 	*
 	**/
-	public function afficherListeSujets($forumId)
+	public function afficherListe($forumId)
 	{
 
 		// Récupération de la liste des forums en tableau d'objet

@@ -37,6 +37,30 @@
 
 
 /*
+*	Droit
+*	
+*/
+	$droit = array (
+		
+		// page
+		'Visiteur' 		=> 0,
+		'Membre' 		=> 1,
+		'Modérateur' 		=> 2,
+		'Admin'			=> 3,
+		'SuperAdmin' 		=> 4		 
+	);
+
+/*
+*	Configuration
+*	
+*/
+	$config = array (
+		
+		// page
+		'cleFormulaire' 		=> '156f4ds6541f5s6df4'
+	);
+
+/*
 *	Routes
 *		Pages=XXXX & action=YYYY & var=ZZZZ
 *	
@@ -51,17 +75,24 @@
 			'ajoutForum' 			=> 'ajoutforum',
 			'ajoutSujet' 			=> 'ajoutSujet', 		// & var = id Forum
 			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id Sujet
-			'modifieMessage' 		=> 'modifieMessage', 	// & var = id Message
-		'admin' 			=> 'admin',				// ??
-		 
+			'modifMessage' 		=> 'modifMessage', 	// & var = id Message
+		'admin' 			=> 'admin'				// ??
 	);
 	
 	
 	
 /*
 *	Renvoi
+*		Tout les tableaux sont enregistré dans $conf
 *	
 */
+
+	// Concaténation
+	$conf = array_merge($conf, $droit);
+	
+	// Concaténation
+	$conf = array_merge($conf, $config);
+	
 	// Concaténation
 	$conf = array_merge($conf, $route);
 	

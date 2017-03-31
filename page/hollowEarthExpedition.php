@@ -6,7 +6,7 @@
   </head>
   <body>
     <?php include '../controller/pagesController.php'; ?>
-    <?php include ('../header.html'); ?>
+    <?php include ('../header.php'); ?>
     <div class="block-text">
       Hollow Earth Expedition </br><!-- EN ENORME MAGGLE -->
       <img src="../imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
