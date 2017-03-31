@@ -7,15 +7,20 @@ class USER
     function __construct($DB_con)
     {
       $this->db = $DB_con;
+      $this->loadUser();
 
+    }
+    public function loadUser()
+    {
       if( isset($_SESSION['user_session']))
       {
         $user_id = $_SESSION['user_session'];
-        $stmt = $DB_con->prepare("SELECT * FROM users WHERE user_id=:user_id");
+        $stmt =   $this->db->prepare("SELECT * FROM users WHERE user_id=:user_id");
         $stmt->execute(array(":user_id"=>$user_id));
         $this->data = $stmt->fetch(PDO::FETCH_ASSOC);
 
         // var_dump($this);
+        //var_dump($this);
 
       } else {
         $this->data = [];
@@ -105,7 +110,12 @@ class USER
    public function changeRole($userId,$rank)
    {
      $asRank = $this->checkDroit(4);
-     if($asRank == true && $rank < $this->data['user_role'])
+     $stmt = $this->db->prepare("SELECT user_role FROM users WHERE user_id=:uid ");
+     $stmt->bindparam(":uid", $userId);
+     $stmt->execute();
+     $rankToChange = $stmt->fetch(PDO::FETCH_ASSOC);
+
+     if($asRank == true && $rank < $this->data['user_role'] && $rankToChange['user_role'] < $this->data['user_role'])
      {
        $stmt = $this->db->prepare("UPDATE users SET user_role=:urank WHERE user_id=:uid ");
        $stmt->bindparam(":urank", $rank);
@@ -139,7 +149,7 @@ class USER
          $stmt->bindparam(":uid", $this->data['user_id']);
          $stmt->execute();
          //$this->data = $stmt->fetch(PDO::FETCH_ASSOC);
-
+         $this->loadUser();
 
      } catch (PDOException $e) {
       // echo  "date: ".$udate;

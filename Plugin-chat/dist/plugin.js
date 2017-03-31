@@ -153,6 +153,7 @@ function render() {
 	console.log("element",element)
 	if (element.prop("tagName")=='INPUT') {
 		$input = element;
+		$input.attr('id', 'textChat');
 
 		$container = $("<fieldset>").insertAfter($input);
 
@@ -195,8 +196,7 @@ function createButton(){
 		//afficheConversation();
 
 		var message = $('.message input').val();
-
-		console.log($user)
+		longueur();
 		$.post('../Plugin-chat/donneesChat.php', {
 			'nom': options.$user,
 			'date': heure, min,
@@ -210,7 +210,7 @@ function createButton(){
 
 
 function longueur() {
-	if (  $('.message').val() > 25) {
+	if (  $('.message input').val() > 25) {
 		return false;
 	}
 }

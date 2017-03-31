@@ -5,10 +5,11 @@
     <title> Super Cops </title>
   </head>
   <body>
-    <?php include 'controller/pagesController.php'; ?>
+    <?php include '../controller/pagesController.php'; ?>
+    <?php include ('../header.php'); ?>
     <div class="block-text">
       Super Cops </br><!-- EN ENORME MAGGLE -->
-      <img src="http://lejournaldessorties.com/wp-content/uploads/2015/01/Let_s_Be_Cops_review_article_story_large.jpg" class="image Super Cops"></br>
+      <img src="../imagesForum/pagesJdr/pageSuperCops.jpg" class="image Super Cops"></br>
       <p><strong> Z-Corps </strong> est un jeu d'horreur proposant aux joueurs de faire face à une apocalypse zombie
          aux Etats-Unis en 2012. Les auteurs ont souhaité retranscrire l'ambiance des films de zombies
          tels que Dawn of the dead, Diary of the dead, Rec, Bienvenue à Zombieland, ou encore 28 jours
@@ -32,11 +33,11 @@
 
       <?php
       $joueur1 = new Joueur();
-      $joueur1->Pseudo("jean");
+      $joueur1->setPseudo("jean");
       $joueur2 = new Joueur();
-      $joueur2->Pseudo("michel");
+      $joueur2->setPseudo("michel");
       $joueur3 = new Joueur();
-      $joueur3->Pseudo("audrey");
+      $joueur3->setPseudo("audrey");
       $tableauJoueursZcorps[] = $joueur1;
       $tableauJoueursZcorps[] = $joueur2;
       $tableauJoueursZcorps[] = $joueur3;
@@ -63,7 +64,7 @@
         }
         ?>
         <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueur_pseudo?><br>
+            <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
     <a href="Partie.php">Retour</br>

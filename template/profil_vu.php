@@ -1,13 +1,20 @@
 <?php
 include_once '../login/verif.php';
+if($user->is_loggedin() == false)
+{
+  header ('location: ../login.php');
+}
+
 if (empty($_GET['id']) or !is_numeric($_GET['id'])){
   include '../profil.user/erreur_profil.php';
   include ('../header.php');
 }
 
+
+
 ?>
 
-<div class="container profil">
+<div id="vuProfil"class="container profil">
   <div class="row">
     <div class="col-xs-12">
       <div class="infos-profil">
