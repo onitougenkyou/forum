@@ -9,7 +9,7 @@
     <?php include ('../header.html'); ?>
     <div class="block-text">
       Hollow Earth Expedition </br><!-- EN ENORME MAGGLE -->
-      <img src="https://lh3.googleusercontent.com/proxy/54t3MvwlrK1jBH6qp-cx2ZY4pbRTv6U8ftl8EtNtob6NcSm7uHb3hcsalUx46Y9jXDy-mQeKr2PjgDf36i6mI6t6ENOPH9ovAPSEqod-SkceM0CaNsZxlBRfrCmTxJar457qBrEvQdi7HlgTvJIVzmCagf2k=w512-h254-p" class="image Super Cops"></br>
+      <img src="../imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
       <p><strong> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
       l'époque troublée de la grande dépression, à la découverte de terres mystérieuses fourmillant
       de secrets, de monstres... et de nazis !</p>

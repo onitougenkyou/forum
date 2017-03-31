@@ -9,7 +9,7 @@
     <?php include ('../header.html'); ?>
     <div class="block-text">
       Super Cops </br><!-- EN ENORME MAGGLE -->
-      <img src="http://lejournaldessorties.com/wp-content/uploads/2015/01/Let_s_Be_Cops_review_article_story_large.jpg" class="image Super Cops"></br>
+      <img src="../imagesForum/pagesJdr/pageSuperCops.jpg" class="image Super Cops"></br>
       <p><strong> Z-Corps </strong> est un jeu d'horreur proposant aux joueurs de faire face à une apocalypse zombie
          aux Etats-Unis en 2012. Les auteurs ont souhaité retranscrire l'ambiance des films de zombies
          tels que Dawn of the dead, Diary of the dead, Rec, Bienvenue à Zombieland, ou encore 28 jours

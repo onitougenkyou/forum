@@ -9,7 +9,7 @@
     <?php include ('../header.html'); ?>
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
-      <img src="http://www.ajdr.org/wp-content/uploads/2012/01/flickr-3297910747-original-1024x747.jpg" class="image Z-corps"></br>
+      <img src="../imagesForum/pagesJdr/pageZcorps.jpg" class="image Z-corps"></br>
       <p><strong> Z-Corps </strong> est un jeu d'horreur proposant aux joueurs de faire face à une apocalypse zombie
          aux Etats-Unis en 2012. Les auteurs ont souhaité retranscrire l'ambiance des films de zombies
          tels que Dawn of the dead, Diary of the dead, Rec, Bienvenue à Zombieland, ou encore 28 jours
