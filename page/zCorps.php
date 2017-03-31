@@ -5,7 +5,8 @@
     <title> ZCorps </title>
   </head>
   <body>
-    <?php include 'controller/pagesController.php'; ?>
+    <?php include '../controller/pagesController.php'; ?>
+    <?php include ('../header.html'); ?>
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
       <img src="http://www.ajdr.org/wp-content/uploads/2012/01/flickr-3297910747-original-1024x747.jpg" class="image Z-corps"></br>
@@ -32,11 +33,11 @@
 
       <?php
       $joueur1 = new Joueur();
-      $joueur1->Pseudo("jean");
+      $joueur1->setPseudo("jean");
       $joueur2 = new Joueur();
-      $joueur2->Pseudo("michel");
+      $joueur2->setPseudo("michel");
       $joueur3 = new Joueur();
-      $joueur3->Pseudo("audrey");
+      $joueur3->setPseudo("audrey");
       $tableauJoueursZcorps[] = $joueur1;
       $tableauJoueursZcorps[] = $joueur2;
       $tableauJoueursZcorps[] = $joueur3;
@@ -63,7 +64,7 @@
         }
         ?>
         <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueur_pseudo?><br>
+            <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
     <a href="Partie.php">Retour</br>

@@ -3,9 +3,8 @@
 /**
  * Function et variables pour page.php et descendance
  */
-class pagesController
-{
-  include 'joueur.php';
+
+  include '../model/Joueur.php';
 
   /**
   * Necessite à la place de joueur le user ayant pour donnée ce que l'utilisateur possède sur son compte
@@ -50,5 +49,5 @@ class pagesController
     unset($tableauJoueurs[array_search($Joueur, $tableauJoueurs)]);
     array_merge($tableauJoueurs);
   }
-}
+
 ?>
