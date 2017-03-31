@@ -1,15 +1,20 @@
-<?php include_once '../login/verif.php';
+<?php
+include_once '../login/verif.php';
+if($user->is_loggedin() == false)
+{
+  header ('location: ../login.php');
+}
 include('../header.php');
 
 if(isset($_POST['btn-submit']))
 {
+  var_dump($_POST);
   $uname = trim($_POST['txt_uname']);
-  $upass = trim($_POST['txt_pass']);
+  $upass = trim($_POST['txt_upass']);
   $unameFamily = trim($_POST['txt_name_family']);
   $umail = trim($_POST['txt_mail']);
   $udate = trim($_POST['txt_date']);
   $udescription = trim($_POST['txt_description']);
-
 // vérif pseudo
   if($uname=="") {
     $error[] = "Entrez un pseudo";
@@ -122,7 +127,7 @@ else if(isset($_GET['joined']))
 <link rel="stylesheet" href="../css/profilvuStyle.css" type="text/css"  />
 
 <div class="container change-infos">
-  <form>
+  <form action="" method="post">
     <div class="form-group row">
       <label for="txt_uname" class="col-sm-2 col-form-label">Votre pseudo</label>
       <div class="col-sm-10">

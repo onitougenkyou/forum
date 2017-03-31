@@ -46,7 +46,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="profil" href="../template/profil_vu.php"> Profil</a></li>
-          <li><a id ="btn-logout" class="navbar-brand deco" href="logout.php?logout=true">logout</a></li>
+          <li><a id ="btn-logout" class="navbar-brand deco" href="..\login\logout.php">logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
