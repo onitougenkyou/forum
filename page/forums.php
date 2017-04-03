@@ -24,17 +24,8 @@
 	require_once('controller/MessageViewController.php');
 
 	// DEBUG
-	require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 	set_error_handler(array('GestionErreur', 'erreurPDO'));
-	
-	// Connexion à la BDD
-	require_once('tools/CConnexion.php');
-	$db = new CConnexion(
-		Config::getInstance()->get('host'),
-		Config::getInstance()->get('dbName'),
-		Config::getInstance()->get('user'),
-		Config::getInstance()->get('pass')
-	);
+
 	// Création du controller & envoi de $action et $var 
 	$fsC = new ForumsController($db);
 	
