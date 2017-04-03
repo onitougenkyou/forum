@@ -1,13 +1,13 @@
 <div class="hollowEarth">
   <div class="block-text">
-    <h2 id="hollowTitle">Hollow Earth Expedition</h2><!-- EN ENORME MAGGLE -->
+    <h2 id="gameTitle">Hollow Earth Expedition</h2><!-- EN ENORME MAGGLE -->
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
           <img src="imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow_Earth">
         </div>
         <div class="col-xs-12">
-          <p><strong class="hollow"> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
+          <p><strong class="game"> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
             l'époque troublée de la grande dépression, à la découverte de terres mystérieuses fourmillant
             de secrets, de monstres... et de nazis !</p>
             <p> Dans l'entre-deux-guerres, au cours d'une expédition au pôle Nord, un groupe de scientifiques tombe
@@ -52,7 +52,7 @@
                       <form method="post" action="">
                         <label>Ajouter un Joueur</label>
                         <input type="text" name="ajoutOK">
-                        <input class="hollowAdd" type="submit" name="Ajout" value="ajout"></br>
+                        <input class="addPlayer" type="submit" name="Ajout" value="ajout"></br>
                         <?php
 
                         if (isset($_POST["ajoutOK"])) {
@@ -62,7 +62,7 @@
                         ?>
                         <label>Supprimer un joueur</label>
                         <input type="text" name="supprimerOK">
-                        <input class="hollowAdd" type="submit" name="Supprimer" value="Supprimer"></br>
+                        <input class="addPlayer" type="submit" name="Supprimer" value="Supprimer"></br>
                         <?php
                         if (isset($_POST["supprimerOK"])) {
                           $ajout=$_POST["supprimerOK"];
@@ -73,10 +73,9 @@
                           <?=$joueur->joueurPseudo?><br>
                           <?php } ?>
                         </div>
-                        <a id='hollowBack' href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>
+                        <a id='back' href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour
                         </div>
                       </div>
                     </div>
                   </div>
-
                 </div>
