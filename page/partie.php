@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <h2>DESCRIPTION</h2>
-        <div class="col-xs-12 col-lg-8">
+        <div id='infoJdr' class="col-xs-12">
           <p>Le <strong> jeu de rôle </strong> est une technique ou activité, par laquelle une personne interprète le rôle d’un personnage
             (réel ou imaginaire) dans un environnement fictif. Le participant agit à travers ce rôle par des actions physiques,
             par des actions narratives (dialogues improvisés, descriptions) ou par des prises de décision sur le développement du personnage.</p>
@@ -13,23 +13,23 @@
               Cette forme de jeu est jouée traditionnellement autour d’une table (avec dés, feuilles et crayon)</p>
             </div>
           </div>
-          <div class="row">
+          <div id='imgJdr' class="row">
             <h3>  NOS JEUX DE ROLE ACTUEL</h3>
             <div class="col-xs-12">
-              <img src="imagesForum/pagesJdr/partieHollowEarthExpedition.gif" class="img-responsive hollow earth">
-              <label><a href="hollowEarthExpedition.php">Hollow earth expedition</label>
+              <a href="?page=<?php echo Config::getInstance()->get('hollow'); ?>">  <img src="imagesForum/pagesJdr/partieHollowEarthExpedition.gif" class="img-responsive hollow_earth"> <br>
+                Hollow earth expedition</a>
               </div>
               <div class="col-xs-12">
-                <img src="imagesForum/pagesJdr/partieDonjonEtDragon.png" class="img-responsive Donjon et dragon">
-                <label><a href="donjonEtDragon.php">Donjon et dragon</label>
+                <a href="?page=<?php echo Config::getInstance()->get('donjonEtDragon'); ?>"><img src="imagesForum/pagesJdr/DAD.jpg" class="img-responsive donjon_et_dragon"> <br>
+                  Donjon et dragon</a>
                 </div>
                 <div class="col-xs-12">
-                  <img src="imagesForum/pagesJdr/partieSuperCops.jpg" class="img-responsive Super cops">
-                  <label>  <a href="superCops.php">Super cops</label>
+                  <a href="?page=<?php echo Config::getInstance()->get('superCops'); ?>"><img src="imagesForum/pagesJdr/Supercops.jpg" class="img-responsive super_cops"><br>
+                  Super cops</a>
                   </div>
                   <div class="col-xs-12">
-                    <img src="imagesForum/pagesJdr/partieZcorps.jpeg" class="img-responsive Zcorps">
-                    <label for=""><a href="zCorps.php">Zcorps</label>
+                    <a href="?page=<?php echo Config::getInstance()->get('zCorps'); ?>"><img src="imagesForum/pagesJdr/partieZcorps.jpeg" class="img-responsive zcorps"><br>
+                    Zcorps</a>
                     </div>
                   </div>
                 </div>
