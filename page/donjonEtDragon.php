@@ -4,7 +4,7 @@
     <div class="container">
       <div class="row">
         <div class="col-xs-12">
-          <img src="imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow_Earth">
+          <img src="imagesForum/pagesJdr/donjonDe.jpeg" class="image Hollow_Earth">
         </div>
         <div class="col-xs-12">
           <p><strong class="game"> Donjon & Dragon </strong> est à la base un jeu qui emmène les joueurs à
