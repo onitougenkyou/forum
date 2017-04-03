@@ -8,7 +8,7 @@ include('../header.php');
 
 if(isset($_POST['btn-submit']))
 {
-  var_dump($_POST);
+  //var_dump($_POST);
   $uname = trim($_POST['txt_uname']);
   $upass = trim($_POST['txt_upass']);
   $unameFamily = trim($_POST['txt_name_family']);
