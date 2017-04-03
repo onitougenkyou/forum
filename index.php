@@ -9,6 +9,7 @@ require_once('tools/Form.php');			// Permet de générer des formulaires HTML
 require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 include_once ('login/verif.php');
 include ('view/site/header.php');
+include ('controller/pagesController.php');
 
 ?>
 
@@ -23,7 +24,10 @@ include ('view/site/header.php');
         case Config::getInstance()->get('profilSetting') :require_once('profil.user/change_infos_user.php'); break;
         case Config::getInstance()->get('jdr') :require_once('page/partie.php'); break;
         case Config::getInstance()->get('jdr') :require_once('chat/chat.php'); break;
-
+        case Config::getInstance()->get('hollow') :require_once('page/HollowEarthExpedition.php'); break;
+        case Config::getInstance()->get('donjonEtDragon') :require_once('page/donjonEtDragon.php'); break;
+        case Config::getInstance()->get('superCops') :require_once('page/superCops.php'); break;
+        case Config::getInstance()->get('zCorps') :require_once('page/zCorps.php'); break;
         default										:	require_once('page/accueil.php');	break;
       }
       ?>
