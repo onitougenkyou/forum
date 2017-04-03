@@ -163,7 +163,7 @@ body {
   }
 
   /*---------------------Hollow Earth Style -------------------------------------*/
-  #hollowtitle {
+  #gameTitle{
     font-size: 5em;
     margin: 5%;
     background-image: -webkit-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
@@ -171,7 +171,7 @@ body {
     -webkit-text-fill-color: transparent;
   }
 
-  .hollow {
+  .game{
     font-size: 2rem;
   }
 
@@ -179,7 +179,7 @@ body {
     margin-top: 5%;
   }
 
-  .block-Joueur .hollowAdd {
+  .block-Joueur .addPlayer {
     color : black;
     background: #8a0707;
   }
