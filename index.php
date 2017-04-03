@@ -22,6 +22,8 @@ include ('view/site/header.php');
         case Config::getInstance()->get('profil') :require_once('page/profil_vu.php'); break;
         case Config::getInstance()->get('profilSetting') :require_once('profil.user/change_infos_user.php'); break;
         case Config::getInstance()->get('jdr') :require_once('page/partie.php'); break;
+        case Config::getInstance()->get('jdr') :require_once('chat/chat.php'); break;
+
         default										:	require_once('page/accueil.php');	break;
       }
       ?>

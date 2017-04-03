@@ -6,6 +6,8 @@
   <link href="https://fonts.googleapis.com/css?family=Macondo" rel="stylesheet">
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+  <script src="Plugin-chat/dist/tools.js"></script>
+  <script src="Plugin-chat/dist/plugin.js"></script>
   <link rel="stylesheet" href="css/headStyle.css" type="text/css"  />
 
   <title>Bienvenue - <?php print($user->data['user_email']); ?></title>
@@ -35,23 +37,23 @@
             <a href="#" id="btn-Menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
             <ul class="dropdown-menu">
               <li><a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>"><label id="jdr">JDR</label></a></li>
-              <li><a href="../index.forum.php"><label id="forum">Forum</label></a></li>
+              <li><a href="?page=<?php echo Config::getInstance()->get('forums'); ?>"><label id="forum">Forum</label></a></li>
               <li><a href="facebook.com"><label id="facebook">Facebook</label></a></li>
               <li><a href="#"><label id="contact">contactez</label></a></li>
-              <li><a href="../chat/chat.php"><label id="tchat">tchat</label></a></li>
+              <li><a href="?page=<?php echo Config::getInstance()->get('tchat'); ?>"><label id="tchat">tchat</label></a></li>
             </ul>
           </li>
-          <li><a href="../login/home.php" id ="home">Accueil</a></li>
+          <li><a href="?page=<?php echo Config::getInstance()->get('accueil'); ?>" id ="home">Accueil</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a id="profil" href="template/profil_vu.php"> Profil</a></li>
+          <li><a id="profil" href="?page=<?php echo Config::getInstance()->get('profil'); ?>"> Profil</a></li>
           <li><a id ="btn-logout" class="navbar-brand deco" href="login/logout.php">logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <div id = "crane">
-    <img src="../imagesForum/navbar/tete.png" class="img-responsive" alt="crane">
+    <img src="imagesForum/navbar/tete.png" class="img-responsive" alt="crane">
   </div>
 <!-- </body>
 </html> -->

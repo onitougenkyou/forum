@@ -16,19 +16,19 @@
           <div class="row">
             <h3>  NOS JEUX DE ROLE ACTUEL</h3>
             <div class="col-xs-12">
-              <img src="../imagesForum/pagesJdr/partieHollowEarthExpedition.gif" class="img-responsive hollow earth">
+              <img src="imagesForum/pagesJdr/partieHollowEarthExpedition.gif" class="img-responsive hollow earth">
               <label><a href="hollowEarthExpedition.php">Hollow earth expedition</label>
               </div>
               <div class="col-xs-12">
-                <img src="../imagesForum/pagesJdr/partieDonjonEtDragon.png" class="img-responsive Donjon et dragon">
+                <img src="imagesForum/pagesJdr/partieDonjonEtDragon.png" class="img-responsive Donjon et dragon">
                 <label><a href="donjonEtDragon.php">Donjon et dragon</label>
                 </div>
                 <div class="col-xs-12">
-                  <img src="../imagesForum/pagesJdr/partieSuperCops.jpg" class="img-responsive Super cops">
+                  <img src="imagesForum/pagesJdr/partieSuperCops.jpg" class="img-responsive Super cops">
                   <label>  <a href="superCops.php">Super cops</label>
                   </div>
                   <div class="col-xs-12">
-                    <img src="../imagesForum/pagesJdr/partieZcorps.jpeg" class="img-responsive Zcorps">
+                    <img src="imagesForum/pagesJdr/partieZcorps.jpeg" class="img-responsive Zcorps">
                     <label for=""><a href="zCorps.php">Zcorps</label>
                     </div>
                   </div>
