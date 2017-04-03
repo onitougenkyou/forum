@@ -30,6 +30,9 @@ class MessageDao
 	**/
 	public function getMessages($sujetId)
 	{
+		// Init
+		$messages = array();
+		
 		// Création de la requête SQL
 		$sql = 'SELECT `id`, 
 						`date_creation`,
@@ -78,30 +81,71 @@ class MessageDao
 	**/
 	public function getMessage($messageId)
 	{
-		// SQL
+		// Création de la requête SQL
+		$sql = 'SELECT `id`, 
+						`date_creation`,
+						`date_modification`,
+						`auteur`,
+						`acl`,
+						`titre`,
+						`texte`,
+						`affichage`,
+						`sujet_id`
+				FROM `messages`
+				WHERE `id` = :messageId';
 		
-		// Variable
-		$id = '';
-		$auteur = '';
-		$titre = '';
-		$description = '';
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
 		
-		// Création de l'objet
-		$forum = new Message();
-			$forum->setId('');
-			$forum->setDateCreation('');
-			$forum->setDateModification('');
-			$forum->setAuteur('');
-			$forum->setAcl('');
-			$forum->setTitre('');
-			$forum->setImage('');
-			$forum->setParentId('');
-			$forum->setNbSujet('');
-			$forum->setDernierMessageId('');
-			
+		// Bind de l'ID
+		$query->bindParam(':messageId', $messageId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
 		
-		// return 
-		return $forum;
+		// Création de l'objet Message
+		$message = new Message($result[0]);
+
+		// Renvoi
+		return $message;
+	}
+	
+	
+	
+	/**
+	*	SELECT
+	*		retourne un id message en fonction de l'Id
+	*
+	* @return 	L'ID de l'auteur du message
+	**/
+	public function getMessageAuteur($messageId)
+	{
+		// Création de la requête SQL
+		$sql = 'SELECT `auteur` FROM `messages` WHERE `id` = :messageId';
+		
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
+		
+		// Bind de l'ID
+		$query->bindParam(':messageId', $messageId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+
+		// Récupération de l'element a partir de l'objet PDO
+		$result = $query->fetchAll();
+		
+		// Création de l'objet Message
+		if( isset($result[0]['auteur']) ) {
+			$auteurId = $result[0]['auteur'];
+		} else {
+			$auteurId = 0;
+		}
+		// Renvoi
+		return $auteurId;
 	}
 	
 	
@@ -110,10 +154,69 @@ class MessageDao
 	*	Sauvegarde l'objet en base de données
 	*
 	**/
-	public function sauvegarder()
+	public function addMessage(Message $message)
 	{
+		// Initialisation
+			$id = $message->getId();
+			
+			// Si c'est un ajout, $ajout = true
+			if( $id == '' )		$ajout = true;
+			else					$ajout = false;
 		
-		return 'Sauvegardé';
+		// SQL
+			if( $ajout ) {
+				echo 'Ajout ! <br>';
+				$message->setDateCreation('CURRENT_DATE()');
+			} else {
+				echo 'Modification ! <br>';
+			}
+			
+			// Quoi qu'il arrive, c'est une modification
+			$message->setDateModification('CURRENT_DATE()');
+			
+			// Création de la requête SQL
+			$sql = "INSERT INTO `messages` (";
+			
+			// Si c'est un ajout, on enregistre la date de création
+			if( $ajout )		$sql .= "		`date_creation`,";
+							$sql .= "		`date_modification`,
+											`auteur`,
+											`acl`,
+											`titre`,
+											`texte`,
+											`sujet_id`,
+											`affichage`) 
+										VALUES (";
+			if( $ajout )		$sql .= "		:dateCreation,";
+							$sql .= "		:dateModification,
+											:auteur,
+											:acl,
+											:titre,
+											:texte,
+											:sujetId,
+											:affichage)";
+			// Si c'est un ajout, on enregistre la date de création
+
+		// PDO
+			// Préparation de la requête
+			$query = $this->db->prepare($sql);
+
+			// Bind
+			if( $ajout )		$query->bindParam(':dateCreation', $message->getDateCreation, PDO::PARAM_STR);
+				$query->bindParam(':dateModification', $message->getDateModification, PDO::PARAM_STR);
+				$query->bindParam(':auteur', $message->getAuteur, PDO::PARAM_STR);
+				$query->bindParam(':acl', $message->getAcl, PDO::PARAM_STR);
+				$query->bindParam(':titre', $message->getTitre, PDO::PARAM_STR);
+				$query->bindParam(':texte', $message->getTexte, PDO::PARAM_STR);
+				$query->bindParam(':sujetId', $message->getSujetId, PDO::PARAM_STR);
+				$query->bindParam(':affichage', $message->getAffichage, PDO::PARAM_STR);
+
+			// Execution
+			$query->execute();
+			
+		/**/
+		// Renvoi
+		return true;
 	}
 	
 	
@@ -124,6 +227,19 @@ class MessageDao
 	**/
 	public function supprimer($messageId)
 	{
+		// Création de la requête SQL
+		$sql = 'DELETE FROM `messages` WHERE `id` = :messageId';
+		
+		// Préparation de la requête
+		$query = $this->db->prepare($sql);
+		
+		// Bind de l'ID
+		$query->bindParam(':messageId', $messageId, PDO::PARAM_INT);
+
+		// Execution
+		$query->execute();
+	
+		// Renvoi
 		return 'Supprimé';
 	}
 	

@@ -30,13 +30,13 @@ class Debug
 	
 	/**
 	*	Get Instance
-	*		Récupération de l'instance
+	*		RÃ©cupÃ©ration de l'instance
 	*
 	**/
 	public static function getInstance()
 	{
 		if(is_null(self::$instance)){
-			self::$instance = new Debug();	// Création de l'instance si elle n'existe pas
+			self::$instance = new Debug();	// CrÃ©ation de l'instance si elle n'existe pas
 		}
 		
 		return self::$instance;
@@ -46,7 +46,7 @@ class Debug
 	
 	/**
 	*	Get valeur
-	*		Récupération des valeurs 
+	*		RÃ©cupÃ©ration des valeurs 
 	**/
 	public function get($var)
 	{
@@ -61,20 +61,28 @@ class Debug
 	
 	/**
 	*	Get valeur
-	*		Récupération des valeurs 
+	*		RÃ©cupÃ©ration des valeurs 
 	**/
 	public function getHTML()
 	{
 		if( isset($this->infos) && !empty($this->infos) ){
 			
 			$strRetour = '';
-			// Pour chaque valeur ($var), on génére l'HTML
+			// Pour chaque valeur ($var), on gÃ©nÃ©re l'HTML
 			foreach($this->infos as $key => $value) {
 				
 				$strRetour .= '<p>';
-					$strRetour .= '<b>'.$this->infos[$key]['classe'].'</b><br>';
-					$strRetour .= '<b>'.$this->infos[$key]['fichier'].'</b> - '.$this->infos[$key]['ligne'].'<br>';
-					$strRetour .= '<b>'.$this->infos[$key]['var'].'</b> : '.$this->infos[$key]['valeur'].'<br>';
+					$strRetour .= '<b>'.$this->infos[$key]['var'].'</b><br>';
+					$strRetour .= '<b>Classe</b> : '.$this->infos[$key]['classe'].'<br>';
+					$strRetour .= '<b>Fichier</b> : '.$this->infos[$key]['fichier'].' Ã  la ligne '.$this->infos[$key]['ligne'].'<br>';
+
+					// Valeur
+					if( is_array($this->infos[$key]['valeur']) ) {
+						$strRetour .= var_export($this->infos[$key]['valeur']);
+					} else {
+						$strRetour .= $this->infos[$key]['valeur'].'<br>';
+						
+					}
 				$strRetour .= '</p>';
 			}
 

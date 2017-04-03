@@ -11,8 +11,8 @@ body {
 /*-----------------BLOCK-BODY-----------------*/
 
 .block-body {
-  margin-top: 57%;
-  margin-left: 15%;
+  /*margin-top: 57%;*/
+  margin-left: 3%;
   margin-bottom: -25%;
   text-align: center;
   color : white;

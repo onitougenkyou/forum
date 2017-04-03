@@ -1,17 +1,7 @@
 <?php
-include_once '../login/verif.php';
-if($user->is_loggedin() == false)
-{
-  header ('location: ../login.php');
-}
-
 if (empty($_GET['id']) or !is_numeric($_GET['id'])){
-  include '../profil.user/erreur_profil.php';
-  include ('../header.php');
+  // include ('../profil.user/erreur_profil.php');
 }
-
-
-
 ?>
 
 <div id="vuProfil"class="container profil">
@@ -27,7 +17,7 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])){
         <label>Description : <?php print($user->data['user_description']); ?></label> <br>
       </div>
       <div class="infos-button">
-        <button id="btn-modif" type="button" name="button-infos"><a href="../profil.user/change_infos_user.php">Modification</a></button>
+        <button id="btn-modif" type="button" name="button-infos"><a href="index.php?page=profilSetting">Modification</a></button>
       </div>
     </div>
   </div>

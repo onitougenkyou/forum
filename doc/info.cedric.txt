@@ -193,6 +193,58 @@
 			
 		
 		/*
+		*
+		*	Page
+		*
+		*/
+		
+		ajout d'un Message, Forum, Sujet
+			ajoutMessage
+				dans ce cas, var = sujetId
+				Un Message vide est créé, l'Id du sujet est renseigné dans ce Message
+			
+			modifMessage
+				dans ce cas, var = messageId
+				Le Message correspondant a l'Id est chargé
+			
+			supprMessage
+				dans ce cas, var = messageId
+				L'auteur du message est recherché dans la base
+				Si les droits sont OK, on supprime
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
 		*	Test unitaire
 		*
 		*/

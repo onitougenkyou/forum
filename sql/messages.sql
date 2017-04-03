@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 29 Mars 2017 à 09:10
+-- Généré le :  Ven 31 Mars 2017 à 11:27
 -- Version du serveur :  5.5.54-0+deb8u1
 -- Version de PHP :  5.6.30-0+deb8u1
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `messages`;
 CREATE TABLE IF NOT EXISTS `messages` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `date_creation` datetime DEFAULT NULL,
   `date_modification` datetime DEFAULT NULL,
   `auteur` int(11) DEFAULT NULL,
@@ -37,7 +37,7 @@ CREATE TABLE IF NOT EXISTS `messages` (
   `texte` text COLLATE utf8_bin,
   `sujet_id` int(11) DEFAULT NULL,
   `affichage` tinyint(4) DEFAULT '1'
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=2001 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Contenu de la table `messages`
@@ -2056,6 +2056,25 @@ INSERT INTO `messages` (`id`, `date_creation`, `date_modification`, `auteur`, `a
 (1999, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Message1999', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.', 40, 1),
 (2000, '2017-03-23 00:00:00', '2017-03-23 00:00:00', 1, NULL, 'Message2000', 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin aliquam molestie auctor. Cras ac orci in felis vestibulum semper eu vitae elit. Donec quis mauris nisl. Maecenas at felis at enim interdum molestie.', 40, 1);
 
+--
+-- Index pour les tables exportées
+--
+
+--
+-- Index pour la table `messages`
+--
+ALTER TABLE `messages`
+ ADD PRIMARY KEY (`id`);
+
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `messages`
+--
+ALTER TABLE `messages`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=2001;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

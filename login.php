@@ -3,7 +3,7 @@ require_once 'login/verif.php';
 
 if($user->is_loggedin()!="")
 {
-  $user->redirect('login/home.php');
+  $user->redirect('index.php');
 }
 
 if(isset($_POST['btn-login']))
@@ -14,7 +14,7 @@ if(isset($_POST['btn-login']))
 
   if($user->login($uname,$umail,$upass))
   {
-    $user->redirect('login/home.php');
+    $user->redirect('index.php');
   }
   else
   {
@@ -35,8 +35,8 @@ if(isset($_POST['btn-login']))
     <img src="imagesForum/spectre.jpeg" class="img-responsive" alt="Spectre">
   </div>
 
-  <div class="container">
-    <div class="form-container">
+  <div id="connexion" class="container">
+    <div id="infoConnexion" class="form-container">
       <form method="post">
         <h2>Connexion.</h2><hr />
         <?php
@@ -63,7 +63,7 @@ if(isset($_POST['btn-login']))
           </button>
         </div>
         <br />
-        <label>Pas de compte encore <a href="login/sign-up.php">Inscription</a></label>
+        <label id="insc">Pas de compte encore <a href="login/sign-up.php">Inscription</a></label>
       </form>
     </div>
   </div>
