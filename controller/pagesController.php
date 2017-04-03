@@ -4,7 +4,7 @@
  * Function et variables pour page.php et descendance
  */
 
-  include '../model/Joueur.php';
+  include 'model/Joueur.php';
 
   /**
   * Necessite à la place de joueur le user ayant pour donnée ce que l'utilisateur possède sur son compte

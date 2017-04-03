@@ -1,7 +1,9 @@
 <div class="forums">
 	
 	<div class="forums_bandeau">
-		<?php echo $tplData['forums_bandeau']; ?>
+		<ol class="breadcrumb">
+			<?php echo $tplData['forums_bandeau']; ?>
+		</ol>
 	</div>
 	
 	<?php echo $tplData['formulaire']; ?>

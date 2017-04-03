@@ -17,7 +17,7 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])){
         <label>Description : <?php print($user->data['user_description']); ?></label> <br>
       </div>
       <div class="infos-button">
-        <button id="btn-modif" type="button" name="button-infos"><a href="index.php?page=profilSetting">Modification</a></button>
+        <a href="index.php?page=profilSetting"><button id="btn-modif" type="button" name="button-infos">Modification</button></a>
       </div>
     </div>
   </div>

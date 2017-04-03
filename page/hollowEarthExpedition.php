@@ -1,15 +1,7 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> Hollow Earth Expedition </title>
-  </head>
-  <body>
-    <?php include '../controller/pagesController.php'; ?>
-    <?php include ('../header.php'); ?>
+
     <div class="block-text">
       Hollow Earth Expedition </br><!-- EN ENORME MAGGLE -->
-      <img src="../imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
+      <img src="imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
       <p><strong> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
       l'époque troublée de la grande dépression, à la découverte de terres mystérieuses fourmillant
       de secrets, de monstres... et de nazis !</p>
@@ -74,6 +66,6 @@
             <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
-    <a href="Partie.php">Retour</br>
+    <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>
   </body>
 </html>

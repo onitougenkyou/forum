@@ -78,13 +78,13 @@ class ForumViewController
 		// Si $forum est un objet, on renvoi le titre
 		if(is_object($forum)){
 			// On affiche le lien du forum
-			$dataHTML .= ' / <a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('forum').'&var='.$forum->getId().'">'.$forum->getTitre().'</a>';
+			$dataHTML .= '<li class="breadcrumb-item"><a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('forum').'&var='.$forum->getId().'">'.$forum->getTitre().'</a></li>';
 		
 		} else {
 			// Sinon, on affiche Forum car sans paramètre, on est forcement a la racine
-			$dataHTML .= '<a href="?page='.Config::getInstance()->get('forums').'">Forum</a>';
+			$dataHTML .= '<li class="breadcrumb-item"><a href="?page='.Config::getInstance()->get('forums').'">Forum</a></li>';
 		}
-		
+
 		return $dataHTML;
 	}
 
