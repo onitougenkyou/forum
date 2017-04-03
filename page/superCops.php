@@ -1,15 +1,6 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> Super Cops </title>
-  </head>
-  <body>
-    <?php include '../controller/pagesController.php'; ?>
-    <?php include ('../header.php'); ?>
     <div class="block-text">
       Super Cops </br><!-- EN ENORME MAGGLE -->
-      <img src="../imagesForum/pagesJdr/pageSuperCops.jpg" class="image Super Cops"></br>
+      <img src="imagesForum/pagesJdr/pageSuperCops.jpg" class="image Super Cops"></br>
       <p><strong> Z-Corps </strong> est un jeu d'horreur proposant aux joueurs de faire face à une apocalypse zombie
          aux Etats-Unis en 2012. Les auteurs ont souhaité retranscrire l'ambiance des films de zombies
          tels que Dawn of the dead, Diary of the dead, Rec, Bienvenue à Zombieland, ou encore 28 jours
@@ -67,6 +58,4 @@
             <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
-    <a href="Partie.php">Retour</br>
-  </body>
-</html>
+    <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>

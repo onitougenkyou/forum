@@ -1,12 +1,3 @@
-<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="utf-8">
-    <title> ZCorps </title>
-  </head>
-  <body>
-    <?php include '../controller/pagesController.php'; ?>
-      <?php include ('../header.php'); ?>
     <div class="block-text">
       Z-Corps </br><!-- EN ENORME MAGGLE -->
       <img src="http://www.ajdr.org/wp-content/uploads/2012/01/flickr-3297910747-original-1024x747.jpg" class="image Z-corps"></br>
@@ -67,6 +58,4 @@
             <?=$joueur->joueurPseudo?><br>
         <?php } ?>
     </div>
-    <a href="Partie.php">Retour</br>
-  </body>
-</html>
+    <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>
