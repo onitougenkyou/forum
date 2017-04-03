@@ -30,8 +30,8 @@ body {
 
 #crane {
   position: absolute;
-  margin-left: 40.5%;
-  margin-top: -10%;
+  margin-left: 37%;
+  margin-top: -14%;
   text-align: center;
 }
 
@@ -45,9 +45,9 @@ body {
     margin-left: 67%;
 }
 
-@media (max-width: 1500px) {
+@media (min-width: 1500px) {
   #crane, #corneDroite, #corneGauche {
-    display: none;
+    display: block;
   }
 }
 
@@ -80,4 +80,32 @@ body {
   .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > .dropdown-menu a:hover {
     background-color: #3C1E06;
     user-select: none;
+  }
+
+  /*----------------------------------------------------------------------------BODY STYLE ---------------------------------------------------------------*/
+
+  #body-accueil {
+    margin-top: 2.5%;
+    margin-left: 3%;
+    margin-bottom: -25%;
+    text-align: center;
+    color : white;
+    font-size : 1.2em;
+  }
+   #welcome{
+    margin: 0 auto;
+
+    margin-bottom: 50px;
+    text-align: center;
+    font-size : 55px;
+    background-image: -webkit-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+
+    background-size: 1em 1em;
+    color: #8a0707;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-image: -o-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+    -o-background-clip: text;
+    -o-text-fill-color: transparent;
   }
