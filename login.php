@@ -1,5 +1,5 @@
 <?php
-require_once 'login/verif.php';
+
 
 if($user->is_loggedin()!="")
 {

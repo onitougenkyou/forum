@@ -1,8 +1,7 @@
 <?php
-if($user->is_loggedin() == false)
+if($user->is_loggedin())
 {
-  header ('location: ../login.php');
-}
+
 
 if(isset($_POST['btn-submit']))
 {
@@ -143,3 +142,6 @@ else if(isset($_GET['joined']))
     </div>
   </form>
 </div>
+<?php
+}
+ ?>

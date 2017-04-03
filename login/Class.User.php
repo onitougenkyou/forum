@@ -25,6 +25,7 @@ class USER
       } else {
         $this->data = [];
         $this->data['user_role'] = 0;
+        $this->data['user_name'] = "guest";
       }
 
     }
@@ -78,15 +79,19 @@ class USER
 
    public function is_loggedin()
    {
-      if(isset($_SESSION['user_session']))
+     //var_dump($_SESSION['user_session']);
+      if($this->data['user_role']>0)
       {
          return true;
+      }
+      else {
+        return false;
       }
    }
 
    public function redirect($url)
    {
-       header("Location: $url");
+       //header("Location: $url");
    }
 
    public function logout()
@@ -127,7 +132,7 @@ class USER
    public function modification($uname,$upass,$unameFamily,$umail,$udate,$udescription)
    {
      try {
-        
+
        if($this->passChange == true)
        {
          $new_password = password_hash($upass, PASSWORD_DEFAULT);

@@ -1,7 +1,10 @@
 <?php
 if (empty($_GET['id']) or !is_numeric($_GET['id'])){
   // include ('../profil.user/erreur_profil.php');
+
 }
+if($user->is_loggedin())
+{
 ?>
 
 <div id="vuProfil"class="container profil">
@@ -22,3 +25,6 @@ if (empty($_GET['id']) or !is_numeric($_GET['id'])){
     </div>
   </div>
 </div>
+<?php
+}
+ ?>

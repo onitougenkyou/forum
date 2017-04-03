@@ -11,6 +11,7 @@ include_once ('login/verif.php');
 include ('view/site/header.php');
 include ('controller/pagesController.php');
 
+
 ?>
 
   <div class="block-body">
