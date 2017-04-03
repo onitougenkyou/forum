@@ -49,36 +49,45 @@ class ForumsController
 		*/
 		if( $this->action == '' || 
 			( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) ) {
-			$this->fPageC->ForumListe();
+			$this->fPageC->forumListe();
 		}
 		
 		/*
 		*	Affichage des sujets d'un forum 			action = forum 			& var = z
 		*/
 		if( $this->action == Config::getInstance()->get('forum') && is_numeric($this->var) ) {
-			$this->fPageC->SujetListe();
+			$this->fPageC->sujetListe($this->var);
 		}
 		
 		/* 
 		*	Affichage d'un sujet 			action = sujet 			& var = z		
 		*/
 		if( $this->action == Config::getInstance()->get('sujet') && is_numeric($this->var) ) {
-			$this->fPageC->MessageListe();
+			$this->fPageC->messageListe($this->var);
+		}
+		
+		/* 
+		*	Supression d'un message		action = sujet 			& var = z		
+		*/
+		if( $this->action == Config::getInstance()->get('supprMessage') && is_numeric($this->var) ) {
+			$this->fPageC->messageSupprimer($this->var);
+			$this->fPageC->messageListe($this->var);
 		}
 		
 		/* 
 		*	Ajouter/Modifier un Message			action = ajoutMessage || action = modifMessage ||  			& var = z
 		*		Vérification des droits
 		*/
-		if( ( $this->action == Config::getInstance()->get('ajoutMessage') || $this->action == Config::getInstance()->get('modifMessage') )
-			&& is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
+		if( ( $this->action == Config::getInstance()->get('ajoutMessage') 
+			|| $this->action == Config::getInstance()->get('modifMessage') )
+				&& is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
 			
 			$messageId = 0;
 			$sujetId = 0;
 			
 			if( Request::getInstance()->get('formEnvoyer') == Config::getInstance()->get('cleFormulaire') ) {
 				// Traitement d'un formulaire
-				$this->fPageC->MessageRecuTraitement($this->var);
+				$this->fPageC->messageRecuTraitement($this->var);
 				Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Traitement d\'un message');
 			
 			} else {
@@ -94,7 +103,7 @@ class ForumsController
 					Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Modification d\'un message');
 					
 				}
-				$this->fPageC->MessageAfficherFormulaire($sujetId, $messageId);
+				$this->fPageC->messageAfficherFormulaire($sujetId, $messageId);
 			}
 		}
 		

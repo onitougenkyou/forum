@@ -28,7 +28,7 @@ class SujetDao
 	*	SELECT sujetS
 	*		Renvoi une liste des sujets
 	*
-	* @param		limitStart	index de démarrage des résultats
+	* @param		limitStart	Index de démarrage des résultats
 	* @param 	limitNb		Nombre de résultat a afficher
 	* @return	retourne un tableau de résultat
 	**/
@@ -61,51 +61,6 @@ class SujetDao
 
 		// Récupération de l'element a partir de l'objet PDO
 		$result = $query->fetchAll();
-
-		// Création des objets
-		$taille = count($result);
-		for($i=0; $i<$taille; $i++) {
-			
-			// Construction d'un objet Forum
-			$sujet = new Sujet($result[$i]);
-			
-			// Enregistrement du Forum en tableau d'objet
-			$sujets[$i] = $sujet;
-		}
-
-		// Renvoi
-		return $sujets;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-		
-		// Création de la requête SQL
-		$sql = 'SELECT `id`, 
-						`date_creation`,
-						`date_modification`,
-						`auteur`,
-						`acl`,
-						`titre`,
-						`texte`,
-						`affichage`,
-						`forum_id`
-				FROM `sujets`';
-				
-		// Envoi de la requête & récupération
-		$result = $this->db->bddSelect($sql, 0);
 		
 		// Création des objets
 		$taille = count($result);

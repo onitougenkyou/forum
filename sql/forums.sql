@@ -3,7 +3,7 @@
 -- http://www.phpmyadmin.net
 --
 -- Client :  localhost
--- Généré le :  Mer 29 Mars 2017 à 09:10
+-- Généré le :  Ven 31 Mars 2017 à 11:27
 -- Version du serveur :  5.5.54-0+deb8u1
 -- Version de PHP :  5.6.30-0+deb8u1
 
@@ -28,7 +28,7 @@ SET time_zone = "+00:00";
 
 DROP TABLE IF EXISTS `forums`;
 CREATE TABLE IF NOT EXISTS `forums` (
-  `id` int(11) NOT NULL,
+`id` int(11) NOT NULL,
   `date_creation` datetime DEFAULT NULL,
   `date_modification` datetime DEFAULT NULL,
   `auteur` int(11) DEFAULT NULL,
@@ -40,7 +40,7 @@ CREATE TABLE IF NOT EXISTS `forums` (
   `parent_id` int(11) DEFAULT NULL,
   `nb_sujet` int(11) DEFAULT '0',
   `dernier_message_id` int(11) DEFAULT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8 COLLATE=utf8_bin;
 
 --
 -- Contenu de la table `forums`
@@ -63,6 +63,15 @@ INSERT INTO `forums` (`id`, `date_creation`, `date_modification`, `auteur`, `acl
 ALTER TABLE `forums`
  ADD PRIMARY KEY (`id`);
 
+--
+-- AUTO_INCREMENT pour les tables exportées
+--
+
+--
+-- AUTO_INCREMENT pour la table `forums`
+--
+ALTER TABLE `forums`
+MODIFY `id` int(11) NOT NULL AUTO_INCREMENT,AUTO_INCREMENT=6;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
