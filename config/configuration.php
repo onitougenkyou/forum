@@ -15,7 +15,7 @@
 
 	}
 
-	if($_SERVER['SERVER_ADDR'] == '127.0.0.1')
+	if($_SERVER['SERVER_ADDR'] == '127.0.0.1' || $_SERVER['SERVER_ADDR'] == 'localhost')
 	{
 		$conf = array(
 			'host' 		=> '127.0.0.1',
