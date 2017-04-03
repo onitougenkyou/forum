@@ -53,12 +53,11 @@ class SujetViewController
 	*/
 	public function getViewSujetHeader($sujet)
 	{
-	
-		$dataHTML = ' / ';
+		$dataHTML = '';
 		
 		// Si $forum est un objet, on renvoi le titre
 		if(is_object($sujet)){
-			$dataHTML .= '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('sujet').'&var='.$sujet->getId().'">'.$sujet->getTitre().'</a>';
+			$dataHTML .= '<li class="breadcrumb-item"><a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('sujet').'&var='.$sujet->getId().'">'.$sujet->getTitre().'</a></li>';
 		}
 		
 		return $dataHTML;
