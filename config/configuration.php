@@ -78,6 +78,7 @@
 			'modifMessage' 		=> 'modifMessage', 	// & var = id Message
 			'supprMessage' 		=> 'supprMessage', 	// & var = id Message
 		'profilSetting' 			=> 'profilSetting'	,			// ??
+		'profil'							=> 'Profil',
 		'jdr'									=> 'Jeu_de_role',
 		'contact'							=> 'contact',
 		'tchat'								=> 'chat',
