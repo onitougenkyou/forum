@@ -1,10 +1,10 @@
 <?php
 /*
 *	Sélection des paramètre de la base de données
-*	
-*/
+*
+*/$conf = array();
 	if($_SERVER['SERVER_ADDR'] == '10.2.2.37')
-	{	
+	{
 		// Configuration Cédric
 		$conf = array(
 			'host' 		=> '10.2.2.34',
@@ -38,24 +38,24 @@
 
 /*
 *	Droit
-*	
+*
 */
 	$droit = array (
-		
+
 		// page
 		'Visiteur' 		=> 0,
 		'Membre' 		=> 1,
 		'Modérateur' 		=> 2,
 		'Admin'			=> 3,
-		'SuperAdmin' 		=> 4		 
+		'SuperAdmin' 		=> 4
 	);
 
 /*
 *	Configuration
-*	
+*
 */
 	$config = array (
-		
+
 		// page
 		'cleFormulaire' 		=> '156f4ds6541f5s6df4'
 	);
@@ -63,10 +63,10 @@
 /*
 *	Routes
 *		Pages=XXXX & action=YYYY & var=ZZZZ
-*	
+*
 */
 	$route = array (
-		
+
 		// page
 		'accueil' 		=> 'Accueil',				// Accueil
 		'forums' 		=> 'Forums',				// Forums
@@ -78,41 +78,23 @@
 			'modifMessage' 		=> 'modifMessage', 	// & var = id Message
 		'admin' 			=> 'admin'				// ??
 	);
-	
-	
-	
+
+
+
 /*
 *	Renvoi
 *		Tout les tableaux sont enregistré dans $conf
-*	
+*
 */
 
 	// Concaténation
 	$conf = array_merge($conf, $droit);
-	
+
 	// Concaténation
 	$conf = array_merge($conf, $config);
-	
+
 	// Concaténation
 	$conf = array_merge($conf, $route);
-	
+
 	// Renvoi de la config
 	return $conf;
-	
-
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
