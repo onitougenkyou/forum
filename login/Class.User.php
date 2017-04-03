@@ -127,8 +127,7 @@ class USER
    public function modification($uname,$upass,$unameFamily,$umail,$udate,$udescription)
    {
      try {
-
-
+        
        if($this->passChange == true)
        {
          $new_password = password_hash($upass, PASSWORD_DEFAULT);
@@ -160,5 +159,17 @@ class USER
 
 
    }
+
+   public function getUser($user_id)
+   {
+
+       $stmt =   $this->db->prepare("SELECT * FROM users WHERE user_id=:user_id");
+       $stmt->execute(array(":user_id"=>$user_id));
+       $user = $stmt->fetch(PDO::FETCH_ASSOC);
+       return $user;
+
+
+  }
+
 }
 ?>
