@@ -1,6 +1,6 @@
 
     <div class="block-text">
-      Hollow Earth Expedition </br><!-- EN ENORME MAGGLE -->
+      <h2>Hollow Earth Expedition</h2><!-- EN ENORME MAGGLE -->
       <img src="imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
       <p><strong> Hollow Earth Expedition </strong> est à la base un jeu qui emmène les joueurs à
       l'époque troublée de la grande dépression, à la découverte de terres mystérieuses fourmillant

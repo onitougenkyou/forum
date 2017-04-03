@@ -19,9 +19,9 @@
 	{
 		$conf = array(
 			'host' 		=> '127.0.0.1',
-			'dbName' 	=> 'dbName',
-			'user'		=> 'login',
-			'pass'		=> 'password'
+			'dbName' 	=> 'dblogin',
+			'user'		=> 'root',
+			'pass'		=> ''
 		);
 	}
 
@@ -83,7 +83,11 @@
 		'contact'							=> 'contact',
 		'tchat'								=> 'chat',
 		'login'								=> 'login',
-		'logout'							=> 'logout'
+		'logout'							=> 'logout',
+		'hollow'							=> 'HollowEarthExpedition',
+		'donjonEtDragon'			=> 'Donjon_Et_Dragon',
+		'superCops'						=> 'Super_Cops',
+		'zCorps'							=> 'zCorps'
 	);
 
 
