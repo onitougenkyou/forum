@@ -1,0 +1,103 @@
+@import url(normalisation.css);
+@import url(homeStyle.css);
+@import url(animation.css);
+@import url(article.css);
+@import url(carte.css);
+@import url(formulaire.css);
+@import url(forum.css);
+
+
+
+/*
+ *	Couleur
+ *		Fond : #f4ecd8
+ */
+
+
+/*	------------------------------*/
+/* 	--- COMMUNS ------------------*/
+/*	------------------------------*/
+/*	------------------------------*/
+html, body
+{
+	height: 100%;	/* Pour l'utilisation de min-height */
+	background-color:#fcfcfc;
+	color:#333333;
+}
+
+a{
+	color:#333333;
+}
+.block-entete,
+.block-nav,
+.block-centre,
+.block-pied
+{
+	width:80%;
+	margin:0 auto 1em auto;
+	min-width:260px;
+}
+
+
+/*	------------------------------*/
+/* 	--- HEADER -------------------*/
+/*	------------------------------*/
+/*	------------------------------*/
+.block-entete h2
+{
+	font-size:3rem;
+	text-align: center;
+}
+
+
+/*	------------------------------*/
+/* 	--- NAV ----------------------*/
+/*	------------------------------*/
+/*	------------------------------*/
+.block-nav
+{
+	overflow:hidden;
+	background-color:#323131;
+}
+.block-nav .menu li
+{
+	float:left;
+		border-right:1px solid white;
+
+}
+
+.block-nav .menu a
+{
+	padding:0.5em 1em 0.5em 1em;
+	display:inline-block;
+	color:#cbcbcb;
+}
+
+.block-nav .menu li:last-child
+{
+	float:right;
+	background-color:red;
+	border:none;
+}
+
+/*	------------------------------*/
+/* 	--- CENTER -------------------*/
+/*	------------------------------*/
+/*	------------------------------*/
+.block-centre
+{
+}
+
+.block-principal .liste li
+{
+	margin-left:1em;
+}
+
+/*	------------------------------*/
+/* 	--- FOOTER -------------------*/
+/*	------------------------------*/
+/*	------------------------------*/
+.block-pied
+{
+	text-align:center;
+}

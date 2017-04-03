@@ -1,10 +1,13 @@
 <?php
+//namespace Projet\Forum\Model;
 
 /**
 *
 *	Classe Message
 *		Elle contient l'ensemble des message d'un Sujet
 *
+* @user Cedric
+* @date 2017.03.18
 **/
 class Message
 {
@@ -16,17 +19,23 @@ class Message
 	private $titre;
 	private $texte;
 	private $sujetId;
+	private $affichage;			// option - Message affiché ou non
 
 	/**
 	*	Constructeur
 	*
 	**/
-	public function __construct($auteur, $titre = '', $texte = '', $sujetId = 0)
+	public function __construct($data)
 	{
-		$this->auteur 	= $auteur;
-		$this->titre 		= $titre;
-		$this->texte 		= $texte;
-		$this->sujetId 	= $sujetId;
+		if(isset($data['id']))				$this->id 				= $data['id'];
+		if(isset($data['date_creation']))		$this->dateCreation 		= $data['date_creation'];
+		if(isset($data['date_modification']))	$this->dateModification 	= $data['date_modification'];
+		if(isset($data['auteur']))				$this->auteur 			= $data['auteur'];
+		if(isset($data['acl']))				$this->acl 				= $data['acl'];
+		if(isset($data['titre']))				$this->titre 				= $data['titre'];
+		if(isset($data['texte']))				$this->texte 				= $data['texte'];
+		if(isset($data['sujet_id']))			$this->forumId 			= $data['sujet_id'];
+		if(isset($data['affichage']))			$this->affichage 			= $data['affichage'];
 	}
 	
 	/**
@@ -36,12 +45,13 @@ class Message
 	**/
 	public function __toString()
 	{
-		$retour = '<p>';
+		$retour = '';
+			$retour .= 'Id : '.$this->id.'<br>';
 			$retour .= 'Auteur : '.$this->auteur.'<br>';
 			$retour .= 'Titre : '.$this->titre.'<br>';
 			$retour .= 'Texte du message : '.$this->texte.'<br>';
 			$retour .= 'ID du sujet : '.$this->sujetId.'<br>';
-		$retour .= '</p>';
+		$retour .= '';
 		return $retour;
 	}
 
@@ -121,6 +131,16 @@ class Message
 	public function getSujetId()
 	{
 		return $this->sujetId;
+	}
+
+	// affichage
+	public function setAffichage($affichage)
+	{
+		$this->affichage = $affichage;
+	}
+	public function getAffichage()
+	{
+		return $this->affichage;
 	}
 
 }

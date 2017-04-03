@@ -1,0 +1,111 @@
+/*---------------------BODY-------------------*/
+body {
+  font-family: 'Macondo', cursive;
+  background-color: #2C1706;
+  color : white;
+  text-align: center;
+}
+  @import url('normalisation.css');
+  @import url("profilvuStyle.css");
+  @import url("forums.css");
+  @import url('homeStyle.css');
+  @import url('animation.css');
+  @import url('article.css');
+  @import url('carte.css');
+  @import url('formulaire.css');
+
+
+/*----------------- BLOCK HEADER ------------*/
+
+/*-----------------------NAVBAR------------------*/
+.navbar-default
+{
+  background-color:#1D0F04;
+  background-image:none;
+  background-repeat: no-repeat;
+  border-color: #1D0F04;
+  margin-left: 5%;
+  margin-right: 5%;
+}
+
+#crane {
+  position: absolute;
+  margin-left: 37%;
+  margin-top: -14%;
+  text-align: center;
+}
+
+#coloneD {
+  position: absolute;
+  margin-left: 15%;
+}
+
+#coloneG {
+    position: absolute;
+    margin-left: 67%;
+}
+
+@media (min-width: 1500px) {
+  #crane, #corneDroite, #corneGauche {
+    display: block;
+  }
+}
+
+
+  .navbar .collapse #btn-Menu, #btn-logout, #home, #profil
+  {
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-image: -webkit-linear-gradient(top,#efd100 0,#e2a233 38%,#f0c328 60%,#fff1a3 86%,#ffe13e 100%);
+    background-size: 1em 1em;
+    color: #f8b700;
+    display: inline-block;
+    line-height: 1em;
+    position: relative;
+    z-index: auto;
+    font-size:25px;
+    text-transform: uppercase;
+  }
+
+  .dropdown .dropdown-menu > li {
+    background-color:#1D0F04;
+    background-image: none;
+    background-repeat: no-repeat;
+  }
+  .navbar-nav > li > .dropdown-menu a label{
+    color : #f8b700;
+    background-color:#1D0F04;
+  }
+
+  .navbar-default .navbar-nav > li > a:hover, .navbar-default .navbar-nav > li > a:focus, .navbar-nav > li > .dropdown-menu a:hover {
+    background-color: #3C1E06;
+    user-select: none;
+  }
+
+  /*----------------------------------------------------------------------------BODY STYLE ---------------------------------------------------------------*/
+
+  #body-accueil {
+    margin-top: 2.5%;
+    margin-left: 3%;
+    margin-bottom: -25%;
+    text-align: center;
+    color : white;
+    font-size : 1.2em;
+  }
+   #welcome{
+    margin: 0 auto;
+
+    margin-bottom: 50px;
+    text-align: center;
+    font-size : 55px;
+    background-image: -webkit-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+
+    background-size: 1em 1em;
+    color: #8a0707;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+
+    background-image: -o-linear-gradient(top,#931C17 0,#351202 38%,#8a0707 60%,#e80505 86%,#8a0707 100%);
+    -o-background-clip: text;
+    -o-text-fill-color: transparent;
+  }

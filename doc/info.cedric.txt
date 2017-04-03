@@ -1,0 +1,309 @@
+ Modèle MVC 
+	http://old.mazenod.fr/2010/01/design-pattern-mvc-zoom-sur-la-couche-modele-dal-dao-orm-crud/
+
+	
+	DAL	= Data Acces Layer
+		PDO
+	
+	DAO = Data Access Object
+		Table <=> liste d'objet
+		Un enregistrement de table <=> à un objet
+		Un champ d'enregistrement <=> à un attribut
+		Valeur d'un champ <=> Valeur d'un attribut d'objet
+	
+	ORM = Object Relation Mapping
+		Gere les dépendances entre les objets (clé étrangère)
+		
+		
+		
+		
+		/*
+		*	Diagramme UML
+		*
+		*/
+		
+		
+		/*
+		*	Diagramme de classe
+		*
+		*/
+			Affichage de la liste des forums							// getForums
+			Affichage d'un forum										// getForum
+				Affichage de la liste des sujets						// getSujets
+				Affichage d'un sujet									// getSujet
+					Affichage de la liste des messages d'un sujet		// getMessages
+					Affichage d'un message 								// getMessage
+				
+			Création d'un forum, sujet, message			// constructeur & Setters
+			
+			Modification d'un forum, sujet, message		// Setters
+			
+			Supression d'un forum, sujet, message						// delete()
+			
+			
+
+		/*
+		*	Diagramme de classe
+		*
+		*/
+			
+			// Modele
+				Forum
+					attributs
+					__construct()
+					getters & setters
+				Sujet
+					attributs
+					__construct()
+					getters & setters
+				Message
+					attributs
+					__construct()
+					getters & setters
+				Membre
+					attributs
+				
+				
+			// Dao
+				ForumDao
+					__construct($db)
+					getForums() : array(Forum)
+					getForum() : Forum
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String		// Change la variable affichage dans les objets Forum, Sujet, Message
+
+				SujetDao
+					__construct($db)
+					getSujets() : array(Sujet)
+					getSujet() : Sujet
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String
+
+				MessageDao
+					__construct($db)
+					getMessage() : array(Message)
+					getForum() : Message
+					sauvegarder() : String
+					supprimer() : String
+					desactiver() : String
+
+			// Controleur
+				ForumCtrl
+					afficherForum
+			
+			// Tools
+				CConnexion	(DAL)
+					db
+					host
+					dbname
+					user
+					pass
+					__construct()
+					bddSelect()
+				Form
+					__construct()
+					addInput()
+					getForm()		// Renvoi l'HTML
+				HTTPRequest
+					__construct()
+					getGet()
+					getPost()
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+			
+		
+		/*
+		*	Maquette
+		*
+		*/
+		
+			Menu 
+				Liste
+					Ajout d'un forum
+					Ajout d'un sujet
+					Ajout d'un message
+			
+		
+			// Création d'un forum
+			$forum = new Forum('Toto', 'Titre Forum');
+			$forumId = $forum->getId();
+			
+			// Création d'un sujet dans le forum
+			$sujet = new Sujet('Toto', 'Titre du Sujet', $forumId);
+			$sujetId = $sujet->getId();
+			
+			// Création d'un message dans le sujet
+			$message = new Message('Toto', 'Titre Message', 'Corps du message', $sujetId); 
+			$messageId = $message->getId();
+			
+			// Affichage d'un seul message dans une page
+			$message->getMessage($messageId);
+		
+
+		
+		
+		/*
+		*	Réalisation
+		*
+		*/
+		
+		Route possible
+			/*
+				Affichage de la liste des forums
+					action = forum							
+					vue : forums
+			*/
+			
+			/*
+				Affichage d'un forum (liste sujet)
+					action = forum 			& var = z
+					vue : sujets
+			*/
+			
+			/* 
+				Affichage d'un sujet (liste message)
+					action = sujet 			& var = z		
+					vue messages		
+			*/
+			action = ajoutForum 	& var = z		// Formulaire Forum
+			action = ajoutSujet		& var = z		// Formulaire Sujet
+			action = message 		& var = z		// Affichage d'un message
+			action = ajoutMessage 	& var = z		// Formulaire Ajout Message	via l'Id du sujet
+			action = modifieMessage	& var = z		// Formulaire Modifie Message via l'Id du message a modifier		
+			
+		
+		/*
+		*
+		*	Page
+		*
+		*/
+		
+		ajout d'un Message, Forum, Sujet
+			ajoutMessage
+				dans ce cas, var = sujetId
+				Un Message vide est créé, l'Id du sujet est renseigné dans ce Message
+			
+			modifMessage
+				dans ce cas, var = messageId
+				Le Message correspondant a l'Id est chargé
+			
+			supprMessage
+				dans ce cas, var = messageId
+				L'auteur du message est recherché dans la base
+				Si les droits sont OK, on supprime
+			
+			
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		/*
+		*	Test unitaire
+		*
+		*/
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			null
+			parent			aucun
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			null
+			parent			1
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		non
+			image			null
+			parent			1
+
+		Forum
+			titre			Titre
+			description		Description
+			affichage		oui
+			image			1
+			parent			aucun
+
+		
+		
+		/*
+		*	Evolution
+		*
+		*/
+		
+		Générer TOUT les liens (y compris le nom des variables en GET) via un objet + xml
+			Les liens sont semi dynamique, page & forum sont en dur dans les liens, pas leur valeur
+		Gérer l'appel des Pages & Controller via un Objet (au lieu d'un switch)
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
