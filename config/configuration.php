@@ -77,7 +77,12 @@
 			'ajoutMessage' 		=> 'ajoutMessage', 	// & var = id Sujet
 			'modifMessage' 		=> 'modifMessage', 	// & var = id Message
 			'supprMessage' 		=> 'supprMessage', 	// & var = id Message
-		'admin' 			=> 'admin'				// ??
+		'profilSetting' 			=> 'profilSetting'	,			// ??
+		'jdr'									=> 'Jeu_de_role',
+		'contact'							=> 'contact',
+		'tchat'								=> 'chat',
+		'login'								=> 'login',
+		'logout'							=> 'logout'
 	);
 
 

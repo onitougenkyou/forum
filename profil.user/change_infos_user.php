@@ -1,10 +1,8 @@
 <?php
-include_once '../login/verif.php';
 if($user->is_loggedin() == false)
 {
   header ('location: ../login.php');
 }
-include('../header.php');
 
 if(isset($_POST['btn-submit']))
 {
@@ -70,33 +68,7 @@ if(isset($_POST['btn-submit']))
     $upass = $user->data['user_pass'];
     $user->passChange = false;
   }
-  // else
-  // {
-  //   try
-  //   {
-  //     $stmt = $DB_con->prepare("SELECT user_name,user_email FROM users WHERE user_name=:uname OR user_email=:umail");
-  //     $stmt->execute(array(':uname'=>$uname, ':umail'=>$umail));
-  //     $row=$stmt->fetch(PDO::FETCH_ASSOC);
 
-      // if($row['user_name']==$uname) {
-      //   $error[] = "Ce pseudo est déjà utilisé";
-      // }
-      // else if($row['user_email']==$umail) {
-      //   $error[] = "Cette email est déja utilisé";
-      // }
-      // else
-      // {
-      //   if($user->register($fname,$lname,$uname,$umail,$upass))
-      //   {
-      //     $user->redirect('sign-up.php?joined');
-      //   }
-      // }
-  //   }
-  //   catch(PDOException $e)
-  //   {
-  //     echo $e->getMessage();
-  //   }
-  // }
   $user->modification($uname,$upass,$unameFamily,$umail,$udate,$udescription );
 }
 

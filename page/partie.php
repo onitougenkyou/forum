@@ -1,13 +1,5 @@
-<!DOCTYPE html>
-<html>
-<head>
-  <meta charset="utf-8">
-  <title> Partie </title>
-  <link rel="stylesheet" href="login/pageStyle.css" type="text/css"  />
-
-</head>
 <body>
-  <?php include ('../header.php'); ?>
+
   <div class="block-infos">
     <div class="container">
       <div class="row">
@@ -44,5 +36,3 @@
               </div>
             </body>
             </html>
-
-            

@@ -3,7 +3,7 @@ require_once 'login/verif.php';
 
 if($user->is_loggedin()!="")
 {
-  $user->redirect('login/home.php');
+  $user->redirect('index.php');
 }
 
 if(isset($_POST['btn-login']))
@@ -14,7 +14,7 @@ if(isset($_POST['btn-login']))
 
   if($user->login($uname,$umail,$upass))
   {
-    $user->redirect('login/home.php');
+    $user->redirect('index.php');
   }
   else
   {

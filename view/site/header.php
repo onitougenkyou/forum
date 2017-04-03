@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE>
 <html>
 <head>
   <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
@@ -7,8 +7,8 @@
   <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
   <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
   <link rel="stylesheet" href="css/headStyle.css" type="text/css"  />
-  <link rel="stylesheet" href="css/tchat.css" type="text/css"  />
-  <link rel="stylesheet" href="css/profilVuStyle.css" type="text/css"  />
+
+  <title>Bienvenue - <?php print($user->data['user_email']); ?></title>
 
 </head>
 <body>
@@ -34,7 +34,7 @@
           <li class="dropdown">
             <a href="#" id="btn-Menu" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Menu <span class="caret"></span></a>
             <ul class="dropdown-menu">
-              <li><a href="../page/partie.php"><label id="jdr">JDR</label></a></li>
+              <li><a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>"><label id="jdr">JDR</label></a></li>
               <li><a href="../index.forum.php"><label id="forum">Forum</label></a></li>
               <li><a href="facebook.com"><label id="facebook">Facebook</label></a></li>
               <li><a href="#"><label id="contact">contactez</label></a></li>
@@ -44,21 +44,14 @@
           <li><a href="../login/home.php" id ="home">Accueil</a></li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-          <li><a id="profil" href="../template/profil_vu.php"> Profil</a></li>
+          <li><a id="profil" href="template/profil_vu.php"> Profil</a></li>
           <li><a id ="btn-logout" class="navbar-brand deco" href="login/logout.php">logout</a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
   </nav>
   <div id = "crane">
-    <img src="imagesForum/navbar/tete.png" class="img-responsive" alt="crane">
+    <img src="../imagesForum/navbar/tete.png" class="img-responsive" alt="crane">
   </div>
-
- <!-- <div id= "coloneD">
-  <img src="../imagesForum/colone.png" class="img-responsive" alt="Colonne">
-</div> -->
-<!-- <div id="coloneG">
-<img src="../imagesForum/colone.png" class="img-responsive" alt="Colonne">
-</div> -->
-</body>
-</html>
+<!-- </body>
+</html> -->
