@@ -1,8 +1,5 @@
 <?php
 if (empty($_GET['id']) or !is_numeric($_GET['id'])){
-  // include ('../profil.user/erreur_profil.php');
-
-}
 if($user->is_loggedin())
 {
 ?>
@@ -20,11 +17,15 @@ if($user->is_loggedin())
         <label>Description : <?php print($user->data['user_description']); ?></label> <br>
       </div>
       <div class="infos-button">
-        <a href="index.php?page=profilSetting"><button id="btn-modif" type="button" name="button-infos">Modification</button></a>
+        <button id="btn-modif" type="button" name="button-infos"><a href="../profil.user/change_infos_user.php">Modification</a></button>
       </div>
     </div>
   </div>
 </div>
 <?php
 }
+else
+echo "test";
+}
+
  ?>
