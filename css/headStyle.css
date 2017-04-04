@@ -260,7 +260,16 @@ body {
 
 /*---------------------------------------------------------------------------FOOTER STYLE---------------------------------------------------------*/
 
-.footer-block #contact {
-  text-align: center;
-  /*margin-left: 300%;*/
+.footer-block  {
+  padding-top: 60px;
+  width: 350px;
+  margin-left: 40%;
+}
+#contact {
+  margin-top: 10px;
+  width: 150px;
+}
+.footer-block .nav-bar-footer #contact li a:focus, .footer-block > #contact li a:hover {
+  background: #1D0F04;
+  display: none;
 }
