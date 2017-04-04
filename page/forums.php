@@ -46,6 +46,7 @@
 	echo $fsC->getHTML();
 	
 
+	Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , var_dump($user));
 
 
 

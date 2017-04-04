@@ -54,21 +54,21 @@ class ForumsController
 		*/
 		if( $this->action == '' || 
 			( $this->action == Config::getInstance()->get('forum') && $this->var == '' ) ) {
-			$this->fPageC->forumListe();
+			$this->fPageC->forumListe($user);
 		}
 		
 		/*
 		*	Affichage des sujets d'un forum 			action = forum 			& var = z
 		*/
 		if( $this->action == Config::getInstance()->get('forum') && is_numeric($this->var) ) {
-			$this->fPageC->sujetListe($this->var);
+			$this->fPageC->sujetListe($this->var, $user);
 		}
 		
 		/* 
 		*	Affichage d'un sujet 			action = sujet 			& var = z		
 		*/
 		if( $this->action == Config::getInstance()->get('sujet') && is_numeric($this->var) ) {
-			$this->fPageC->messageListe($this->var);
+			$this->fPageC->messageListe($this->var, $user);
 		}
 		
 		/* 

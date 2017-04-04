@@ -61,7 +61,7 @@ class ForumDao
 			$forum = new Forum($result[$i]);
 			
 			// Enregistrement du Forum en tableau d'objet
-			$forums[$i] = $forum;
+			array_push($forums, $forum);
 		}
 		
 		// Renvoi

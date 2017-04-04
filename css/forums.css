@@ -56,6 +56,11 @@
 	/*	------------------------------*/
 	/* 	--- FORUMS ------------------*/
 	/*	------------------------------*/
+	.forums .message {
+		border : 1px dashed red;
+		background-color : pink;
+	}
+
 	.forums .message .utilisateur{
 		
 	}

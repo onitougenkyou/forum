@@ -26,7 +26,7 @@ class ForumViewController
 
 			$taille = count($data);
 			
-			echo '<ul>';
+			echo '<ul class="list-unstyled">';
 			for($i=0; $i<$taille; $i++)
 			{
 				echo '<li>';

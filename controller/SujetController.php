@@ -40,15 +40,17 @@ class SujetController
 	/**
 	*	Afficher la liste des sujets
 	*
+	* @Param		forumId = Id du forum affiché
+	* @Param		user = TODO DEL Param pour avoir l'user en cours
 	**/
-	public function afficherListe($forumId)
+	public function afficherListe($forumId, $user)
 	{
 
 		// Récupération de la liste des forums en tableau d'objet
 		$sujetListe = $this->sDao->getSujets($forumId);
 		
 		// Appel le controller de la vue des Sujets qui renvoi le code HTML de la liste des sujets
-		return $this->sViewC->getViewSujetListe($sujetListe);
+		return $this->sViewC->getViewSujetListe($sujetListe, $user);
 
 	}
 	

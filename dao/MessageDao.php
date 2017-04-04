@@ -28,7 +28,7 @@ class MessageDao
 	*	SELECT messageS
 	*
 	**/
-	public function getMessages($sujetId)
+	public function getMessages($sujetId, $user)
 	{
 		// Init
 		$messages = array();
@@ -60,7 +60,7 @@ class MessageDao
 
 		// Création des objets
 		$taille = count($result);
-		for($i=0; $i<$taille; $i++) {
+		for($i=0; $i<$taille-1; $i++) {
 			
 			
 			// Si le message doit être affiché
@@ -72,11 +72,16 @@ class MessageDao
 				// On stocke le tableau des infos utilisateur dans l'attribut Auteur de l'objet Message
 				$result[$i]['auteur'] = $user->getUser($result[$i]['auteur']);
 				
+				// Si l'auteur n'est pas trouvé, on refait une requête ... TODO DEL
+				if( !is_array($result[$i]['auteur']) ) {
+					$result[$i]['auteur'] = $user->getUser(0);
+				}
+
 				// Construction d'un objet Forum
 				$message = new Message($result[$i]);
 				
 				// Enregistrement du Forum en tableau d'objet
-				$messages[$i] = $message;
+				array_push($messages, $message);
 			}
 		}
 

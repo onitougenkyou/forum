@@ -30,8 +30,12 @@ class MessageViewController
 	*	Get View Message Liste
 	*
 	*/
-	public function getViewMessageListe($data)
+	public function getViewMessageListe($data, $user)
 	{
+		
+		// Init
+		$tplDataMessage['admin'] = '';
+		
 		/*
 		*	Génération de la liste des forums
 		*/
@@ -39,56 +43,56 @@ class MessageViewController
 
 			$taille = count($data);
 			
-			//
-			
 			// Ajout du lien pour ajouter un message
-			echo $this->getAjouterMessage();
+			echo $this->getAjouterMessage($user);
 			
 			echo '<ul class="list-unstyled">';
 
 			foreach ($data as $value) {
 
+				
 				// Sélection d'un message
 				$message = $value;
 				
-				// Mise en forme des informations de chaque message
-				
-				// Auteur (id = auteur)
-				if($message->getAuteur() != null ) { 
-					$tplDataMessage['auteur'] 				= $message->getAuteur()['user_name'];
-				} else {
-					$tplDataMessage['auteur']				= '';
-				}
-				
-				
-				$tplDataMessage['dateCreation'] 		= $message->getDateCreation();
-				$tplDataMessage['dateModification'] 	= $message->getDateModification();
-				$tplDataMessage['titre'] 				= $message->getTitre();
-				$tplDataMessage['texte'] 				= $message->getTexte();
-				$tplDataMessage['avatar']				= $message->getAuteur()['user_avatar'];
 				// Vérification des droits
 
-					// Récupération de l'ID de l'utilisateur du message
-					$userIdBDD = $message->getAuteur()['user_id'];
+					// Récupération du nom de l'utilisateur du message
+					$userNameBDD = $message->getAuteur()['user_name'];
 					
-					// Récupération de l'ID de l'utilisateur connecté
-					$userIdConnected = 1;		// $userIdConnected = $user->data['user_id'];
+					// Récupération du nom de l'utilisateur connecté
+					$userNameConnected = 'Invité';
+					// $userIdConnected = $user['user_name'];
 					
 					// Récupération du role de l'utilisateur
-					$userIdRole = $message->getAuteur()['user_role'];
+					// $userIdRole = $message->getAuteur()['user_role'];
+					$userIdRole = Config::getInstance()->get('Modérateur');
 					
 					// Si l'utilisateur connecté est l'auteur du message ou Modérateur
-					if( $userIdBDD == $userIdConnected ) {
+					if( $userNameBDD == $userNameConnected ) {
 						// Affichage du lien de suppression
 						$tplDataMessage['admin'] = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('supprMessage').'&var='.$message->getId().'">Supprimer</a>';
+					} else {
+						$tplDataMessage['admin'] = '';
 					}
 					
 					// Si l'utilisateur connecté est l'auteur du message
-					if( $userIdBDD == $userIdConnected || checkDroit($userIdRole) ) {
+					if( $userNameBDD == $userNameConnected || $user->checkDroit($userIdRole) ) {
 						// Affichage du lien de modification
 						$tplDataMessage['admin'] = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('modifMessage').'&var='.$message->getId().'">Modifier</a>';
+					} else {
+						$tplDataMessage['admin'] .= '';
 					}
-			
+					
+				// Mise en forme des informations de chaque message
+				
+					// Auteur (id = auteur)
+					$tplDataMessage['auteur'] 				= $message->getAuteur()['user_name'];
+					$tplDataMessage['dateCreation'] 		= $message->getDateCreation();
+					$tplDataMessage['dateModification'] 	= $message->getDateModification();
+					$tplDataMessage['titre'] 				= $message->getTitre();
+					$tplDataMessage['texte'] 				= $message->getTexte();
+					$tplDataMessage['avatar']				= $message->getAuteur()['user_avatar'];
+
 				echo '<li>';
 					include('view/forum/message.php');
 				echo '</li>';
@@ -109,18 +113,21 @@ class MessageViewController
 	*		Ajout un lien vers le formulaire d'ajout de message
 	*
 	*/
-	private function getAjouterMessage()
+	private function getAjouterMessage($user)
 	{
 		if(	Request::getInstance()->get('action') != Config::getInstance()->get('ajoutMessage') ) {
 			// Affichage du lien
 			
 			ob_start();	// Début de l'interception
 			
-				// Création du lien
-				$formulaire_lien = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('ajoutMessage').'&var='.Request::getInstance()->get('var').'">Ajouter un message</a>';
-				
-				// Le code est inclus dans le template
-				include('view/forum/message_lien_form.php');
+				if( $user->checkDroit(Config::getInstance()->get('Membre')) ) {
+					// Création du lien
+					$formulaire_lien = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('ajoutMessage').'&var='.Request::getInstance()->get('var').'">Ajouter un message</a>';
+					
+					// Le code est inclus dans le template
+					include('view/forum/message_lien_form.php');
+				}
+
 		
 			// Et récupérer dans dataHTML
 			$dataHTML = ob_get_clean();		// Fin de l'interception
@@ -171,16 +178,18 @@ class MessageViewController
 	*	get Formulaire Message
 	*		Créer une grande partie du formulaire
 	*
+	* @Param		form			Objet Form a modifier
+	* @Param		message		Message a include dans le formulaire dans le cas d'une modification
+	* @Param		user			TODO DEL Permet de récupérer l'utilisateur connecté
 	*/
-	public function getForm(Form $form, Message $message)
+	public function getForm(Form $form, Message $message, $user)
 	{
 		// Clé utilisé pour savoir si un formulaire a été envoyé
 		$cleFormulaire = Config::getInstance()->get('cleFormulaire');
 		
 		// Ajout ou Modification
-		if($message->getSujetId() != 0) {
-			// Ajout d'un message 
-		
+		if( $message->getSujetId() ) {
+			// Ajout d'un message
 				// SujetId
 				$data = array ('type' => 'hidden', 'nomVar' => 'sujetId', 'value' => $message->getSujetId());
 				$form->addInput($data);
