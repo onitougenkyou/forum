@@ -43,7 +43,6 @@ class MessageController
 	**/
 	public function afficherListe($sujetId)
 	{
-
 		// Récupération de la liste des forums en tableau d'objet
 		$messageListe = $this->mDao->getMessages($sujetId);
 		
@@ -66,8 +65,6 @@ class MessageController
 	**/
 	public function afficherFormulaire($sujetId = 0, $messageId = 0)
 	{
-		
-		
 		if($sujetId != 0) {
 			// Création du Message
 			$message = new Message();

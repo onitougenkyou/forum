@@ -62,11 +62,22 @@ class MessageDao
 		$taille = count($result);
 		for($i=0; $i<$taille; $i++) {
 			
-			// Construction d'un objet Forum
-			$message = new Message($result[$i]);
 			
-			// Enregistrement du Forum en tableau d'objet
-			$messages[$i] = $message;
+			// Si le message doit être affiché
+			if($result[$i]['affichage'] == 1) {
+
+				// Récupération des infos utilisateur
+				$user = new User($this->db);
+				
+				// On stocke le tableau des infos utilisateur dans l'attribut Auteur de l'objet Message
+				$result[$i]['auteur'] = $user->getUser($result[$i]['auteur']);
+				
+				// Construction d'un objet Forum
+				$message = new Message($result[$i]);
+				
+				// Enregistrement du Forum en tableau d'objet
+				$messages[$i] = $message;
+			}
 		}
 
 		// Renvoi
