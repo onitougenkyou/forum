@@ -2,10 +2,10 @@
 
 session_start();
 
-$DB_host = "10.2.2.34";
-$DB_user = "IMIEforum";
-$DB_pass = "root";
-$DB_name = "IMIEforum";
+$DB_host = "localhost";
+$DB_user = "root";
+$DB_pass = "";
+$DB_name = "dblogin";
 
 try
 {
