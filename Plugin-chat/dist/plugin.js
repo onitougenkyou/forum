@@ -197,7 +197,7 @@ function createButton(){
 
 		var message = $('.message input').val();
 		longueur();
-		$.post('../Plugin-chat/donneesChat.php', {
+		$.post('Plugin-chat/donneesChat.php', {
 			'nom': options.$user,
 			'date': heure, min,
 			'message': message
@@ -217,7 +217,7 @@ function longueur() {
 
 function afficheConversation() {
 	console.log("message",  $('.conversation'))
-	$('.conversation').load('../Plugin-chat/chat.txt');
+	$('.conversation').load('Plugin-chat/chat.txt');
 	$('.message input').val('');
 	$('.message input').focus();
 }
