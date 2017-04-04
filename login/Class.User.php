@@ -35,12 +35,13 @@ class USER
        {
            $new_password = password_hash($upass, PASSWORD_DEFAULT);
 
-           $stmt = $this->db->prepare("INSERT INTO users(user_name,user_email,user_pass)
-                                                       VALUES(:uname, :umail, :upass)");
+           $stmt = $this->db->prepare("INSERT INTO users(user_name,user_email,user_pass,user_role)
+                                                       VALUES(:uname, :umail, :upass, :urole)");
 
            $stmt->bindparam(":uname", $uname);
            $stmt->bindparam(":umail", $umail);
            $stmt->bindparam(":upass", $new_password);
+           $stmt->bindparam(":urole", 1);
            $stmt->execute();
 
            return $stmt;
