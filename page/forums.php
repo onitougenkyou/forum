@@ -40,7 +40,7 @@
 	$fsC = new ForumsController($db);
 	
 	// Génère la page forum a partir du code généré par les différentes vues
-	$fsC->createPage();
+	$fsC->createPage($user);
 	
 	// Affichage
 	echo $fsC->getHTML();

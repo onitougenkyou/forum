@@ -29,7 +29,18 @@ include ('controller/pagesController.php');
         case Config::getInstance()->get('donjonEtDragon') :require_once('page/donjonEtDragon.php'); break;
         case Config::getInstance()->get('superCops') :require_once('page/superCops.php'); break;
         case Config::getInstance()->get('zCorps') :require_once('page/zCorps.php'); break;
+        case Config::getInstance()->get('logout') :require_once('login/logout.php'); break;
+        // case Config::getInstance()->get('login') :require_once('login.php'); break;
         default										:	require_once('page/accueil.php');	break;
       }
+
+      // var_dump($user);
       ?>
     </div>
+
+    <script type="text/javascript">
+    $(document).ready(function(){
+      $.chat({$user: '<?php  print($user->data['user_name'])  ?>'}).appendTo(document.body);
+    })
+
+    </script>
