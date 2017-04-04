@@ -1,4 +1,6 @@
 <?php
+include_once ('login/verif.php');
+
 
 
 if($user->is_loggedin()!="")
@@ -14,7 +16,7 @@ if(isset($_POST['btn-login']))
 
   if($user->login($uname,$umail,$upass))
   {
-    $user->redirect('index.php');
+    $user->redirect("?page= echo Config::getInstance()->get('accueil');");
   }
   else
   {
@@ -59,7 +61,9 @@ if(isset($_POST['btn-login']))
         <div class="clearfix"></div><hr />
         <div class="form-group">
           <button type="submit" name="btn-login" class="btn btn-block btn-primary">
-            <i class="glyphicon glyphicon-log-in"></i>&nbsp;Connexion
+            <a id="btnCo" href="index.php">
+              <i class="glyphicon glyphicon-log-in"></i>&nbsp;Connexion
+            </a>
           </button>
         </div>
         <br />
