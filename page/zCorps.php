@@ -19,43 +19,25 @@
     <div class="block-Joueur">
       Cette partie à lieu <strong> le samedi </strong> sur une demande de tout les joueurs au MD (Maitre du donjon)
       Joueurs présent dans cette partie :
-
-      <!-- test -->
-
-      <?php
-      $joueur1 = new Joueur();
-      $joueur1->getPseudo("jean");
-      $joueur2 = new Joueur();
-      $joueur2->getPseudo("michel");
-      $joueur3 = new Joueur();
-      $joueur3->getPseudo("audrey");
-      $tableauJoueursZcorps[] = $joueur1;
-      $tableauJoueursZcorps[] = $joueur2;
-      $tableauJoueursZcorps[] = $joueur3;
-      ?>
+      
+      <table>
+        <tbody>
+          <?php foreach(Personage::getList(array('partyId' => 0)) as $joueur) { ?>
+            <tr>
+              <td><?=$joueur->getName()?></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
 
       <form method="post">
         <label>Ajouter un Joueur</label>
         <input type="text" name="ajoutOK">
         <input type="submit" name="Ajout" value="ajout"></br>
-        <?php
 
-          if (isset($_POST["ajoutOK"])) {
-            $ajout=$_POST["ajoutOK"];
-            ajoutDeJoueur($ajout, $tableauJoueursZcorps);
-          }
-        ?>
         <label>Supprimer un joueur</label>
         <input type="text" name="supprimerOK">
         <input type="submit" name="Supprimer" value="Supprimer"></br>
-        <?php
-        if (isset($_POST["supprimerOK"])) {
-          $ajout=$_POST["supprimerOK"];
-          supprimerJoueur($ajout, $tableauJoueursZcorps);
-        }
-        ?>
-        <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueurPseudo?><br>
-        <?php } ?>
+
     </div>
     <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>

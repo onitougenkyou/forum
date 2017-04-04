@@ -1,4 +1,3 @@
-
     <div class="block-text">
       <h2>Hollow Earth Expedition</h2><!-- EN ENORME MAGGLE -->
       <img src="imagesForum/pagesJdr/pageHollowEarthExpedition.jpg" class="image Hollow Earth"></br>
@@ -28,43 +27,27 @@
       Cette partie à lieu <strong> le Dimanche </strong> selon la partie étant en cours
       Joueurs présent dans cette partie :
 
-      <!-- test -->
+      <table>
+        <tbody>
+          <?php foreach(Personage::getList(array('partyId' => 0)) as $joueur) { ?>
+            <tr>
+              <td><?=$joueur->getName()?></td>
+            </tr>
+          <?php } ?>
+        </tbody>
+      </table>
 
-      <?php
-      $joueur1 = new Joueur();
-      $joueur1->setPseudo("jean");
-      $joueur2 = new Joueur();
-      $joueur2->setPseudo("michel");
-      $joueur3 = new Joueur();
-      $joueur3->setPseudo("audrey");
-      $tableauJoueursZcorps[] = $joueur1;
-      $tableauJoueursZcorps[] = $joueur2;
-      $tableauJoueursZcorps[] = $joueur3;
-      ?>
 
       <form method="post" action="">
         <label>Ajouter un Joueur</label>
         <input type="text" name="ajoutOK">
         <input type="submit" name="Ajout" value="ajout"></br>
-        <?php
-
-          if (isset($_POST["ajoutOK"])) {
-            $ajout=$_POST["ajoutOK"];
-            ajoutDeJoueur($ajout, $tableauJoueursZcorps);
-          }
-        ?>
+      </form>
+      <form method="post" action="">
         <label>Supprimer un joueur</label>
         <input type="text" name="supprimerOK">
         <input type="submit" name="Supprimer" value="Supprimer"></br>
-        <?php
-        if (isset($_POST["supprimerOK"])) {
-          $ajout=$_POST["supprimerOK"];
-          supprimerJoueur($ajout, $tableauJoueursZcorps);
-        }
-        ?>
-        <?php foreach ($tableauJoueursZcorps as $joueur) { ?>
-            <?=$joueur->joueurPseudo?><br>
-        <?php } ?>
+      </form>
     </div>
     <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>
   </body>

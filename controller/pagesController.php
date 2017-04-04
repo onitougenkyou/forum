@@ -3,51 +3,24 @@
 /**
  * Function et variables pour page.php et descendance
  */
+  include_once 'model/Personage.php';
 
-  include 'model/Joueur.php';
-
-  /**
-  * Necessite à la place de joueur le user ayant pour donnée ce que l'utilisateur possède sur son compte
-  * A savoir nom, pseudo, mail ( un joueur n'as pas besoin de plus)
-  *
-  * Liste des tableaux de joueur que contiendra chaque JDR
-  * CONDITION : un tableau ne peux contenir plus de 8 éléments
-  */
-
-  $tableauJoueursZcorps = array();
-  $tableauJoueursSuperCops = array();
-  $tableauJoueursDonjonEtDragon = array();
-  $tableauJoueursHollowEarthExpedition = array();
-
-  /**
-  * Function permettant de lister les joueur d'un tableau quelconque
-  */
-
-  function listeDesJoueurs($tableauJoueurs)
-  {
-    for ($i=0; $i < count($tableauJoueurs) ; $i++) {
-      echo $tableauJoueurs[$i]->joueur_pseudo . "<br>" ;
-    }
+//
+  if (isset($_POST["ajoutOK"]) && $user->checkDroit(1)) {
+    $ajout=$_POST["ajoutOK"];
+    $character = new Personage();
+    $character->setName($ajout);
+    $character->setUserId($user['user_id']);
+    $character->update();
+    var_dump($character);
   }
 
-  /**
-  * Ajout de joueur à un tableau
-  */
-
-
-  function ajoutDeJoueur($Joueur, $tableauJoueurs)
-  {
-    array_push($tableauJoueurs ,$Joueur);
+  if (isset($_POST["supprimerOK"]) && $user->checkDroit(1)) {
+    $delete=$_POST["supprimerOK"];
+    $character = Personage::getOne(array('name' => $delete)); //('name' => $delete, 'partyId' => 0)
+    $character->delete();
   }
 
-  /**
-  * Supprimer un joueur d'un tableau et ranger par la suite ce même tableau
-  */
 
-  function supprimerJoueur($Joueur, $tableauJoueurs)
-  {
-    unset($tableauJoueurs[array_search($Joueur, $tableauJoueurs)]);
-    array_merge($tableauJoueurs);
-  }
 
 ?>
