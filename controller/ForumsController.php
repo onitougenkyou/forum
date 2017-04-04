@@ -1,5 +1,10 @@
 <?php
 
+
+function checkDroit($id)
+{
+	return true;
+}
 /**
 *
 *	Forums Controleur
@@ -40,7 +45,7 @@ class ForumsController
 	*	getForumController
 	*		Appel Forums Page Controller
 	**/
-	public function createPage()
+	public function createPage($user)
 	{
 		$this->fPageC 	= new ForumsPageController($this->db, $this->action, $this->var);
 		
@@ -80,7 +85,8 @@ class ForumsController
 		*/
 		if( ( $this->action == Config::getInstance()->get('ajoutMessage') 
 			|| $this->action == Config::getInstance()->get('modifMessage') )
-				&& is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
+				&& is_numeric($this->var) && $user->checkDroit(Config::getInstance()->get('Membre')) ) {
+				// && is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
 			
 			$messageId = 0;
 			$sujetId = 0;

@@ -44,16 +44,55 @@ class MessageViewController
 			// Ajout du lien pour ajouter un message
 			echo $this->getAjouterMessage();
 			
-			echo '<ul>';
-			for($i=0; $i<$taille; $i++)
-			{
-				echo '<li>';
-					// Sélection d'un message
-					$message = $data[$i];
+			echo '<ul class="list-unstyled">';
 
-					// On inclus le template
+			foreach ($data as $value) {
+
+				// Sélection d'un message
+				$message = $value;
+				
+				// echo '<pre>';
+				// echo print_r($data);
+				// echo '<pre>';
+				
+				// Mise en forme des informations de chaque message
+				
+				// id = auteur
+				if($message->getAuteur() != null )
+				$tplDataMessage['auteur'] 				= $message->getAuteur()['user_name'];
+				
+				$tplDataMessage['dateCreation'] 		= $message->getDateCreation();
+				$tplDataMessage['dateModification'] 	= $message->getDateModification();
+				$tplDataMessage['titre'] 				= $message->getTitre();
+				$tplDataMessage['texte'] 				= $message->getTexte();
+				$tplDataMessage['avatar']				= $message->getAuteur()['user_avatar'];
+				// Vérification des droits
+
+					// Récupération de l'ID de l'utilisateur du message
+					$userIdBDD = $message->getAuteur()['user_id'];
+					
+					// Récupération de l'ID de l'utilisateur connecté
+					$userIdConnected = 1;		// $userIdConnected = $user->data['user_id'];
+					
+					// Récupération du role de l'utilisateur
+					$userIdRole = $message->getAuteur()['user_role'];
+					
+					// Si l'utilisateur connecté est l'auteur du message ou Modérateur
+					if( $userIdBDD == $userIdConnected ) {
+						// Affichage du lien de suppression
+						$tplDataMessage['admin'] = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('supprMessage').'&var='.$message->getId().'">Supprimer</a>';
+					}
+					
+					// Si l'utilisateur connecté est l'auteur du message
+					if( $userIdBDD == $userIdConnected || checkDroit($userIdRole) ) {
+						// Affichage du lien de modification
+						$tplDataMessage['admin'] = '<a href="?page='.Config::getInstance()->get('forums').'&action='.Config::getInstance()->get('modifMessage').'&var='.$message->getId().'">Modifier</a>';
+					}
+			
+				echo '<li>';
 					include('view/forum/message.php');
 				echo '</li>';
+				
 			}
 			echo '<ul>';
 	
