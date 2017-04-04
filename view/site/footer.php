@@ -2,7 +2,7 @@
   <nav class="navbar navbar-default">
     <div class="container-fluid">
       <!-- Menu réduit pour responsive -->
-      <div class="navbar-header">
+      <div class="navbar-footer">
         <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1" aria-expanded="false">
           <span class="sr-only">Toggle navigation</span>
           <span class="icon-bar"></span>
@@ -17,7 +17,7 @@
           <li class="dropdown">
           </li>
         </ul>
-        <ul class="nav navbar-nav">
+        <ul class="nav">
           <li><a href="#"><label id="contact">contactez</label></a></li>
         </ul>
       </div><!-- /.navbar-collapse -->
