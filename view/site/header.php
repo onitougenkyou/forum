@@ -1,3 +1,5 @@
+
+
 <!DOCTYPE>
 <html>
 <head>
@@ -47,7 +49,11 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
           <li><a id="profil" href="?page=<?php echo Config::getInstance()->get('profil'); ?>"> Profil</a></li>
-          <li><a id ="btn-logout" class="navbar-brand deco" href="login/logout.php">logout</a></li>
+          <?php if($user->is_loggedin()){ ?>
+            <li><a id ="btn-logout" class="navbar-brand deco" href="?page=<?php echo Config::getInstance()->get('logout'); ?>">logout</a></li>
+          <?php } else { ?>
+            <li><a id ="btn-logout" class="navbar-brand deco" href="login.php">login</a></li>
+            <?php } ?>
         </ul>
       </div><!-- /.navbar-collapse -->
     </div><!-- /.container-fluid -->
