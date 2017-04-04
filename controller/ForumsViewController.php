@@ -42,7 +42,7 @@ class ForumsViewController
 			else										$tplData['body']	= $dataHTML['body'];
 			
 			// Debug
-			if( !isset($dataHTML['forums_debug']) )		$tplData['forums_debug'] 	= 'coucou';
+			if( !isset($dataHTML['forums_debug']) )		$tplData['forums_debug'] 	= 'Debug vide';
 			else										$tplData['forums_debug']	= $dataHTML['forums_debug'];
 			
 			// Affichage du template

@@ -8,7 +8,7 @@
 	
 	<?php echo $tplData['formulaire']; ?>
 	
-	<div class="forums_liste">
+	<div class="forums_liste  text-left">
 		<?php echo $tplData['body']; ?>
 	</div>
 	
