@@ -55,7 +55,7 @@ if(isset($_POST['btn-signup']))
       }
       else
       {
-        if($user->register($fname,$lname,$uname,$umail,$upass))
+        if($user->register($uname,$umail,$upass))
         {
           $user->redirect('sign-up.php?joined');
         }

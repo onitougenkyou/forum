@@ -1,6 +1,6 @@
 <?php
 // On démarre la session
-session_start ();
+// session_start ();
 
 // On détruit les variables de notre session
 session_unset ();
@@ -9,5 +9,5 @@ session_unset ();
 session_destroy ();
 
 // On redirige le visiteur vers la page d'accueil
-header ('location: ..\index.php')
+// include_once('../index.php');
 ?>
