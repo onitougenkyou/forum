@@ -1,6 +1,6 @@
 <?php
 
-	// Objet	
+	// Objet
 	require_once('model/Forum.php');
 	require_once('model/Sujet.php');
 	require_once('model/Message.php');
@@ -26,7 +26,7 @@
 	// DEBUG
 	require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
 	set_error_handler(array('GestionErreur', 'erreurPDO'));
-	
+
 	// Connexion à la BDD
 	require_once('tools/CConnexion.php');
 	$db = new CConnexion(
@@ -35,28 +35,15 @@
 		Config::getInstance()->get('user'),
 		Config::getInstance()->get('pass')
 	);
-	
-	// Création du controller & envoi de $action et $var 
+
+	// Création du controller & envoi de $action et $var
 	$fsC = new ForumsController($db);
-	
+
 	// Génère la page forum a partir du code généré par les différentes vues
 	$fsC->createPage($user);
-	
+
 	// Affichage
 	echo $fsC->getHTML();
-	
+
 
 	Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , var_dump($user));
-
-
-
-
-
-
-
-
-
-
-
-
-
