@@ -26,13 +26,15 @@ class USER
         $this->data = [];
         $this->data['user_role'] = 0;
         $this->data['user_name'] = "guest";
+
       }
 
     }
-    public function register($fname,$lname,$uname,$umail,$upass)
+    public function register($uname,$umail,$upass)
     {
        try
        {
+           $newRole = 1;
            $new_password = password_hash($upass, PASSWORD_DEFAULT);
 
            $stmt = $this->db->prepare("INSERT INTO users(user_name,user_email,user_pass,user_role)
@@ -41,7 +43,7 @@ class USER
            $stmt->bindparam(":uname", $uname);
            $stmt->bindparam(":umail", $umail);
            $stmt->bindparam(":upass", $new_password);
-           $stmt->bindparam(":urole", 1);
+           $stmt->bindparam(":urole", $newRole);
            $stmt->execute();
 
            return $stmt;
@@ -166,7 +168,7 @@ class USER
 
    }
 
-   public function getUser($user_id)
+   public function getUser($user_id = 0)
    {
 
        $stmt =   $this->db->prepare("SELECT * FROM users WHERE user_id=:user_id");
