@@ -27,12 +27,30 @@ class SujetViewController
 
 			$taille = count($data);
 			
-			echo '<ul>';
+			echo '<ul class="list-unstyled">';
 			for($i=0; $i<$taille; $i++)
 			{
-				echo '<li>';
 				$sujet = $data[$i];
-				include('view/forum/sujet.php');
+					
+				// Auteur (id = auteur)
+				if($sujet->getAuteur() != null ) { 
+					$tplDataSujet['auteur'] 				= $sujet->getAuteur()['user_name'];
+				} else {
+					$tplDataSujet['auteur']				= '1';
+				}
+				
+				
+				$tplDataSujet['id'] 				= $sujet->getId();
+				$tplDataSujet['dateCreation'] 		= $sujet->getDateCreation();
+				$tplDataSujet['dateModification'] 	= $sujet->getDateModification();
+				$tplDataSujet['titre'] 			= $sujet->getTitre();
+				$tplDataSujet['texte'] 			= $sujet->getTexte();
+				$tplDataSujet['avatar']			= $sujet->getAuteur()['user_avatar'];
+				
+				
+				
+				echo '<li>';
+					include('view/forum/sujet.php');
 				echo '</li>';
 			}
 			echo '<ul>';

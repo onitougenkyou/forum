@@ -52,9 +52,9 @@ class ForumsPageController
 	*	Forum Liste
 	*		Page qui affiche la liste des Forums
 	**/
-	public function forumListe()
+	public function forumListe($user)
 	{
-		$this->html['body'] = $this->fC->afficherListe();
+		$this->html['body'] = $this->fC->afficherListe($user);
 	}
 	
 	
@@ -74,9 +74,9 @@ class ForumsPageController
 	*	Sujet Liste
 	*		Page qui affiche la liste des Sujets
 	**/
-	public function sujetListe($forumId)
+	public function sujetListe($forumId, $user)		// TODO DEL, Param pour avoir l'user en cours
 	{
-		$this->html['body'] =  $this->sC->afficherListe($forumId);
+		$this->html['body'] =  $this->sC->afficherListe($forumId, $user);
 	}
 	
 	
@@ -95,10 +95,13 @@ class ForumsPageController
 	/**
 	*	Message Liste
 	*		Page qui affiche la liste des Message
+	*
+	* @Param		sujetId		Id du sujet a affiché
+	* @Param 	user			TODO DEL Utilisateur actuellement connecté
 	**/
-	public function messageListe($sujetId)
+	public function messageListe($sujetId, $user)
 	{
-		$this->html['body'] .=  $this->mC->afficherListe($sujetId);
+		$this->html['body'] .=  $this->mC->afficherListe($sujetId, $user);
 	}
 	
 

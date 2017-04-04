@@ -7,12 +7,12 @@ body {
 }
   @import url('normalisation.css');
   @import url("profilvuStyle.css");
-  @import url("forums.css");
   @import url('homeStyle.css');
   @import url('animation.css');
   @import url('article.css');
   @import url('carte.css');
   @import url('formulaire.css');
+  @import url('forums.css');
 
 
 /*----------------- BLOCK HEADER ------------*/

@@ -1,10 +1,13 @@
 <div class="sujet">
-	<h2>
-		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&action=<?php echo Config::getInstance()->get('sujet'); ?>&var=<?php echo $sujet->getId(); ?>">
-			<?php echo $sujet->getTitre(); ?>
+	<div class="titre">
+		<a href="?page=<?php echo Config::getInstance()->get('forums'); ?>&action=<?php echo Config::getInstance()->get('sujet'); ?>&var=<?php echo $tplDataSujet['id']; ?>">
+			<?php echo $tplDataSujet['titre']; ?>
 		</a>
-	</h2>
-	<p>
-		<?php echo $sujet->getTexte(); ?>
-	</p>
+	</div>
+	<div class="description">
+		<?php echo $tplDataSujet['texte']; ?>
+	</div>
+	<div class="auteur">
+		<?php echo $tplDataSujet['auteur']; ?>
+	</div>
 </div>

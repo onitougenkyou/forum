@@ -35,7 +35,7 @@ class SujetDao
 	public function getSujets($forumId)
 	{
 		// Init
-		$messages = array();
+		$sujets = array();
 		
 		// Création de la requête SQL
 		$sql = 'SELECT `id`, 
@@ -64,13 +64,25 @@ class SujetDao
 		
 		// Création des objets
 		$taille = count($result);
-		for($i=0; $i<$taille; $i++) {
-			
-			// Construction d'un objet Forum
-			$sujet = new Sujet($result[$i]);
-			
-			// Enregistrement du Forum en tableau d'objet
-			$sujets[$i] = $sujet;
+		
+		// for($i=0; $i<$taille; $i++) {
+		foreach($result as $valeur) {
+
+			// Si le message doit être affiché
+			if($valeur['affichage'] == 1) {
+
+				// Récupération des infos utilisateur
+				$user = new User($this->db);
+				
+				// On stocke le tableau des infos utilisateur dans l'attribut Auteur de l'objet Message
+				$valeur['auteur'] = $user->getUser($valeur['auteur']);
+				
+				// Construction d'un objet Sujet
+				$sujet = new Sujet($valeur);
+				
+				// Enregistrement du Sujet dans le tableau d'objet
+				array_push($sujets, $sujet);
+			}
 		}
 		
 		// Renvoi
@@ -110,7 +122,7 @@ class SujetDao
 
 		// Récupération de l'element a partir de l'objet PDO
 		$result = $query->fetchAll();
-		
+				
 		// Création de l'objet Sujet
 		$sujet = new Sujet($result[0]);
 

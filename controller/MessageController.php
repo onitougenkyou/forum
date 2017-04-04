@@ -41,13 +41,13 @@ class MessageController
 	*	Afficher la liste de forums
 	*
 	**/
-	public function afficherListe($sujetId)
+	public function afficherListe($sujetId, $user)
 	{
 		// Récupération de la liste des forums en tableau d'objet
-		$messageListe = $this->mDao->getMessages($sujetId);
+		$messageListe = $this->mDao->getMessages($sujetId, $user);
 		
 		// Appel le controller de la vue du Forum qui renvoi le code HTML de la liste des forums
-		return $this->mViewC->getViewMessageListe($messageListe);
+		return $this->mViewC->getViewMessageListe($messageListe, $user);		// TODO DEL Passage en param pour avoir l'utilisateur en cours
 
 	}
 	
