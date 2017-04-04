@@ -51,15 +51,15 @@ class MessageViewController
 				// Sélection d'un message
 				$message = $value;
 				
-				// echo '<pre>';
-				// echo print_r($data);
-				// echo '<pre>';
-				
 				// Mise en forme des informations de chaque message
 				
-				// id = auteur
-				if($message->getAuteur() != null )
-				$tplDataMessage['auteur'] 				= $message->getAuteur()['user_name'];
+				// Auteur (id = auteur)
+				if($message->getAuteur() != null ) { 
+					$tplDataMessage['auteur'] 				= $message->getAuteur()['user_name'];
+				} else {
+					$tplDataMessage['auteur']				= '';
+				}
+				
 				
 				$tplDataMessage['dateCreation'] 		= $message->getDateCreation();
 				$tplDataMessage['dateModification'] 	= $message->getDateModification();
