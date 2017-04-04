@@ -1,4 +1,4 @@
-<body>
+
 
   <div class="block-infos">
     <div class="container">
@@ -34,5 +34,3 @@
                   </div>
                 </div>
               </div>
-            </body>
-            </html>

@@ -52,7 +52,7 @@ body {
 }
 
 
-  .navbar .collapse #btn-Menu, #btn-logout, #home, #profil
+  .navbar .collapse #btn-Menu, #btn-logout, #home, #profil, #contact
   {
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -256,3 +256,11 @@ body {
         margin-left: 0 auto;
         background-color: #3C1E06;
         border: black 1px solid; }
+
+
+/*---------------------------------------------------------------------------FOOTER STYLE---------------------------------------------------------*/
+
+.footer-block #contact {
+  text-align: center;
+  /*margin-left: 300%;*/
+}

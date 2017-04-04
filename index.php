@@ -12,6 +12,7 @@ include ('view/site/header.php');
 include ('controller/pagesController.php');
 
 
+
 ?>
 
   <div class="block-body">
@@ -44,3 +45,6 @@ include ('controller/pagesController.php');
     })
 
     </script>
+
+    <?php include ('view/site/footer.php');
+ ?>

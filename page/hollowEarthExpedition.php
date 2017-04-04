@@ -60,6 +60,3 @@
                   </div>
                 </div>
               <a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>">Retour</br>
-                
-=======
->>>>>>> 1589736bd9a4adf529d9399a3ba1162e26ae0b45

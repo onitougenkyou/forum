@@ -41,7 +41,6 @@
               <li><a href="?page=<?php echo Config::getInstance()->get('jdr'); ?>"><label id="jdr">JDR</label></a></li>
               <li><a href="?page=<?php echo Config::getInstance()->get('forums'); ?>"><label id="forum">Forum</label></a></li>
               <li><a href="facebook.com"><label id="facebook">Facebook</label></a></li>
-              <li><a href="#"><label id="contact">contactez</label></a></li>
               <li><a href="?page=<?php echo Config::getInstance()->get('tchat'); ?>"><label id="tchat">tchat</label></a></li>
             </ul>
           </li>
