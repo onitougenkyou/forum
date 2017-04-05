@@ -11,7 +11,6 @@
 class ForumController
 {
 	private $db;
-	private $var;
 	
 	private $fDao;	// Forum Dao
 	private $fViewC;	// Forum View Controller
@@ -20,11 +19,11 @@ class ForumController
 	/**
 	*	Constructeur
 	*
+	* @param		Object		$db			Object PDO, permttant les requêtes à la base de donnée
 	**/
-	public function __construct(CConnexion $db, $var = '')
+	public function __construct(CConnexion $db)
 	{
 		$this->db = $db;
-		$this->var = $var;
 		
 		// Instanciation du DAO
 		$this->fDao = new ForumDao($this->db);
@@ -39,6 +38,7 @@ class ForumController
 	/**
 	*	Afficher la liste de forums
 	*
+	* @return	String		code HTML
 	**/
 	public function afficherListe()
 	{
@@ -52,16 +52,18 @@ class ForumController
 	
 	/**
 	*	Get Forum
-	*		Récupère le Forum du Sujet
+	*		Récupère un Forum via son Id
 	*
+	* @param		integer		$forumId		Id du forum a afficher
+	* @return	Object		retourn un object Forum
 	**/
 	public function getForumbyId($forumId)
 	{
 		// Récupération du forumId
-		$forumId = $this->fDao->getForum($forumId);
+		$forum = $this->fDao->getForum($forumId);
 		
-		// Retourne l'Id du Forum du Sujet
-		return $forumId;
+		// Retourne le Forum
+		return $forum;
 
 	}
 
@@ -69,6 +71,8 @@ class ForumController
 	/**
 	*	Afficher les informations du Header quand un forum est affiché
 	*
+	* @param		integer		$forumId			Id du forum
+	* @return	String		code HTML, lien du Forum en cours
 	**/
 	public function getInfoHeader($forumId = 0)
 	{

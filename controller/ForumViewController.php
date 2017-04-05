@@ -14,6 +14,8 @@ class ForumViewController
 	*	Get View Forum Liste
 	*		Renvoi le code HTML de la liste des forums
 	*
+	* @param		array()		$data		Tableau d'objet Forum
+	* @return	String		Le code HTML
 	*/
 	public function getViewForumListe($data)
 	{
@@ -44,32 +46,12 @@ class ForumViewController
 	}
 	
 	
-	
-	/*
-	*	Get View Forum
-	*		Renvoi le code HTML d'un forum
-	*		Utilisé pour afficher les infos d'un forum quand on affiche la liste des sujets ou Messages
-	*
-	*/
-	public function getViewForum(Forum $forum)
-	{
-		$dataHTML = '';
-		
-		// Début de l'interception
-		ob_start();
-		
-			include('view/forum/forum_bandeau.php');
-		
-		// Fin de l'interception
-		$dataHTML = ob_get_clean();
-		return $dataHTML;
-	}
-
-	
 	/*
 	*	Get View Forum Header
-	*		Renvoi le lien d'un forum (utile surtout en cas de sous forum)
+	*		Renvoi le lien du forum ou d'un forum
 	*
+	* @param		Object/Integer	$forum		Objet Forum ou 0
+	* @return	String			Code HTML contenant les liens du bandeau
 	*/
 	public function getViewForumHeader($forum)
 	{
