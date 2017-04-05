@@ -11,6 +11,7 @@
 class SujetController
 {
 	private $db;
+	private $var;
 	
 	private $sDao;	// Sujet Dao
 	private $sViewC;	// Sujet View Controller
@@ -20,11 +21,11 @@ class SujetController
 	/**
 	*	Constructeur
 	*
-	* @param		Object		$db		Objet PDO
 	**/
-	public function __construct(CConnexion $db)
+	public function __construct(CConnexion $db, $var = '')
 	{
 		$this->db = $db;
+		$this->var = $var;
 		
 		// Instanciation du DAO
 		$this->sDao = new SujetDao($this->db);
@@ -39,8 +40,8 @@ class SujetController
 	/**
 	*	Afficher la liste des sujets
 	*
-	* @param		integer		$forumId 	Id du forum affiché
-	* @param		array()		$user 		TODO DEL Param pour avoir l'user en cours
+	* @Param		forumId = Id du forum affiché
+	* @Param		user = TODO DEL Param pour avoir l'user en cours
 	**/
 	public function afficherListe($forumId, $user)
 	{
@@ -58,8 +59,6 @@ class SujetController
 	/**
 	*	Afficher les informations du forum_bandeau quand un sujet est affiché
 	*
-	* @param		integer		sujetId		Id d'un sujet
-	* @return	String		Code HTML
 	**/
 	public function getInfoHeader($sujetId = 0)
 	{
@@ -82,8 +81,6 @@ class SujetController
 	*	Get Sujet
 	*		Passe plat pour le ForumsController
 	*
-	* @param		integer		$sujetId		Id d'un sujet
-	* @return	Object		Un objet Sujet
 	**/
 	public function getSujet($sujetId)
 	{

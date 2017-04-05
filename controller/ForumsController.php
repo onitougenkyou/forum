@@ -29,14 +29,14 @@ class ForumsController
 	/**
 	*	Constructeur
 	*		Appel les autres constructeurs en fonction des paramètres recu
-	*
-	* @param		Object		$db			Object PDO permettant l'accès la base de donnée
 	**/
 	public function __construct(CConnexion $db)
 	{
 		$this->db 		= $db;
 		$this->action		= Request::getInstance()->get('action');
 		$this->var		= Request::getInstance()->get('var');
+		
+
 	}
 	
 	
@@ -44,8 +44,6 @@ class ForumsController
 	/**
 	*	getForumController
 	*		Appel Forums Page Controller
-	*
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
 	**/
 	public function createPage($user)
 	{
@@ -74,7 +72,7 @@ class ForumsController
 		}
 		
 		/* 
-		*	Suppression d'un message		action = sujet 			& var = z		
+		*	Supression d'un message		action = sujet 			& var = z		
 		*/
 		if( $this->action == Config::getInstance()->get('supprMessage') && is_numeric($this->var) ) {
 			$this->fPageC->messageSupprimer($this->var);
@@ -86,11 +84,9 @@ class ForumsController
 		*		Vérification des droits
 		*/
 		if( ( $this->action == Config::getInstance()->get('ajoutMessage') 
-				|| $this->action == Config::getInstance()->get('modifMessage') )
-				&& ( is_numeric($this->var) && $user->checkDroit(Config::getInstance()->get('Membre')) ) ) {
+			|| $this->action == Config::getInstance()->get('modifMessage') )
+				&& is_numeric($this->var) && $user->checkDroit(Config::getInstance()->get('Membre')) ) {
 				// && is_numeric($this->var) && checkDroit(Config::getInstance()->get('Membre')) ) {
-				
-				Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Ajouter/Modifier un Message');
 			
 			$messageId = 0;
 			$sujetId = 0;
@@ -122,15 +118,14 @@ class ForumsController
 	
 	
 	/*
-	*	Get HTML
-	*		Renvoi l'ensemble du code HTML de ForumsPageController avec le template général du Forum
+	*	get HTML
+	*		Renvoi l'ensemble du code HTML avec le template général du Forum
 	*
-	* @return	String		code HTML
 	*/
 	public function getHTML()
 	{
 		// Génération du bandeau et enregistrement
-		return $this->fPageC->getHTML($this->action, $this->var);
+		return $this->fPageC->getHTML();
 	}
 	
 }

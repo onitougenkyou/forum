@@ -11,6 +11,7 @@
 class MessageController
 {
 	private $db;
+	private $var;
 	
 	private $mDao;	// Forum Dao
 	private $mViewC;	// Forum View Controller
@@ -21,9 +22,10 @@ class MessageController
 	*	Constructeur
 	*
 	**/
-	public function __construct(CConnexion $db)
+	public function __construct(CConnexion $db, $var = '')
 	{
 		$this->db = $db;
+		$this->var = $var;
 		
 		// Instanciation du DAO
 		$this->mDao = new MessageDao($this->db);
@@ -38,9 +40,6 @@ class MessageController
 	/**
 	*	Afficher la liste de forums
 	*
-	* @param		integer		$sujetId		Id d'un sujet
-	* @param		array()		$user		Tableau contenant les infos de l'utilisateur connecté
-	* @return	String		Un objet Sujet
 	**/
 	public function afficherListe($sujetId, $user)
 	{
@@ -61,31 +60,24 @@ class MessageController
 	*			action = ajoutMessage
 	*			var = 5	// sujetId
 	*
-	* @param 	integer		$sujetId 	Id du sujet dans lequel le message sera enregistré
-	* @param 	integer		$messageId 	Id du message a modifier
-	* @return	String		Code HTML
+	* @param 	$sujetId 	Id du sujet dans lequel le message sera enregistré
+	* @param 	$messageId 	Id du message a modifier
 	**/
 	public function afficherFormulaire($sujetId = 0, $messageId = 0)
 	{
-		Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Affichage d\'un formulaire');
-		
 		if($sujetId != 0) {
 			// Création du Message
 			$message = new Message();
 			
 			// Ajout d'un message
-			$message->setSujetId($sujetId);
-			
-			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Nouveau message');
+			$message->setSujetId($sujetId);		
 			
 		} else {
 			// Récupération du message via l'id du message transmis
 			$message = $this->mDao->getMessage($messageId);
 			
 			// Modification d'un message
-			$message->setId($messageId);		
-			
-			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Modification d\'un message');
+			$message->setId($messageId);			
 		}
 		
 		// Création du formulaire 
@@ -106,7 +98,7 @@ class MessageController
 	/**
 	*	Traitement des Messages recu via le formulaire
 	*
-	* @return	boolean		Vrai si le message a été enregistré
+	* @Return 	True si tout est OK
 	**/
 	public function traiterFormulaire()
 	{
@@ -145,9 +137,7 @@ class MessageController
 	/**
 	*	Supression des messages
 	*
-	*
-	* @param		integer		$messageId		Id d'un message
-	* @return	String		Message de confirmation ou d'infirmation pour l'enregistrement du message
+	* @Return 	Message d'erreur
 	**/
 	public function supprimer($messageId = 0)
 	{
@@ -155,7 +145,8 @@ class MessageController
 		$auteurId = $this->mDao->getMessageAuteur($messageId);
 		
 		// Récupération du profil de l'auteur
-		// TODO Inclure recherche de l'auteur pour la sécurité
+		// TODO Inclure recherche de l'auteur via la classe User
+		// un truc dans ce genre
 		
 		// Vérification des droits
 		if( checkDroit(true) ) {

@@ -13,6 +13,9 @@ class ForumsPageController
 	
 	private $db;
 	
+	private $action;	// Données de la page en cours
+	private $var;		// Données de la page en cours
+	
 	private $fC;		// Forum Controlleur
 	private $fPageC;	// Forum Page Controlleur
 	private $sC;		// Sujet Controlleur
@@ -24,12 +27,12 @@ class ForumsPageController
 	/**
 	*	Constructeur
 	*		Appel les autres constructeurs en fonction des paramètres recu
-	*
-	* @param		Object		$db			Objet PDO pour la connexion à la BDD
 	**/
-	public function __construct($db)
+	public function __construct($db, $action, $var)
 	{
 		$this->db 		= $db;
+		$this->action 	= $action;
+		$this->var 		= $var;
 		
 		$this->html['body'] 		= '';
 
@@ -48,8 +51,6 @@ class ForumsPageController
 	/**
 	*	Forum Liste
 	*		Page qui affiche la liste des Forums
-	*
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
 	**/
 	public function forumListe($user)
 	{
@@ -61,7 +62,6 @@ class ForumsPageController
 	/**
 	*	Forum Ajout
 	*		Page qui gère l'ajout des forums
-	*
 	**/
 	public function forumAjout()
 	{
@@ -73,11 +73,8 @@ class ForumsPageController
 	/**
 	*	Sujet Liste
 	*		Page qui affiche la liste des Sujets
-	*
-	* @param		integer		$forumId		Id du forum, permettant d'afficher les sujets de celui ci
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
 	**/
-	public function sujetListe($forumId, $user)
+	public function sujetListe($forumId, $user)		// TODO DEL, Param pour avoir l'user en cours
 	{
 		$this->html['body'] =  $this->sC->afficherListe($forumId, $user);
 	}
@@ -87,10 +84,8 @@ class ForumsPageController
 	/**
 	*	Sujet ajout
 	*		Page qui gère l'ajout des sujets
-	*
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
 	**/
-	public function sujetAjout($user)
+	public function sujetAjout()
 	{
 		
 	}
@@ -101,9 +96,8 @@ class ForumsPageController
 	*	Message Liste
 	*		Page qui affiche la liste des Message
 	*
-	*
-	* @param		integet		$sujetId		Id du sujet, permettant d'afficher les messages de celui ci
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
+	* @Param		sujetId		Id du sujet a affiché
+	* @Param 	user			TODO DEL Utilisateur actuellement connecté
 	**/
 	public function messageListe($sujetId, $user)
 	{
@@ -115,12 +109,10 @@ class ForumsPageController
 	/**
 	*	Message supprimer
 	*		Page qui affiche la liste des Message
-	*
-	* @param		integer		$messageId	Id du message à supprimer
 	**/
-	public function messageSupprimer($messageId)
+	public function messageSupprimer()
 	{
-		$this->html['body'] .=  $this->mC->supprimer($messageId);
+		$this->html['body'] .=  $this->mC->supprimer($this->var);
 	}
 	
 
@@ -128,18 +120,11 @@ class ForumsPageController
 	/**
 	*	Message Ajout
 	*		Affiche le formulaire pour ajouter un Message
-	*			Si sujetId = 0, c'est un message à ajouter
-	*			Si messageId = 0, c'est un message a modifier
-	*
-	* @param		integer		$sujetId		Id du sujet, permet de renseigner le champ hidden sujet_id
-	* @param		integer		$messageId	Id du message à modifier
 	**/
 	public function messageAfficherFormulaire($sujetId, $messageId)
 	{
 		$this->html['body'] = $this->mC->afficherFormulaire($sujetId, $messageId);
-		Debug::getInstance()->set('PAGE', __CLASS__,  __FILE__, __LINE__ , ' message Afficher Formulaire');
 	}
-	
 	
 	
 	/**
@@ -164,11 +149,8 @@ class ForumsPageController
 	*			Forum / TitreForum
 	*			Forum / TitreForum / TitreSujet
 	*
-	* @param		integer		$action		action de GET, Permet de générer les liens du fil d'arianne
-	* @param		integer		$var			var de GET, Permet de générer les liens du fil d'arianne
-	* @return	String		code HTML
 	**/
-	private function getInfoHeader($action, $var)
+	private function getInfoHeader()
 	{
 		$bandeauForumHTML = '';
 		
@@ -176,25 +158,24 @@ class ForumsPageController
 		$bandeauForumHTML .= $this->fC->getInfoHeader();
 		
 		
-		if( is_numeric($var) ) {
+		if( is_numeric($this->var) ) {
 
 			// Si action = forum
-			if( $action == Config::getInstance()->get('forum') ) {
+			if( $this->action == Config::getInstance()->get('forum') ) {
 				// On affiche le bandeau du forum 
-				$bandeauForumHTML .= $this->fC->getInfoHeader($var);
-				
+				$bandeauForumHTML .= $this->fC->getInfoHeader($this->var);
 				
 			} else {
 				// Sinon partout
 				
 				// Récupère le forum_id du sujet a partir de l'Id du Sujet
-				$sujet = $this->sC->getSujet($var);
+				$sujet = $this->sC->getSujet($this->var);
 
 				// On doit trouver l'Id du forum dans lequel le sujet est contenu
 				$bandeauForumHTML .= $this->fC->getInfoHeader($sujet->getForumId());
 				
 				// Puis on affiche le sujet
-				$bandeauForumHTML .= $this->sC->getInfoHeader($var);
+				$bandeauForumHTML .= $this->sC->getInfoHeader($this->var);
 			}
 		}
 		
@@ -209,17 +190,11 @@ class ForumsPageController
 	*		Renvoi l'ensemble du code HTML avec le template général du Forum
 	*
 	*/
-	public function getHTML($action, $var)
+	public function getHTML()
 	{
 		
-		// Génération du bandeau et enregistrement		TODO a revoir pour toujours l'avoir
-		if( $action == Config::getInstance()->get('forum') || $action = Config::getInstance()->get('sujet') ) {
-			$this->html['forums_bandeau'] 	= $this->getInfoHeader($action, $var);
-		} else {
-			$this->html['forums_bandeau'] 	= '';
-		}
-		
-		
+		// Génération du bandeau et enregistrement
+		$this->html['forums_bandeau'] 	= $this->getInfoHeader();
 		$this->html['forums_debug'] 	= Debug::getInstance()->getHTML();
 		
 		// Renvoi le code HTML généré a partir d'HTML réceptionné par ForumsController

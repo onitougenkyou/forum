@@ -29,8 +29,6 @@ class MessageViewController
 	/*
 	*	Get View Message Liste
 	*
-	* @param 	array()		$data		Liste d'objets message
-	* @return	String		Code HTML
 	*/
 	public function getViewMessageListe($data, $user)
 	{
@@ -114,8 +112,6 @@ class MessageViewController
 	*	get Ajouter Message
 	*		Ajout un lien vers le formulaire d'ajout de message
 	*
-	* @param 	array()		$user		Tableau d'information sur l'utilisateur connecté
-	* @return	String		Code HTML
 	*/
 	private function getAjouterMessage($user)
 	{
@@ -152,8 +148,6 @@ class MessageViewController
 	*	get Ajouter Formulaire Message
 	*		Inclus le fomulaire d'ajout de message dans le template
 	*
-	* @param 	Object		$form		Objet Form
-	* @return	String		Code HTML
 	*/
 	public function getFormHTML(Form $form)
 	{
@@ -184,10 +178,9 @@ class MessageViewController
 	*	get Formulaire Message
 	*		Créer une grande partie du formulaire
 	*
-	* @Param		Object		$form		Objet Form qui est a modifier pour y include des champs
-	* @Param		Object		$message		Message a include dans le formulaire dans le cas d'une modification
-	* @param 	array()		$user		Tableau d'information sur l'utilisateur connecté
-	* @return	Object		Retourne l'objet Form modifié
+	* @Param		form			Objet Form a modifier
+	* @Param		message		Message a include dans le formulaire dans le cas d'une modification
+	* @Param		user			TODO DEL Permet de récupérer l'utilisateur connecté
 	*/
 	public function getForm(Form $form, Message $message, $user)
 	{
@@ -197,7 +190,6 @@ class MessageViewController
 		// Ajout ou Modification
 		if( $message->getSujetId() ) {
 			// Ajout d'un message
-			
 				// SujetId
 				$data = array ('type' => 'hidden', 'nomVar' => 'sujetId', 'value' => $message->getSujetId());
 				$form->addInput($data);
