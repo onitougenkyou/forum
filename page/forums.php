@@ -24,8 +24,8 @@
 	require_once('controller/MessageViewController.php');
 
 	// DEBUG
-	// require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
-	// set_error_handler(array('GestionErreur', 'erreurPDO'));
+	require_once('tools/GestionErreur.php');	// Gestion des erreurs dans PDO (affichage)
+	set_error_handler(array('GestionErreur', 'erreurPDO'));
 
 	// Connexion à la BDD
 	require_once('tools/CConnexion.php');
@@ -43,7 +43,7 @@
 	$fsC->createPage($user);
 
 	// Affichage
-	echo $fsC->getHTML();
+	echo $fsC->getHTML($user);
 
-
+	// Debug
 	Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , var_dump($user));
