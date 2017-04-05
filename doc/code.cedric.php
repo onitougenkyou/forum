@@ -3,6 +3,8 @@
 	/**
 	*	SELECT messageS
 	*
+	* @param	integer			$sujetId	ID du sujet, les messages lié seront affiché
+	* @return	array(Forum)	retourne un tableau de résultat
 	**/
 	public function getMessages($sujetId)
 	{
