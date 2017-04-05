@@ -111,9 +111,9 @@ class ForumsController
 					// Modification
 					$messageId = $this->var;
 					Debug::getInstance()->set('debug', __CLASS__,  __FILE__, __LINE__ , ' Modification d\'un message');
-					
+				
 				}
-				$this->fPageC->messageAfficherFormulaire($sujetId, $messageId);
+				$this->fPageC->messageAfficherFormulaire($sujetId, $messageId, $user);
 			}
 		}
 		
@@ -125,12 +125,13 @@ class ForumsController
 	*	Get HTML
 	*		Renvoi l'ensemble du code HTML de ForumsPageController avec le template général du Forum
 	*
+	* @param	array()		Id de l'utilisateur actuellement connecté
 	* @return	String		code HTML
 	*/
-	public function getHTML()
+	public function getHTML($user)
 	{
 		// Génération du bandeau et enregistrement
-		return $this->fPageC->getHTML($this->action, $this->var);
+		return $this->fPageC->getHTML($this->action, $this->var, $user);
 	}
 	
 }

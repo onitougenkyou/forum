@@ -26,9 +26,10 @@ class ForumDao
 	*	SELECT forumS
 	*		Renvoi la liste des forums
 	*
-	* @param		limitStart	index de démarrage des résultats
-	* @param 	limitNb		Nombre de résultat a afficher
-	* @return	retourne un tableau de résultat
+	* @param	integet			$parent			Id du forum parent, donc affichage des enfants
+	* @param	integer			$limitStart		limitStart	index de démarrage des résultats
+	* @param 	integer			$limitNb		Nombre de résultat a afficher
+	* @return	array(Forum)	retourne un tableau de résultat
 	**/
 	public function getForums($parent = null, $limitStart = 0, $limitNb = 0)
 	{

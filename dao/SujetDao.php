@@ -110,7 +110,7 @@ class SujetDao
 						`forum_id`
 				FROM `sujets`
 				WHERE `id` = :sujetId';
-				
+		
 		// Préparation de la requête
 		$query = $this->db->prepare($sql);
 		

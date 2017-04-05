@@ -88,9 +88,8 @@ class ForumsPageController
 	*	Sujet ajout
 	*		Page qui gère l'ajout des sujets
 	*
-	* @param		array()		$user		Tableau contenant les informations de l'utilisateur connecté
 	**/
-	public function sujetAjout($user)
+	public function sujetAjout()
 	{
 		
 	}
@@ -133,8 +132,9 @@ class ForumsPageController
 	*
 	* @param		integer		$sujetId		Id du sujet, permet de renseigner le champ hidden sujet_id
 	* @param		integer		$messageId	Id du message à modifier
+	* @param		array()		$user		Tableau contenant les informations de l'utilisateur
 	**/
-	public function messageAfficherFormulaire($sujetId, $messageId)
+	public function messageAfficherFormulaire($sujetId, $messageId, $user)
 	{
 		$this->html['body'] = $this->mC->afficherFormulaire($sujetId, $messageId);
 		Debug::getInstance()->set('PAGE', __CLASS__,  __FILE__, __LINE__ , ' message Afficher Formulaire');
