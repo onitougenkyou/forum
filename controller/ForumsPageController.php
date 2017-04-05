@@ -136,7 +136,7 @@ class ForumsPageController
 	**/
 	public function messageAfficherFormulaire($sujetId, $messageId, $user)
 	{
-		$this->html['body'] = $this->mC->afficherFormulaire($sujetId, $messageId);
+		$this->html['body'] = $this->mC->afficherFormulaire($sujetId, $messageId, $user);
 		Debug::getInstance()->set('PAGE', __CLASS__,  __FILE__, __LINE__ , ' message Afficher Formulaire');
 	}
 	

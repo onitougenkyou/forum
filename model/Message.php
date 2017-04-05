@@ -63,6 +63,11 @@ class Message
 		return $this->id;
 	}
 
+	public function setId($id)
+	{
+		$this->id = $id;
+	}
+
 	// Date de Création
 	public function setDateCreation($dateCreation)
 	{

@@ -17,10 +17,10 @@ class Element
 	public static function getDb()
 	{
 		if (! self::$db instanceof PDO) {
-			$DB_host = "localhost";
-			$DB_user = "root";
-			$DB_pass = "";
-			$DB_name = "dblogin";
+			$DB_host = "10.2.1.14";
+			$DB_user = "IMIEforum";
+			$DB_pass = "root";
+			$DB_name = "IMIEforum";
 
 			self::$db =new PDO("mysql:dbname=".$DB_name.";host=".$DB_host,$DB_user,$DB_pass);
 			self::$db->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);

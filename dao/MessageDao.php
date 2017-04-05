@@ -77,7 +77,7 @@ class MessageDao
 				// Si l'auteur n'est pas trouvé, on refait une requête ... TODO DEL
 				if( !is_array($result[$i]['auteur']) ) {
 					$result[$i]['auteur'] = $user->getUser(0);
-					Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , 'Pas d\'utilisateur trouvé'));
+					Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , 'Pas d\'utilisateur trouvé');
 				}
 
 				// Construction d'un objet Forum

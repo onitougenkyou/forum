@@ -76,7 +76,7 @@ class MessageController
 			// Ajout d'un message
 			$message->setSujetId($sujetId);
 			
-			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Nouveau message');
+			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Nouveau message dans le sujet : '.$sujetId);
 			
 		} else {
 			// Récupération du message via l'id du message transmis
@@ -85,7 +85,7 @@ class MessageController
 			// Modification d'un message
 			$message->setId($messageId);		
 			
-			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Modification d\'un message');
+			Debug::getInstance()->set('Formulaire', __CLASS__, __FILE__, __LINE__ , 'Modification du message : '.$messageId);
 		}
 		
 		// Création du formulaire 

@@ -232,7 +232,7 @@ class MessageViewController
 		$data = array ('label' => 'Afficher ?', 'type' => 'text', 'nomVar' => 'affichage', 'value' => $message->getAffichage(), 'size' => 20, 'br' => true);
 		$form->addInput($data);
 		
-		// Submit
+		// Bouton Submit
 		$data = array ('type' => 'submit', 'nomVar' => 'envoyer', 'value' => 'Envoyer', 'br' => true);
 		$form->addInput($data);
 		
