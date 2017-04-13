@@ -27,8 +27,10 @@ class MessageDao
 	/**
 	*	SELECT messageS
 	*
+	* @param	integer			$sujetId	ID du sujet, les messages lié seront affiché
+	* @return	array(Forum)	retourne un tableau de résultat
 	**/
-	public function getMessages($sujetId, $user)
+	public function getMessages($sujetId)
 	{
 		// Init
 		$messages = array();
@@ -75,6 +77,7 @@ class MessageDao
 				// Si l'auteur n'est pas trouvé, on refait une requête ... TODO DEL
 				if( !is_array($result[$i]['auteur']) ) {
 					$result[$i]['auteur'] = $user->getUser(0);
+					Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , 'Pas d\'utilisateur trouvé');
 				}
 
 				// Construction d'un objet Forum
@@ -94,6 +97,8 @@ class MessageDao
 	*	SELECT
 	*		retourne un message en fonction de l'Id
 	*
+	* @param 	integer		$messageId		Id du message 
+	* @return 	object		Message
 	**/
 	public function getMessage($messageId)
 	{
@@ -135,7 +140,8 @@ class MessageDao
 	*	SELECT
 	*		retourne un id message en fonction de l'Id
 	*
-	* @return 	L'ID de l'auteur du message
+	* @param 	integer		$messageId		Id du message 
+	* @return 	integer		L'ID de l'auteur du message
 	**/
 	public function getMessageAuteur($messageId)
 	{
@@ -169,6 +175,8 @@ class MessageDao
 	/**
 	*	Sauvegarde l'objet en base de données
 	*
+	* @param 	Object		$message		Objet Message a enregistré
+	* @return 	boolean		True si le message a été enregistré
 	**/
 	public function addMessage(Message $message)
 	{
@@ -240,6 +248,8 @@ class MessageDao
 	/**
 	*	Supprime un objet en base de données
 	*
+	* @param 	integer		$messageId		Id du message a supprimer
+	* @return 	String		Message de confirmation
 	**/
 	public function supprimer($messageId)
 	{
@@ -264,6 +274,8 @@ class MessageDao
 	/**
 	*	Désactive un objet en base de données
 	*
+	* @param 	integer		$messageId		Id du message a désactiver
+	* @return 	String		Message de confirmation
 	**/
 	public function desactiver($messageId)
 	{

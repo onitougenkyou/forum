@@ -17,6 +17,8 @@ class SujetViewController
 	*	Get View Forum Liste
 	*		Renvoi le code HTML de la liste des sujets
 	*
+	* @param 	array()		$data		Tableau d'objet Sujet
+	* @return	String		Code HTML de l'ensemble des sujets, y compris le template des sujets
 	*/
 	public function getViewSujetListe($data)
 	{
@@ -68,6 +70,8 @@ class SujetViewController
 	*	Get View Forum Header
 	*		Renvoi le lien d'un forum (utile surtout en cas de sous forum)
 	*
+	* @param 	Object		$sujet		Objet Sujet
+	* @return	String		Code HTML
 	*/
 	public function getViewSujetHeader($sujet)
 	{

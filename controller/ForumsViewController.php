@@ -17,6 +17,8 @@ class ForumsViewController
 	*	Create Page
 	*		Créé la page du forum a partir des données HTML présente dans le controleur ForumsController
 	*
+	* @Param		String		$dataHTML		Tableau d'information pour les templates
+	* @return	Object		Retourne le code HTML
 	*/
 	public function CreatePage($dataHTML)
 	{

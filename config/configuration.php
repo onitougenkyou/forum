@@ -3,11 +3,11 @@
 *	Sélection des paramètre de la base de données
 *
 */$conf = array();
-	if($_SERVER['SERVER_ADDR'] == '10.2.2.37')
+	if($_SERVER['SERVER_ADDR'] == '10.2.1.15')
 	{
 		// Configuration Cédric
 		$conf = array(
-			'host' 		=> '10.2.2.34',
+			'host' 		=> '10.2.1.14',
 			'dbName' 	=> 'IMIEforum',
 			'user'		=> 'IMIEforum',
 			'pass'		=> 'root'
@@ -15,7 +15,7 @@
 
 	}
 
-	if($_SERVER['SERVER_ADDR'] == 'localhost')
+	if($_SERVER['SERVER_ADDR'] == '127.0.0.1' || $_SERVER['SERVER_ADDR'] == 'localhost')
 	{
 		$conf = array(
 			'host' 		=> 'localhost',
@@ -25,7 +25,7 @@
 		);
 	}
 
-	if($_SERVER['SERVER_ADDR'] == 'Internet Adresse')
+	if($_SERVER['SERVER_ADDR'] == '10.2.2.37')
 	{
 		$conf = array(
 			'host' 		=> '10.2.2.34',

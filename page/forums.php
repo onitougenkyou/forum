@@ -43,7 +43,7 @@
 	$fsC->createPage($user);
 
 	// Affichage
-	echo $fsC->getHTML();
+	echo $fsC->getHTML($user);
 
-
+	// Debug
 	Debug::getInstance()->set('Infos', __CLASS__,  __FILE__, __LINE__ , var_dump($user));

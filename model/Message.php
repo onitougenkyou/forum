@@ -25,7 +25,7 @@ class Message
 	*	Constructeur
 	*
 	**/
-	public function __construct($data)
+	public function __construct($data = '')
 	{
 		if(isset($data['id']))				$this->id 				= $data['id'];
 		if(isset($data['date_creation']))		$this->dateCreation 		= $data['date_creation'];
@@ -61,6 +61,11 @@ class Message
 	public function getId()
 	{
 		return $this->id;
+	}
+
+	public function setId($id)
+	{
+		$this->id = $id;
 	}
 
 	// Date de Création
